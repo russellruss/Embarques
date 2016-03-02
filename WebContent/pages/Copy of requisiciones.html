@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Requisiciones</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="traspasos.html">Trillas S.A de C.V.</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">           
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="traspasos.html"><i class="fa fa-exchange fa-fw"></i> Traspasos</a>
+                        </li>
+						<li>
+                            <a href="requisiciones.html"><i class="fa fa-shopping-cart fa-fw"></i> Requisiciones </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper" class="tablePage">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">REQUISICIONES - PARQUE DELTA</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            REQUISICIONES
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>No. Requisición</th>
+                                            <th>Fecha de Requisición</th>
+                                            <th>No. Traspaso</th>
+                                            <th>Fecha de Traspaso</th>
+                                            <th>No. Embarque</th>
+											<th>Fecha de Embarque</th>
+											<th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" onclick="details()" style="cursor:pointer">
+                                            <td>12345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>0012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>0023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="even gradeC" onclick="details()" style="cursor:pointer">
+                                            <td>00045678</td>
+                                            <td>10-Enero-2015</td>
+                                            <td>0012300</td>
+											<td>12-Febrero-2015</td>
+                                            <td>0023556</td>
+                                            <td class="center">12-Julio-2015</td>
+                                            <td class="center">Surtido</td>
+                                        </tr>
+                                        <tr class="odd gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>00000078</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>0112304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>0235560</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="even gradeA" onclick="details()" style="cursor:pointer">
+											<td>82345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>8012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>823556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Empaque</td>
+                                        </tr>
+                                        <tr class="odd gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>72345678</td>
+                                            <td>7-Agosto-2015</td>
+                                            <td>7012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>7023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="even gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>62345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>6012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>6023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>52345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>5012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>5023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>42345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>4012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>4023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Embarque</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>32345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>3012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>3023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>22345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>2012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>2023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Embarque</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>02345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>1012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>1023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Embarque</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>72345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>7012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>6023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>02345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>1012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>4023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>10345678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>4012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>0023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Enviado</td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="details()" style="cursor:pointer">
+                                            <td>10045678</td>
+                                            <td>10-Agosto-2015</td>
+                                            <td>6012304</td>
+											<td>10-Septiembre-2015</td>
+                                            <td>0023556</td>
+                                            <td class="center">12-Septiembre-2015</td>
+                                            <td class="center">Surtido</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                            <!-- <div class="well">
+                                <h4>DataTables Usage Information</h4>
+                                <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
+                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
+                            </div> -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+        </div>
+        <!-- /#page-wrapper -->
+		
+		<!-- INICIO #page-wrapper detalle-->
+		<div id="page-wrapper" class="detail" style="display:none">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Orden 000985 </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row" style="display:none">
+                <div class="col-lg-4">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            Green Panel
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                        </div>
+                        <div class="panel-footer">
+                            Panel Footer
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            Yellow Panel
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                        </div>
+                        <div class="panel-footer">
+                            Panel Footer
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            Red Panel
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                        </div>
+                        <div class="panel-footer">
+                            Panel Footer
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row" id="tabs">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Detalles de la orden: 000985
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#embarque" data-toggle="tab">Embarque</a>
+                                </li>
+                                <li><a href="#cliente" data-toggle="tab">Cliente</a>
+                                </li>
+                                <li><a href="#messages" data-toggle="tab">Documentos</a>
+                                </li>
+								<!-- 
+                                <li><a href="#settings" data-toggle="tab">Settings</a>
+                                </li> -->
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="embarque">
+									<table class="table table-bordered table-striped">
+										<tbody>
+											<tr>
+												<th>Clave de Trasporte</th>
+												<td>205 FEDEX ECONOMICO</td>
+											</tr>
+											<tr>
+												<th>No. Guía (Porte)</th>
+												<td>7812-4118-2549</td>
+											</tr>
+											<tr>
+												<th>Fecha de Entrega al Trasportista:</th>
+												<td>
+													<code>29/Agosto/2015 Hora: 12:13:05</code>
+												</td>
+											</tr>
+											<tr>
+												<th>No. de Cajas</th>
+												<td colspan="3">12</td>
+											</tr>
+											<tr>
+												<th>No. de Paquetes</th>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>Placas de la Unidad.</th>
+												<td colspan="4">8691CJ</td>
+											</tr>
+											<tr>
+												<th>Nombre del Trasportista (CIA)</th>
+												<td colspan="4">Jose Hernández</td>
+											</tr>
+											
+										</tbody>
+									</table>
+                                </div>
+                                <div class="tab-pane fade" id="cliente">
+                                    <!-- <h4>Datos del Cliente</h4>
+                                    <div class="row show-grid">
+										<div class="col-md-8">.col-md-8</div>
+										<div class="col-md-4">.col-md-4</div>
+									</div> -->
+									<div class="panel panel-green">
+										<div class="panel-heading">
+											Datos del Cliente
+										</div>
+										<div class="panel-body">
+											<div class="row show-grid">
+												<div class="col-md-4"><strong>Nombre/R. Social:</strong></div>
+												<div class="col-md-8">Abigail Gutierrez</div>
+											</div>
+											<div class="row show-grid">
+												<div class="col-md-3" ><strong>Calle y No.</strong></div>
+												<div class="col-md-3">Margaritas #3</div>
+												<div class="col-md-3"><strong>Col./Munic.</strong></div>
+												<div class="col-md-3">Las Margaritas</div>
+												<div class="col-md-3"><strong>Ciudad/Estado:</strong></div>
+												<div class="col-md-3">Córdoba</div>
+												<div class="col-md-3"><strong>País y C.P.</strong></div>
+												<div class="col-md-3">México  94553</div>
+											</div>
+										</div>
+										
+										
+									</div>
+                                </div>
+                                 <div class="tab-pane fade" id="messages">
+                                    <h4>Embarque: 0023556</h4>
+                                    <div class="row show-grid">
+										<div class="col-md-6"><strong>Documentos Asociados a este embarque:</strong></div>
+										<div class="col-md-2">JA 0019697</div>
+										<div class="col-md-2">JA 0019456</div>
+										<div class="col-md-2">JA 1255697</div>
+										<div class="col-md-2">JA 1255697</div>
+										<div class="col-md-2">JA 0019456</div>
+										<div class="col-md-2">JA 1255697</div>
+										<div class="col-md-2">JA 1255697</div>
+									</div>
+                                </div>
+								<!--
+                                <div class="tab-pane fade" id="settings">
+                                    <h4>Settings Tab</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+           
+        </div>
+		<!-- FIN #page-wrapper detalle-->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+	<script type="text/javascript" src="../js/detalis.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
+
+</body>
+
+</html>
