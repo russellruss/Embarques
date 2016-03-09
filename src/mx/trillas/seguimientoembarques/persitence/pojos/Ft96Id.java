@@ -9,7 +9,11 @@ package mx.trillas.seguimientoembarques.persitence.pojos;
 public class Ft96Id  implements java.io.Serializable {
 
 
-     private String ser;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4378404567590740470L;
+	private String ser;
      private Integer folio;
 
     public Ft96Id() {

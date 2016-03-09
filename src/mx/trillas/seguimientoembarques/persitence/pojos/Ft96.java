@@ -10,7 +10,11 @@ import java.util.Date;
 public class Ft96  implements java.io.Serializable {
 
 
-     private Ft96Id id;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4028615210840336493L;
+	private Ft96Id id;
      private String ident;
      private String ctrl;
      private Integer tipodoc;

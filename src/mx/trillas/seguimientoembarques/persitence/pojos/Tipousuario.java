@@ -11,8 +11,12 @@ import java.util.Set;
 public class Tipousuario  implements java.io.Serializable {
 
 
-     private String tipo;
-     private Set usuarios = new HashSet(0);
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7314737338216858036L;
+	private String tipo;
+     private Set<?> usuarios = new HashSet<>(0);
 
     public Tipousuario() {
     }
@@ -21,7 +25,7 @@ public class Tipousuario  implements java.io.Serializable {
     public Tipousuario(String tipo) {
         this.tipo = tipo;
     }
-    public Tipousuario(String tipo, Set usuarios) {
+    public Tipousuario(String tipo, Set<?> usuarios) {
        this.tipo = tipo;
        this.usuarios = usuarios;
     }
@@ -33,11 +37,11 @@ public class Tipousuario  implements java.io.Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public Set getUsuarios() {
+    public Set<?> getUsuarios() {
         return this.usuarios;
     }
     
-    public void setUsuarios(Set usuarios) {
+    public void setUsuarios(Set<?> usuarios) {
         this.usuarios = usuarios;
     }
 

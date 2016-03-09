@@ -22,7 +22,7 @@ public class Almacen implements java.io.Serializable {
     private String seriecredito;
     private String seriesimple;
     private Character caracter;
-    private Set useralmacens = new HashSet(0);
+    private Set<?> useralmacens = new HashSet<>(0);
 
    public Almacen() {
    }
@@ -32,7 +32,7 @@ public class Almacen implements java.io.Serializable {
        this.clave = clave;
        this.nombre = nombre;
    }
-   public Almacen(int clave, String nombre, String seriefacturacion, String seriedevolucion, String seriecredito, String seriesimple, Character caracter, Set useralmacens) {
+   public Almacen(int clave, String nombre, String seriefacturacion, String seriedevolucion, String seriecredito, String seriesimple, Character caracter, Set<?> useralmacens) {
       this.clave = clave;
       this.nombre = nombre;
       this.seriefacturacion = seriefacturacion;
@@ -92,11 +92,11 @@ public class Almacen implements java.io.Serializable {
    public void setCaracter(Character caracter) {
        this.caracter = caracter;
    }
-   public Set getUseralmacens() {
+   public Set<?> getUseralmacens() {
        return this.useralmacens;
    }
    
-   public void setUseralmacens(Set useralmacens) {
+   public void setUseralmacens(Set<?> useralmacens) {
        this.useralmacens = useralmacens;
    }
 

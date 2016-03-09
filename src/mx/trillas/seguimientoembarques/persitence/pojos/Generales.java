@@ -7,6 +7,11 @@ package mx.trillas.seguimientoembarques.persitence.pojos;
  */
 public class Generales implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -407520527031609574L;
+
 	public static enum keyactions {
 		ULTIMAACTUALIZACIONDB,
 		ACTUALIZACIONUSUARIOSARCHIVO,

@@ -9,7 +9,11 @@ package mx.trillas.seguimientoembarques.persitence.pojos;
 public class Ft91Id  implements java.io.Serializable {
 
 
-     private Integer ndoc;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1952001414764908128L;
+	private Integer ndoc;
      private String serie;
      private Integer tdoc;
 
