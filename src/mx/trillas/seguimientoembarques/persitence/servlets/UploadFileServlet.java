@@ -2,34 +2,30 @@ package mx.trillas.seguimientoembarques.persitence.servlets;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import mx.trillas.seguimientoembarques.Asesor;
+import mx.trillas.seguimientoembarques.IOAlmacen;
+import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
+import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
-
-import com.google.gson.Gson;
-
-import mx.trillas.seguimientoembarques.Asesor;
-import mx.trillas.seguimientoembarques.IOAlmacen;
-import mx.trillas.seguimientoembarques.persitence.dao.GeneralesDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.GeneralesDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
-import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
-import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 /**
  * Servlet implementation class UploadFileServlet
  */
