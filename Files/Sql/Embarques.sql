@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-12-2015 a las 18:12:20
--- Versión del servidor: 5.6.27-log
+-- Tiempo de generación: 09-03-2016 a las 13:23:13
+-- Versión del servidor: 5.5.47-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,7 +28,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `almacen` (
   `clave` int(11) NOT NULL,
-  `nombre` varchar(30) DEFAULT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `seriefacturacion` varchar(3) DEFAULT NULL,
+  `seriedevolucion` varchar(3) DEFAULT NULL,
+  `seriecredito` varchar(3) DEFAULT NULL,
+  `seriesimple` varchar(3) DEFAULT NULL,
+  `caracter` char(1) DEFAULT NULL,
   PRIMARY KEY (`clave`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -36,78 +41,78 @@ CREATE TABLE IF NOT EXISTS `almacen` (
 -- Volcado de datos para la tabla `almacen`
 --
 
-INSERT INTO `almacen` (`clave`, `nombre`) VALUES
-(0, 'VIGA'),
-(2, 'CUAUHTEMOC'),
-(3, 'MONTERREY   '),
-(4, 'INTERLOMAS'),
-(5, 'PARQUE DELTA'),
-(6, 'ACAPULCO'),
-(7, 'XALAPA'),
-(12, 'OAXACA'),
-(13, 'IXTAPALUCA'),
-(14, 'MEDICIENCIA'),
-(15, 'CUERNAVACA'),
-(16, 'PACHUCA'),
-(17, 'TOLUCA'),
-(18, 'TAMPICO'),
-(19, 'SAN LUIS POTOSI'),
-(20, 'PINO SUAREZ 1'),
-(21, 'COACALCO'),
-(22, 'LEON CENTRO'),
-(23, 'LERMA'),
-(24, 'REYNOSA'),
-(25, 'POLITECNICO'),
-(26, 'AGUASCALIENTES'),
-(27, 'CD. JUAREZ TORRES'),
-(28, 'CD. JUAREZ SENDERO'),
-(30, 'TLAXCALA'),
-(31, 'PUEBLA CENTRO'),
-(33, 'PUERTO VALLARTA'),
-(34, 'CASCO STO. TOMAS'),
-(36, 'PLAZA DEL LIBRO'),
-(37, 'PLAZA PAQ. ESCOLARES'),
-(38, 'PLAZA INFANTILES'),
-(40, 'TUXTLA GUTIERREZ'),
-(41, 'PLAZA BEST SELLERS'),
-(42, 'SALTILLO'),
-(43, 'PLAZA ARTE Y OBRAS'),
-(44, 'PLAZA UNIVERSITAS'),
-(45, 'CANCUN'),
-(47, 'GUADA. FERIAS INFANTILES'),
-(49, 'VILLA HERMOSA TABASCO'),
-(50, 'U.A.N.L'),
-(51, 'DURANGO'),
-(52, 'CD. JUAREZ RIO GRANDE'),
-(53, 'GUADALAJARA KIOSCO'),
-(54, 'FERIAS VARIAS'),
-(55, 'ALM. GRAL. OTROS FONDOS'),
-(56, 'PLAZA DEL LIBRO POLANCO'),
-(57, 'POLITECNICO FERIAS'),
-(58, 'PLAZA DEL LIBRO MORELIA'),
-(59, 'CCT. VALLARTA'),
-(60, 'P.V. VIGA 2'),
-(61, 'GUADALAJARA   '),
-(62, 'CHIHUAHUA  FERIAS'),
-(65, 'MORELIA '),
-(68, 'ADMINISTRACION LOCAL 3'),
-(69, 'ADMINISTRACION LOCAL 7'),
-(71, 'LEON CAMPESTRE'),
-(72, 'PUEBLA'),
-(73, 'QUERETARO'),
-(74, 'TORREON'),
-(75, 'VERACRUZ'),
-(76, 'MERIDA'),
-(77, 'ORIZABA'),
-(78, 'INSURGENTES'),
-(79, 'BELISARIO'),
-(80, 'METEPEC'),
-(82, 'PINO SUAREZ 2'),
-(85, 'UNAM'),
-(86, 'MUNDO E'),
-(89, 'CHIHUAHUA'),
-(90, 'MONTERREY FERIAS'),
-(91, 'GUADALAJARA FERIAS');
+INSERT INTO `almacen` (`clave`, `nombre`, `seriefacturacion`, `seriedevolucion`, `seriecredito`, `seriesimple`, `caracter`) VALUES
+(0, 'VIGA', 'JA', 'JAA', 'JAB', NULL, NULL),
+(2, 'CUAUHTEMOC', 'JL', 'JLA', 'JLB', 'A', 'A'),
+(3, 'MONTERREY   ', 'KD', 'KDA', 'KDB', 'B', 'B'),
+(4, 'INTERLOMAS', 'JV', 'JVA', 'JVB', 'AL', '1'),
+(5, 'PARQUE DELTA', 'JN', 'JNA', 'JNB', 'AQ', '3'),
+(6, 'ACAPULCO', 'JB', 'JBA', 'JBB', 'J', 'J'),
+(7, 'XALAPA', 'LK', 'LKA', 'LKB', 'AN', '$'),
+(12, 'OAXACA', 'KG', 'KGA', 'KGB', 'S', 'S'),
+(13, 'IXTAPALUCA', 'JW', 'JWA', 'JWB', 'AR', '4'),
+(14, 'MEDICIENCIA', 'KA', 'KAA', 'KAB', 'AS', '5'),
+(15, 'CUERNAVACA', 'JM', 'JMA', 'JMB', 'L', 'L'),
+(16, 'PACHUCA', 'KI', 'KIA', 'KIB', 'M', 'M'),
+(17, 'TOLUCA', 'LD', 'LDA', 'LDB', 'N', 'N'),
+(18, 'TAMPICO', 'LB', 'LBA', 'LBB', 'O', NULL),
+(19, 'SAN LUIS POTOSI', 'LA', 'LAA', 'LAB', 'P', 'P'),
+(20, 'PINO SUAREZ 1', 'KJ', 'KJA', 'KJB', 'Q', 'Q'),
+(21, 'COACALCO', 'JK', 'JKA', 'JKB', 'AT', 'D'),
+(22, 'LEON CENTRO', 'JY', 'JYA', 'JYB', 'R', 'R'),
+(23, 'LERMA', 'JZ', 'JZA', 'JZB', 'AU', '7'),
+(24, 'REYNOSA', 'KY', 'KYA', 'KYB', 'CK', '8'),
+(25, 'POLITECNICO', 'KT', 'KTA', 'KTB', 'CL', '9'),
+(26, 'AGUASCALIENTES', 'JC', 'JCA', 'JCB', 'CM', 'W'),
+(27, 'CD. JUAREZ TORRES', 'JI', 'JIA', 'JIB', 'CQ', '('),
+(28, 'CD. JUAREZ SENDERO', 'JH', 'JHA', 'JHB', 'EO', ')'),
+(30, 'TLAXCALA', 'LC', 'LCA', 'LCB', 'EQ', ''''),
+(31, 'PUEBLA CENTRO', 'KV', 'KVA', 'KVB', 'FA', '_'),
+(33, 'PUERTO VALLARTA', 'KW', 'KWA', 'KWB', 'FC', NULL),
+(34, 'CASCO STO. TOMAS', 'JF', 'JFA', 'JFB', 'ET', 'Á'),
+(36, 'PLAZA DEL LIBRO', 'KL', 'KLA', 'KLB', 'EU', 'É'),
+(37, 'PLAZA PAQ. ESCOLARES', 'KR', 'KRA', 'KRB', 'EV', '~'),
+(38, 'PLAZA INFANTILES', 'KN', 'KNA', 'KNB', 'EX', 'Í'),
+(40, 'TUXTLA GUTIERREZ', 'LF', 'LFA', 'LFB', 'FJ', '0'),
+(41, 'PLAZA BEST SELLERS', 'KM', 'KMA', 'KMB', 'GY', '-'),
+(42, 'SALTILLO', 'KZ', 'KZA', 'KZB', 'HQ', '÷'),
+(43, 'PLAZA ARTE Y OBRAS', 'KQ', 'KQA', 'KQB', 'HT', 'À'),
+(44, 'PLAZA UNIVERSITAS', 'KS', 'KSA', 'KSB', 'HU', '¯'),
+(45, 'CANCUN', 'JE', 'JEA', 'JEB', 'HY', 'È'),
+(47, 'GUADA. FERIAS INFANTILES', 'JQ', 'JQA', 'JQB', 'IC', 'Ò'),
+(49, 'VILLA HERMOSA TABASCO', 'LJ', 'LJA', 'LJB', 'IH', '¬'),
+(50, 'U.A.N.L', 'LG', 'LGA', 'LGB', 'AO', '#'),
+(51, 'DURANGO', 'JO', 'JOA', 'JOB', 'FK', '%'),
+(52, 'CD. JUAREZ RIO GRANDE', 'JG', 'JGA', 'JGB', 'IJ', '?'),
+(53, 'GUADALAJARA KIOSCO', 'LL', 'LLA', 'LLB', 'LL', 'Ù'),
+(54, 'FERIAS VARIAS', 'LM', 'LMA', 'LMB', 'LM', NULL),
+(55, 'ALM. GRAL. OTROS FONDOS', 'OF', NULL, NULL, NULL, NULL),
+(56, 'PLAZA DEL LIBRO POLANCO', 'LP', 'LPA', 'LPB', 'LP', 'Õ'),
+(57, 'POLITECNICO FERIAS', 'JS', 'JSA', 'JSB', 'JS', 'Â'),
+(58, 'PLAZA DEL LIBRO MORELIA', 'LN', 'LNA', 'LNB', 'LN', 'Î'),
+(59, 'CCT. VALLARTA', 'LO', 'LOA', 'LOB', 'LO', 'Ã'),
+(60, 'P.V. VIGA 2', 'IZ', 'IZA', 'IZB', 'IZ', NULL),
+(61, 'GUADALAJARA   ', 'JT', 'JTA', 'JTB', 'G', 'G'),
+(62, 'CHIHUAHUA  FERIAS', 'LQ', 'LQA', 'LQB', 'LQ', NULL),
+(65, 'MORELIA ', 'KE', 'KEA', 'KEB', 'AP', '2'),
+(68, 'ADMINISTRACION LOCAL 3', 'KO', 'KOA', 'KOB', 'EY', 'Ó'),
+(69, 'ADMINISTRACION LOCAL 7', 'KP', 'KPA', 'KPB', 'EZ', 'Ú'),
+(71, 'LEON CAMPESTRE', 'JX', 'JXA', 'JXB', 'D', NULL),
+(72, 'PUEBLA', 'KU', 'KUA', 'KUB', 'E', 'E'),
+(73, 'QUERETARO', 'KX', 'KXA', 'KXB', 'C', 'C'),
+(74, 'TORREON', 'LE', 'LEA', 'LEB', 'I', 'I'),
+(75, 'VERACRUZ', 'LI', 'LIA', 'LIB', 'H', 'H'),
+(76, 'MERIDA', 'KB', 'KBA', 'KBB', 'F', 'F'),
+(77, 'ORIZABA', 'KH', 'KHA', 'KHB', 'K', 'K'),
+(78, 'INSURGENTES', 'JU', 'JUA', 'JUB', 'U', 'U'),
+(79, 'BELISARIO', 'JD', 'JDA', 'JDB', 'Y', 'Y'),
+(80, 'METEPEC', 'KC', 'KCA', 'KCB', 'X', 'X'),
+(82, 'PINO SUAREZ 2', 'KK', 'KKA', 'KKB', 'Z', 'Z'),
+(85, 'UNAM', 'LH', 'LHA', 'LHB', 'T', 'T'),
+(86, 'MUNDO E', 'KF', 'KFA', 'KFB', 'AD', '@'),
+(89, 'CHIHUAHUA', 'JJ', 'JJA', 'JJB', 'AH', '{'),
+(90, 'MONTERREY FERIAS', 'JR', 'JRA', 'JRB', 'ER', 'Ê'),
+(91, 'GUADALAJARA FERIAS', 'JP', 'JPA', 'JPB', 'IB', '}');
 
 -- --------------------------------------------------------
 
@@ -268,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `generales` (
 --
 
 INSERT INTO `generales` (`idgenerales`, `keyaction`, `dato`) VALUES
-(1, 'ULTIMAACTUALIZACIONDB', '2 de diciembre de 2015  a las  14:15:24 PM');
+(1, 'ULTIMAACTUALIZACIONDB', '1 de marzo de 2016  a las  10:59:59 AM');
 
 -- --------------------------------------------------------
 
@@ -299,19 +304,12 @@ CREATE TABLE IF NOT EXISTS `userAlmacen` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `modificacion` datetime DEFAULT NULL,
   `creacion` timestamp NULL DEFAULT NULL,
-  `f_usuario` varchar(12) NOT NULL,
+  `f_usuario` varchar(50) NOT NULL,
   `f_almacen` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_userAlmacen_usuario1_idx` (`f_usuario`),
   KEY `fk_userAlmacen_almacen1_idx` (`f_almacen`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Volcado de datos para la tabla `userAlmacen`
---
-
-INSERT INTO `userAlmacen` (`id`, `modificacion`, `creacion`, `f_usuario`, `f_almacen`) VALUES
-(4, NULL, NULL, 'geduardo', 3);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -320,7 +318,7 @@ INSERT INTO `userAlmacen` (`id`, `modificacion`, `creacion`, `f_usuario`, `f_alm
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `username` varchar(12) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `password` varchar(64) DEFAULT NULL,
   `f_tipousuario` varchar(13) NOT NULL,
   PRIMARY KEY (`username`),
@@ -333,9 +331,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`username`, `password`, `f_tipousuario`) VALUES
 ('geduardo', '7362e0ca1dc2e89f230c7407754d18606dad3699c06a834f82e0450853968815', 'administrador'),
-('javier', '384dac3368de6f658d7bc66e8fd4c8206b91c17a9084498948c7dd6e44d4a055', 'administrador'),
-('somesome', '51680d9d74a76a6e30df9fc7e9d68a7d12caa9acfc76f7f1cf0cb1afd4eacb30', 'asesor'),
-('testtest', '37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578', 'asesor');
+('javier', '384dac3368de6f658d7bc66e8fd4c8206b91c17a9084498948c7dd6e44d4a055', 'administrador');
 
 --
 -- Restricciones para tablas volcadas
