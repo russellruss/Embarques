@@ -35,8 +35,8 @@ public class IOAlmacen {
 		}
 	}
 
-	public static boolean isStruct(File file, String path) throws Exception,
-			IOException {
+	public static boolean isStruct(File file, String path) throws IOException  
+			 {
 
 		String line = null;
 		FileInputStream fis = null;
@@ -142,7 +142,7 @@ public class IOAlmacen {
 		return false;
 	}
 
-	public static String getEncoding(String path) throws Exception {
+	public static String getEncoding(String path) throws IOException  {
 		FileInputStream fis = null;
 		InputStreamReader isr = null;
 		String s;
@@ -151,11 +151,9 @@ public class IOAlmacen {
 			fis = new FileInputStream(path);
 			isr = new InputStreamReader(fis);
 			s = isr.getEncoding();
-		} catch (Exception e) {
-			log.error("\nEl Stream se encuentra cerrado" + "\n"
-					+ e.getMessage());
+		} catch (FileNotFoundException e) {
 			throw e;
-		} finally {
+		}finally {
 			if (fis != null)
 				fis.close();
 			if (isr != null)

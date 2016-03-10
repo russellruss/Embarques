@@ -1,5 +1,9 @@
 package mx.trillas.seguimientoembarques.persitence.impl;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+
 import mx.trillas.seguimientoembarques.Asesor;
 import mx.trillas.seguimientoembarques.persitence.HibernateUtil;
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
@@ -7,10 +11,6 @@ import mx.trillas.seguimientoembarques.persitence.dao.UserAlmacenDAO;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -114,7 +114,7 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 	}
 
 	
-	public void deleteUserAlmacenByList() throws Exception {
+	public void deleteUserAlmacenByList() throws Exception{
 		Session session = null;
 		Transaction transaction = null;
 		List<UserAlmacen> list = getUsuariosAsesoresList();
@@ -127,10 +127,6 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 				session.delete(element);
 				transaction.commit();
 			}
-		} catch (Exception ex) {
-			if (transaction != null)
-				transaction.rollback();
-			ex.printStackTrace();
 		} finally {
 			if (session != null)
 				session.close();
