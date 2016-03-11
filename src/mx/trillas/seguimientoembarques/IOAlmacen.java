@@ -88,8 +88,9 @@ public class IOAlmacen {
 			while ((line = br.readLine()) != null) {
 				Asesor asesor = new Asesor();
 				String[] asesorSplit = line.split("\\,");
-				asesor.setUsername(asesorSplit[0]);
-				asesor.setPasswd(asesorSplit[1]);
+				asesor.setName(asesorSplit[0]);
+				asesor.setUsername(asesorSplit[1]);
+				asesor.setPasswd(asesorSplit[2]);
 				asesor.setTipousuario(tipousuarioDAO.getTipousuarioAsesor());
 
 				caracter = new ArrayList<>();

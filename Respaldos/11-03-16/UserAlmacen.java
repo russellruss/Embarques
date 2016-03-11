@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 11/03/2016 11:14:06 AM by Hibernate Tools 4.3.1
+// Generated 28/10/2015 05:40:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,7 +10,11 @@ import java.util.Date;
 public class UserAlmacen  implements java.io.Serializable {
 
 
-     private Integer id;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
      private Almacen almacen;
      private Usuario usuario;
      private Date modificacion;
@@ -20,22 +24,24 @@ public class UserAlmacen  implements java.io.Serializable {
     }
 
 	
-    public UserAlmacen(Almacen almacen, Usuario usuario) {
+    public UserAlmacen(int id, Almacen almacen, Usuario usuario) {
+        this.id = id;
         this.almacen = almacen;
         this.usuario = usuario;
     }
-    public UserAlmacen(Almacen almacen, Usuario usuario, Date modificacion, Date creacion) {
+    public UserAlmacen(int id, Almacen almacen, Usuario usuario, Date modificacion, Date creacion) {
+       this.id = id;
        this.almacen = almacen;
        this.usuario = usuario;
        this.modificacion = modificacion;
        this.creacion = creacion;
     }
    
-    public Integer getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
     public Almacen getAlmacen() {
@@ -68,19 +74,19 @@ public class UserAlmacen  implements java.io.Serializable {
     }
 
     @Override
-  	public boolean equals(Object obj) {
-  		if (obj == null)
-  			return false;
-  		if (!(obj instanceof UserAlmacen))
-  			return false;
-  		UserAlmacen otroAlmacen = (UserAlmacen) obj;
-  		
-  		if (this.usuario.equals(otroAlmacen.getUsuario()))
-  			return false;
-  		if (!this.almacen.equals(otroAlmacen.getAlmacen()))
-  			return false;
-  		return true;
-  	}
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (!(obj instanceof UserAlmacen))
+			return false;
+		UserAlmacen otroAlmacen = (UserAlmacen) obj;
+		
+		if (this.usuario.equals(otroAlmacen.getUsuario()))
+			return false;
+		if (!this.almacen.equals(otroAlmacen.getAlmacen()))
+			return false;
+		return true;
+	}
 
 
 }

@@ -148,6 +148,7 @@ public class UploadFileServlet extends HttpServlet {
 							+ asesor.getCaracteres());
 				} else if (asesor.getUsername() != null) {
 					usuario.setUsername(asesor.getUsername());
+					usuario.setName(asesor.getName());
 					usuario.setPassword(asesor.getPasswd());
 					usuario.setTipousuario(asesor.getTipousuario());
 					usernameExist.add(asesor.getUsername());

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/03/2016 11:14:06 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 28/10/2015 05:40:56 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario" table="tipousuario" catalog="embarques" optimistic-lock="version">
+    <class name="mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario" table="tipousuario" catalog="Embarques" optimistic-lock="version">
         <id name="tipo" type="string">
             <column name="tipo" length="13" />
             <generator class="assigned" />
