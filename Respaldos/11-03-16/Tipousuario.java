@@ -34,7 +34,7 @@ public class Tipousuario  implements java.io.Serializable {
         return this.tipo;
     }
     
- 	public void setTipo(String tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
     public Set<?> getUsuarios() {
@@ -53,7 +53,7 @@ public class Tipousuario  implements java.io.Serializable {
     	Tipousuario tipoUsuario=(Tipousuario)object;
     	if(!this.getTipo().equals(tipoUsuario.getTipo()))return false;
     	return true;
-    } 
+    }
 
 }
 

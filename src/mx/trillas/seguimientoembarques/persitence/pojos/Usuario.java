@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 28/10/2015 05:40:55 PM by Hibernate Tools 4.3.1
+// Generated 11/03/2016 11:14:06 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -10,49 +10,73 @@ import java.util.Set;
  */
 public class Usuario  implements java.io.Serializable {
 
-	private static final long serialVersionUID = -4123055884016232200L;
-	private String username;
-    private Tipousuario tipousuario;
-    private String password;
-    private Set<?> userAlmacens = new HashSet<>(0);
+
+     private String username;
+     private Tipousuario tipousuario;
+     private String name;
+     private String password;
+     private Set useralmacens = new HashSet(0);
 
     public Usuario() {
     }
-	
+
     public Usuario(String username, Tipousuario tipousuario) {
         this.username = username;
         this.tipousuario = tipousuario;
     }
-    public Usuario(String username, Tipousuario tipousuario, String password, Set<?> userAlmacens) {
+	
+    public Usuario(String username, Tipousuario tipousuario, String name) {
+        this.username = username;
+        this.tipousuario = tipousuario;
+        this.name = name;
+    }
+    public Usuario(String username, Tipousuario tipousuario, String name, String password, Set useralmacens) {
        this.username = username;
        this.tipousuario = tipousuario;
+       this.name = name;
        this.password = password;
-       this.userAlmacens = userAlmacens;
+       this.useralmacens = useralmacens;
     }
+   
     public String getUsername() {
         return this.username;
     }
+    
     public void setUsername(String username) {
         this.username = username;
     }
     public Tipousuario getTipousuario() {
         return this.tipousuario;
     }
+    
     public void setTipousuario(Tipousuario tipousuario) {
         this.tipousuario = tipousuario;
+    }
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     public String getPassword() {
         return this.password;
     }
+    
     public void setPassword(String password) {
         this.password = password;
     }
-    public Set<?> getUserAlmacens() {
-        return this.userAlmacens;
+    public Set getUseralmacens() {
+        return this.useralmacens;
     }
-    public void setUserAlmacens(Set<?> userAlmacens) {
-        this.userAlmacens = userAlmacens;
+    
+    public void setUseralmacens(Set useralmacens) {
+        this.useralmacens = useralmacens;
     }
+
+
+
+
 }
 
 

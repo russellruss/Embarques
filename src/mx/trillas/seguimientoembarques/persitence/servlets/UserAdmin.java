@@ -30,6 +30,7 @@ import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
+import mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario;
 import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 import mx.trillas.seguimientoembarques.util.Cripto;
@@ -141,6 +142,10 @@ public class UserAdmin extends HttpServlet {
 					GsonBuilder gsonBuilder = new GsonBuilder();
 					AlmacenAdapter almacenAdapter = new AlmacenAdapter();
 					// System.out.println();
+					Tipousuario tipejo = tipousuarioDAO.getTipousuarioAdministrador();
+					if (usuario != null && usuario.getTipousuario().equals(tipejo)){
+						System.out.println("usuario " + usuario.getName() + " es administrador");
+					}
 					if (almacenesOfUsuario.contains(almacen)) {
 						almacenAdapter.setSelected(true);
 					} else {

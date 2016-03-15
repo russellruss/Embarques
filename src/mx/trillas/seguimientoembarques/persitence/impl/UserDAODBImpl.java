@@ -163,6 +163,7 @@ public class UserDAODBImpl implements UserDAO {
 			Object userObj = criteria.uniqueResult();
 			if (userObj != null && userObj instanceof Usuario) {
 				usuario = (Usuario) userObj;
+				HibernateUtil.initializeObject(usuario.getTipousuario());
 			}
 		} catch (Exception ex) {
 			throw ex;

@@ -16,7 +16,7 @@ public class HibernateUtil {
 	private static final SessionFactory sessionFactory;
 	public static byte[] hibernateCollectionPackage = "org.hibernate.collection"
 			.getBytes();
-	private static String INSIDE_PACKAGE_NAME = "mx.trillas.otrosfondos.persistence.pojos";
+	private static String INSIDE_PACKAGE_NAME = "mx.trillas.seguimientoembarques.persistence.pojos";
 
 	static {
 		Configuration configuration = new Configuration().configure();
