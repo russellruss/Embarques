@@ -92,8 +92,8 @@ public class UploadFileServlet extends HttpServlet {
 
 			try{
 			if (!IOAlmacen.verifyFile(file, path)) {
-				msg = "El archivo no es valido";
-				log.error("El archivo no es valido");
+				msg = "El archivo ingresado no es valido";
+				log.error("El archivo ingresado no es valido");
 				flag = false;
 			} else if (!IOAlmacen.isStruct(file, path)) {
 				msg = "Una de las lineas del archivo no contiene la estructura sugerida";
@@ -195,6 +195,10 @@ public class UploadFileServlet extends HttpServlet {
 			}
 		}
 
+		if (msg.equals("")) {
+			msg ="Ocurrió un problema. Consulte archivos log del sistema.";
+		}
+		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(msg);
