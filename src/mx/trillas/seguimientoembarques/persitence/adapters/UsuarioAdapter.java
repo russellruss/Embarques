@@ -16,6 +16,7 @@ public class UsuarioAdapter implements JsonSerializer<Usuario>{
 			JsonSerializationContext jsc) {
 		JsonObject json = new JsonObject();
 		json.addProperty("username", usuario.getUsername());
+		json.addProperty("name", usuario.getName());
 		json.addProperty("password", usuario.getPassword());
 		json.addProperty("tipousuario", usuario.getTipousuario().getTipo());
 		return json;
