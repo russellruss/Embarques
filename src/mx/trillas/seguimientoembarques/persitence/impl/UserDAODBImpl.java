@@ -10,6 +10,7 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 import mx.trillas.seguimientoembarques.util.Cripto;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;

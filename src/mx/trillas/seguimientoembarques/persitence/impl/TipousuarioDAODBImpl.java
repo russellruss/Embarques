@@ -22,6 +22,7 @@ public class TipousuarioDAODBImpl implements TipousuarioDAO {
 			if (tipousuarioAdministradorObj != null
 					&& tipousuarioAdministradorObj instanceof Tipousuario) {
 				tipousuarioAdministrador = (Tipousuario) tipousuarioAdministradorObj;
+//				HibernateUtil.initializeObject(tipousuarioAdministrador.getTipo());
 			}
 		} catch (Exception ex) {
 			throw ex;
@@ -44,6 +45,7 @@ public class TipousuarioDAODBImpl implements TipousuarioDAO {
 			if (tipousuarioAdministradorObj != null
 					&& tipousuarioAdministradorObj instanceof Tipousuario) {
 				tipousuarioAsesor = (Tipousuario) tipousuarioAdministradorObj;
+//				HibernateUtil.initializeObject(tipousuarioAsesor.getTipo());
 			}
 		} catch (Exception ex) {
 			throw ex;
