@@ -142,7 +142,8 @@ function getListaUsuarios() {
 }
 
 function newChecked(element){
-	var usuario = $("select option:selected").text();
+	var usuario = $("select option:selected").value();
+	alert(usuario);
 	var isChecked = element.checked;
 	var value = element.value;
 	$.ajax({

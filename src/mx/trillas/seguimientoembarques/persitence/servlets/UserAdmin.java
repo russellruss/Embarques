@@ -30,7 +30,6 @@ import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
-import mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario;
 import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 import mx.trillas.seguimientoembarques.util.Cripto;
@@ -65,16 +64,6 @@ public class UserAdmin extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static boolean parentesisMatcher(String toCompare) {
-		String patternString = "\\([A-Za-z]+\\)";
-		Pattern pattern;
-		Matcher matcher;
-		pattern = Pattern.compile(patternString);
-
-		matcher = pattern.matcher(toCompare);
-		return matcher.find();
-	}
-	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -114,17 +103,13 @@ public class UserAdmin extends HttpServlet {
 			JSONObject json = new JSONObject();
 			PrintWriter out = response.getWriter();
 			JSONArray list = new JSONArray();
-
 			try {
 				for (Usuario usuario : userDAO.getAllUsers()) {
-//					if (usuario != null && !usuario.getTipousuario().equals(tipousuarioDAO.getTipousuarioAdministrador())){
-					if ( !usuario.getTipousuario().getTipo().equals("administrador") ){
-						GsonBuilder gsonBuilder = new GsonBuilder();
-						gsonBuilder.registerTypeAdapter(Usuario.class,
-								new UsuarioAdapter());
-						Gson gson = gsonBuilder.create();
-						list.put(gson.toJson(usuario));
-					}
+					GsonBuilder gsonBuilder = new GsonBuilder();
+					gsonBuilder.registerTypeAdapter(Usuario.class,
+							new UsuarioAdapter());
+					Gson gson = gsonBuilder.create();
+					list.put(gson.toJson(usuario));
 				}
 				json.put("usuarios", list);
 				out.print(json.toString());
@@ -138,15 +123,6 @@ public class UserAdmin extends HttpServlet {
 		if (action != null && action.equals("getAlmacenesOfUsuario")) {
 			Object usuarioObj = request.getParameter("user");
 			Usuario usuario;
-			
-			Object usuarioObjSession = request.getSession().getAttribute("user");
-		    String tipoUsuario = "";
-		    
-		    if(usuarioObjSession != null && usuarioObjSession instanceof Usuario){
-		    	Usuario usuarioSession = (Usuario) usuarioObjSession;
-		    	tipoUsuario = usuarioSession.getTipousuario().getTipo();
-		    }
-		    
 			try {
 				if (usuarioObj != null && usuarioObj instanceof String) {
 					String username = (String) usuarioObj;
@@ -165,14 +141,10 @@ public class UserAdmin extends HttpServlet {
 					GsonBuilder gsonBuilder = new GsonBuilder();
 					AlmacenAdapter almacenAdapter = new AlmacenAdapter();
 					// System.out.println();
-					
 					if (almacenesOfUsuario.contains(almacen)) {
 						almacenAdapter.setSelected(true);
 					} else {
 						almacenAdapter.setSelected(false);
-					}
-					if(usuario == null && tipoUsuario != null && tipoUsuario.equals("administrador")) {
-							almacenAdapter.setSelected(true);
 					}
 					gsonBuilder.registerTypeAdapter(Almacen.class,
 							almacenAdapter);

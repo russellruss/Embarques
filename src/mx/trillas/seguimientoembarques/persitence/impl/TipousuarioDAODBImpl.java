@@ -17,12 +17,13 @@ public class TipousuarioDAODBImpl implements TipousuarioDAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(Tipousuario.class);
-			criteria.add(Restrictions.eq("tipo", "administrador"));
+			criteria.add(Restrictions.eq("tipo",
+					TipousuarioDAO.TIPOS_USUARIO.TIPOUSUARIO_ADMINISTRADOR
+							.getString()));
 			Object tipousuarioAdministradorObj = criteria.uniqueResult();
 			if (tipousuarioAdministradorObj != null
 					&& tipousuarioAdministradorObj instanceof Tipousuario) {
 				tipousuarioAdministrador = (Tipousuario) tipousuarioAdministradorObj;
-//				HibernateUtil.initializeObject(tipousuarioAdministrador.getTipo());
 			}
 		} catch (Exception ex) {
 			throw ex;
@@ -40,12 +41,13 @@ public class TipousuarioDAODBImpl implements TipousuarioDAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(Tipousuario.class);
-			criteria.add(Restrictions.eq("tipo", "asesor"));
+			criteria.add(Restrictions
+					.eq("tipo", TipousuarioDAO.TIPOS_USUARIO.TIPOUSUARIO_ASESOR
+							.getString()));
 			Object tipousuarioAdministradorObj = criteria.uniqueResult();
 			if (tipousuarioAdministradorObj != null
 					&& tipousuarioAdministradorObj instanceof Tipousuario) {
 				tipousuarioAsesor = (Tipousuario) tipousuarioAdministradorObj;
-//				HibernateUtil.initializeObject(tipousuarioAsesor.getTipo());
 			}
 		} catch (Exception ex) {
 			throw ex;
