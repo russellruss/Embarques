@@ -40,7 +40,7 @@ public class UserDAODBImpl implements UserDAO {
 		}
 		return user;
 	}
-	
+
 	public Usuario getUser(String username) throws Exception {
 		Session session = null;
 		Usuario user = null;
@@ -48,8 +48,7 @@ public class UserDAODBImpl implements UserDAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(Usuario.class);
-			criteria.add(Restrictions.and(
-					Restrictions.eq("username", username)));
+			criteria.add(Restrictions.and(Restrictions.eq("username", username)));
 			Object UserObj = criteria.uniqueResult();
 			if (UserObj != null && UserObj instanceof Usuario) {
 				user = (Usuario) UserObj;
@@ -175,19 +174,18 @@ public class UserDAODBImpl implements UserDAO {
 	}
 
 	public void deleteUsersList() throws Exception {
-	
+
 		Session session = null;
 		Transaction transaction = null;
 		List<Usuario> list = getUsuariosAsesores();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-
+			transaction = session.beginTransaction();
 			for (Usuario element : list) {
-				transaction = session.beginTransaction();
-//				System.out.println("Eliminando " + element.getUsername());
+				// System.out.println("Eliminando " + element.getUsername());
 				session.delete(element);
-				transaction.commit();
 			}
+			transaction.commit();
 		} catch (Exception ex) {
 			if (transaction != null)
 				transaction.rollback();
@@ -195,29 +193,35 @@ public class UserDAODBImpl implements UserDAO {
 		} finally {
 			if (session != null)
 				session.close();
-		}	
-	}
-	
-	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
-		Session session = null;
-		Transaction transaction = null;
-
-		session = HibernateUtil.getSessionFactory().openSession();
-		try {
-			
-			for (Usuario element : list) {
-				transaction = session.getTransaction();
-				transaction.begin();
-				session.save(element);
-				transaction.commit();
-			}	
-		} catch (Exception e) {
-			if (transaction != null)
-				transaction.rollback();
-			throw e;
-		} finally {
-			if (session != null)
-				session.close();
 		}
+	}
+
+	// public void altaUsuarioFromList(List<Usuario> list) throws Exception {
+	// Session session = null;
+	// Transaction transaction = null;
+	//
+	// session = HibernateUtil.getSessionFactory().openSession();
+	// try {
+	//
+	// for (Usuario element : list) {
+	// transaction = session.getTransaction();
+	// transaction.begin();
+	// session.save(element);
+	// transaction.commit();
+	// }
+	// } catch (Exception e) {
+	// if (transaction != null)
+	// transaction.rollback();
+	// throw e;
+	// } finally {
+	// if (session != null)
+	// session.close();
+	// }
+	// }
+	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
+		for (Usuario usuario : list) {
+			altaUsuario(usuario);
+		}
+
 	}
 }

@@ -58,14 +58,14 @@
                             <!-- /input-group -->
                         <!-- </li> -->
                         <li>
-                            <a onclick="" href="../traspasos/traspasos.jsp"><i class="fa fa-exchange fa-fw"></i> Traspasos</a>
+                            <a href="<%=request.getContextPath()%>/pages/traspasos/traspasos.jsp"><i class="fa fa-exchange fa-fw"></i> Traspasos</a>
                         </li>
 						<li>
-                            <a href="../requisiciones/requisiciones.jsp"><i class="fa fa-shopping-cart fa-fw"></i> Requisiciones </a>
+                            <a href="<%=request.getContextPath()%>/pages/requisiciones/requisiciones.jsp"><i class="fa fa-shopping-cart fa-fw"></i> Requisiciones </a>
                         </li>
                         <% if(tipo != null && tipo.equals("administrador")) { %>
                         <li>
-                            <a href="../panelAdmin/panelAdmin.jsp"><i class="fa fa-gears fa-fw"></i> Administrador </a>
+                            <a href="<%=request.getContextPath()%>/pages/panelAdmin/panelAdmin.jsp"><i class="fa fa-gears fa-fw"></i> Administrador </a>
                         </li>
                         <% } %>
                     </ul>

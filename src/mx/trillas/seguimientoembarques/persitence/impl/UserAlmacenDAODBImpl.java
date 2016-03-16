@@ -120,13 +120,12 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 		List<UserAlmacen> list = getUsuariosAsesoresList();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-
+			transaction = session.beginTransaction();
 			for (UserAlmacen element : list) {
-				transaction = session.beginTransaction();
 //				System.out.println("Eliminando " + element.getUsuario().getUsername() + " con ID: "+ element.getId());
 				session.delete(element);
-				transaction.commit();
 			}
+			transaction.commit();
 		} finally {
 			if (session != null)
 				session.close();

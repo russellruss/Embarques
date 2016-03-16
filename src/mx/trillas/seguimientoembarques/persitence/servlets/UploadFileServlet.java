@@ -20,6 +20,7 @@ import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
+import mx.trillas.seguimientoembarques.util.Cripto;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -149,7 +150,7 @@ public class UploadFileServlet extends HttpServlet {
 				} else if (asesor.getUsername() != null) {
 					usuario.setUsername(asesor.getUsername());
 					usuario.setName(asesor.getName());
-					usuario.setPassword(asesor.getPasswd());
+					usuario.setPassword(Cripto.getSha256(asesor.getPasswd()));
 					usuario.setTipousuario(asesor.getTipousuario());
 					usernameExist.add(asesor.getUsername());
 					listaDeUsuarios.add(usuario);
