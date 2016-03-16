@@ -130,7 +130,7 @@ function getListaUsuarios() {
 				var salida = "<option>Selecciona...</option>\n";
 				for (i = 0; i < data.usuarios.length; i++) {
 					var usuario = JSON.parse(data.usuarios[i]);
-					salida += "<option> "+usuario.name+ " (" + usuario.username + ")</option>\n";
+					salida += "<option value='"+usuario.username + "'> "+ usuario.name +" (" + usuario.username + ")</option>\n";
 				}
 				$("#listaUsuarios").html(salida);
 			}

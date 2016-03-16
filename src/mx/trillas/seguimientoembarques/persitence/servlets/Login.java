@@ -73,8 +73,7 @@ public class Login extends HttpServlet {
 		JSONObject obj = new JSONObject();
 		Usuario user = null;
 		try {
-			user = userDAO.getUser(request.getParameter("email"),
-					request.getParameter("password"));
+			user = userDAO.getUser(request.getParameter("email"),request.getParameter("password"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

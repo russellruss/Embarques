@@ -183,10 +183,11 @@
     </div>
     <!-- /#wrapper -->
 	<script>
-		$("select").change(function() {
+
+		$("#listaUsuarios").change(function() {
 			var str = "";
-			$("select option:selected").each(function() {
-				str += $(this).text() + " ";
+			$("#listaUsuarios option:selected").each(function() {
+				str += $(this).val() + " ";
 			});
 			getAlmacenesOfUser(str);
 		}).change();
