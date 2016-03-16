@@ -174,7 +174,7 @@ function newChecked(element) {
 						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido asociado al almacen " + almacenName.toLowerCase());
 						getAlmacenesOfUser(username);
 					} else {
-						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido desasociado del almacen " + almacenName.toLowerCase());
+						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido desasociado del almacen \"" + almacenName.toLowerCase()+"\");
 						getAlmacenesOfUser(username);
 					}
 				}
