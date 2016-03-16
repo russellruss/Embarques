@@ -14,8 +14,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
 import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
@@ -28,6 +30,7 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static UserDAO userDAO = new UserDAODBImpl();
 	private static AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
+	private static TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -87,7 +90,12 @@ public class Login extends HttpServlet {
 			}
 			List<Almacen> almacenes;
 			try {
-				almacenes = almacenDAO.getAlmacenesOfUser(user);
+				if (user.getTipousuario().equals(
+						tipousuarioDAO.getTipousuarioAdministrador())) {
+					almacenes = almacenDAO.getAlmacenes();
+				} else {
+					almacenes = almacenDAO.getAlmacenesOfUser(user);
+				}
 				session.setAttribute("almacenes", almacenes);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

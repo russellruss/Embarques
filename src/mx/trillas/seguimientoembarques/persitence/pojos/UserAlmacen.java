@@ -10,7 +10,11 @@ import java.util.Date;
 public class UserAlmacen  implements java.io.Serializable {
 
 
-     private Integer id;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7804317542891903487L;
+	private Integer id;
      private Almacen almacen;
      private Usuario usuario;
      private Date modificacion;

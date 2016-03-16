@@ -11,11 +11,15 @@ import java.util.Set;
 public class Usuario  implements java.io.Serializable {
 
 
-     private String username;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1168551339452847707L;
+	private String username;
      private Tipousuario tipousuario;
      private String name;
      private String password;
-     private Set useralmacens = new HashSet(0);
+     private Set<?> useralmacens = new HashSet<>(0);
 
     public Usuario() {
     }
@@ -30,7 +34,7 @@ public class Usuario  implements java.io.Serializable {
         this.tipousuario = tipousuario;
         this.name = name;
     }
-    public Usuario(String username, Tipousuario tipousuario, String name, String password, Set useralmacens) {
+    public Usuario(String username, Tipousuario tipousuario, String name, String password, Set<?> useralmacens) {
        this.username = username;
        this.tipousuario = tipousuario;
        this.name = name;
@@ -66,11 +70,11 @@ public class Usuario  implements java.io.Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Set getUseralmacens() {
+    public Set<?> getUseralmacens() {
         return this.useralmacens;
     }
     
-    public void setUseralmacens(Set useralmacens) {
+    public void setUseralmacens(Set<?> useralmacens) {
         this.useralmacens = useralmacens;
     }
 

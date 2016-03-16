@@ -10,7 +10,6 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 import mx.trillas.seguimientoembarques.util.Cripto;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -209,7 +208,6 @@ public class UserDAODBImpl implements UserDAO {
 			for (Usuario element : list) {
 				transaction = session.getTransaction();
 				transaction.begin();
-//				System.out.println("Element  " + element.getUsername() +"  " + element.getPassword());
 				session.save(element);
 				transaction.commit();
 			}	
