@@ -171,10 +171,10 @@ function newChecked(element) {
 				if (data.status == 'error') {
 				} else {
 					if (isChecked == 1 ) {
-						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido asociado al almacen " + almacenName.toLowerCase());
+						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido asociado al almacen " + almacenName.toLowerCase()+"\"");
 						getAlmacenesOfUser(username);
 					} else {
-						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido desasociado del almacen \"" + almacenName.toLowerCase()+"\");
+						alert("El usuario con username \"" + username.toLowerCase() + "\" ha sido desasociado del almacen \"" + almacenName.toLowerCase()+"\"");
 						getAlmacenesOfUser(username);
 					}
 				}
