@@ -24,6 +24,7 @@ public class TipousuarioDAODBImpl implements TipousuarioDAO {
 			if (tipousuarioAdministradorObj != null
 					&& tipousuarioAdministradorObj instanceof Tipousuario) {
 				tipousuarioAdministrador = (Tipousuario) tipousuarioAdministradorObj;
+				HibernateUtil.initializeObject(tipousuarioAdministrador.getTipo());
 			}
 		} catch (Exception ex) {
 			throw ex;

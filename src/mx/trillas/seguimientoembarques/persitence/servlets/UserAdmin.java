@@ -105,11 +105,13 @@ public class UserAdmin extends HttpServlet {
 			JSONArray list = new JSONArray();
 			try {
 				for (Usuario usuario : userDAO.getAllUsers()) {
-					GsonBuilder gsonBuilder = new GsonBuilder();
-					gsonBuilder.registerTypeAdapter(Usuario.class,
-							new UsuarioAdapter());
-					Gson gson = gsonBuilder.create();
-					list.put(gson.toJson(usuario));
+					if (!(usuario.getTipousuario().getTipo().equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo()))){
+						GsonBuilder gsonBuilder = new GsonBuilder();
+						gsonBuilder.registerTypeAdapter(Usuario.class,
+								new UsuarioAdapter());
+						Gson gson = gsonBuilder.create();
+						list.put(gson.toJson(usuario));
+					}
 				}
 				json.put("usuarios", list);
 				out.print(json.toString());
