@@ -5,7 +5,6 @@ import java.util.List;
 
 import mx.trillas.seguimientoembarques.persitence.HibernateUtil;
 import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
-import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
