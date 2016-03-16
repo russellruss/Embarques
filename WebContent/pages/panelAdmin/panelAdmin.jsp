@@ -183,7 +183,7 @@
     </div>
     <!-- /#wrapper -->
 	<script>
-
+	
 		$("#listaUsuarios").change(function() {
 			var str = "";
 			$("#listaUsuarios option:selected").each(function() {
