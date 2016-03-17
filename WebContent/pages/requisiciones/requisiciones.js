@@ -57,9 +57,7 @@ function drawTraspasos(data){
 
 	$.getScript( "../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js" );
 	$.getScript( "../../Components/bower_components/datatables/media/js/jquery.dataTables.min.js" );
-	
 	setTimeout(tableIni, 1200);
-	
 }
 
 function tableIni(){
@@ -68,6 +66,7 @@ function tableIni(){
 	    paging: true,
 	    "order": [[ 1, "asc" ]]
 	});
+	$("#fountainR").css('display', 'none');
 }
 
 function details(folio, serie){

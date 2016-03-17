@@ -10,8 +10,7 @@
 <!-- <script type="text/javascript" src="requisicionesNew.js"></script> -->
 <%@include file="../../Headers/headerIncludesRoot.jsp" %>
 <script type="text/javascript" src="requisiciones.js"></script>
-
-
+ <link href="requisiciones.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,6 +21,17 @@
           <%@include file="../sideMenu.jsp" %>
         </nav>
         <!-- Navigation -->
+		 
+        <div id="fountainR" style="display: block;">
+			<div id="fountainR_1" class="fountainR"></div>
+			<div id="fountainR_2" class="fountainR"></div>
+			<div id="fountainR_3" class="fountainR"></div>
+			<div id="fountainR_4" class="fountainR"></div>
+			<div id="fountainR_5" class="fountainR"></div>
+			<div id="fountainR_6" class="fountainR"></div>
+			<div id="fountainR_7" class="fountainR"></div>
+			<div id="fountainR_8" class="fountainR"></div>
+		</div>
 		
 		<div id="page-wrapper" class="tablePage">
             <div class="row">
@@ -30,6 +40,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+           
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">

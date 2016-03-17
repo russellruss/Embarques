@@ -196,28 +196,6 @@ public class UserDAODBImpl implements UserDAO {
 		}
 	}
 
-	// public void altaUsuarioFromList(List<Usuario> list) throws Exception {
-	// Session session = null;
-	// Transaction transaction = null;
-	//
-	// session = HibernateUtil.getSessionFactory().openSession();
-	// try {
-	//
-	// for (Usuario element : list) {
-	// transaction = session.getTransaction();
-	// transaction.begin();
-	// session.save(element);
-	// transaction.commit();
-	// }
-	// } catch (Exception e) {
-	// if (transaction != null)
-	// transaction.rollback();
-	// throw e;
-	// } finally {
-	// if (session != null)
-	// session.close();
-	// }
-	// }
 	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
 		for (Usuario usuario : list) {
 			altaUsuario(usuario);
