@@ -40,7 +40,8 @@ public class UserDAODBImpl implements UserDAO {
 		}
 		return user;
 	}
-
+	
+	@Override
 	public Usuario getUser(String username) throws Exception {
 		Session session = null;
 		Usuario user = null;
@@ -198,7 +199,9 @@ public class UserDAODBImpl implements UserDAO {
 
 	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
 		for (Usuario usuario : list) {
-			altaUsuario(usuario);
+			if (usuario != null){
+				altaUsuario(usuario);
+			}
 		}
 
 	}
