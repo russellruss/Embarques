@@ -66,7 +66,22 @@ function tableIni(){
 	$('#dataTables-example').DataTable({
 	    responsive: true,
 	    paging: true,
-	    "order": [[ 1, "asc" ]]
+	    "order": [[ 1, "asc" ]],
+	    "oLanguage": {
+	    	 "oPaginate": {
+	    	      
+	          "sNext": "Pr&oacute;ximo",
+	          "sFirst": "Primero",
+	          "sLast": "&Uacute;ltimo",  
+	          "sPrevious": "Previo",
+	    	 },
+	    	 "sEmptyTable": "No existen datos en la tabla",
+	          "sLoadingRecords": "Espere, cargando registros...",
+	          "sProcessing": "DataTables esta ocupado...",
+	          "sZeroRecords": "No hay registros que mostrar",
+			  "sInfo": "Se consigui&oacute; un total de  _TOTAL_ entradas que mostrar (_START_ a _END_)",
+			  "sSearch": "Filtrar registros"
+	    }
 	});
 	$("#fountainT").css('display', 'none');
 }

@@ -27,7 +27,8 @@ function drawTraspasos(data){
 			tdStatus='<td style="color:green">'+data[i].Status+'</td>'
 			break;
 		case "Activo":
-			tdStatus='<td style="color:#0099FF">'+data[i].Status+'</td>'//azul claro
+			tdStatus='<td style="color:#0099FF">'+data[i].Status+'</td>'// azul
+																		// claro
 			break;
 		case "Cancelado":
 			tdStatus='<td style="color:red">'+data[i].Status+'</td>'
@@ -44,7 +45,8 @@ function drawTraspasos(data){
 		tbodyTras += '<tr class="'+classtype+' gradeA" onclick="details('+data[i].folio+',\''+data[i].ser+'\')" style="cursor:pointer">'+
 		'<td>'+data[i].almaceno+'-'+data[i].almacend+'</td>'+
 			'<td>'+data[i].Requisicion+'</td>'+
-			'<td>'+data[i].FechaT+'</td>'+//aquí va la fecha de de la requisicion no traspaso
+			'<td>'+data[i].FechaT+'</td>'+// aquí va la fecha de de la
+											// requisicion no traspaso
 			'<td>'+data[i].Traspaso+'</td>'+
   			'<td>'+data[i].FechaT+'</td>'+
   			'<td>'+data[i].Embarque+'</td>'+
@@ -64,7 +66,22 @@ function tableIni(){
 	$('#dataTables-example').DataTable({
 	    responsive: true,
 	    paging: true,
-	    "order": [[ 1, "asc" ]]
+	    "order": [[ 1, "asc" ]],
+	    "oLanguage": {
+	    	 "oPaginate": {
+	    	      
+	          "sNext": "Pr&oacute;ximo",
+	          "sFirst": "Primero",
+	          "sLast": "&Uacute;ltimo",  
+	          "sPrevious": "Previo",
+	    	 },
+	    	 "sEmptyTable": "No existen datos en la tabla",
+	          "sLoadingRecords": "Espere, cargando registros...",
+	          "sProcessing": "DataTables esta ocupado...",
+	          "sZeroRecords": "No hay registros que mostrar",
+			  "sInfo": "Se consigui&oacute; un total de  _TOTAL_ entradas que mostrar (_START_ a _END_)",
+			  "sSearch": "Filtrar registros"
+	    }
 	});
 	$("#fountainR").css('display', 'none');
 }
