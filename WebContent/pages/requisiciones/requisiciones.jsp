@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-lg-12">
                 	
-                    <h1 class="page-header" id="idorden2"><i class="fa fa-arrow-circle-left" style="color: #337ab7;margin-right: 2%;cursor:pointer" onclick="backPedidos()"></i>Orden 000985 </h1>
+                    <h1 class="page-header" id="idorden2"><i class="fa fa-arrow-circle-left" style="color: #337ab7;margin-right: 2%;cursor:pointer" onclick="backPedidos()"></i>Orden </h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -123,33 +123,33 @@
 										<tbody>
 											<tr>
 												<th>Clave de Trasporte</th>
-												<td id="trasporte">205 FEDEX ECONOMICO</td>
+												<td id="trasporte"></td>
 											</tr>
 											<tr>
 												<th>No. Guía (Porte)</th>
-												<td id="guia">7812-4118-2549</td>
+												<td id="guia"></td>
 											</tr>
 											<tr>
 												<th>Fecha de Entrega al Trasportista:</th>
 												<td>
-													<code id="fechaT">29/Agosto/2015 Hora: 12:13:05</code>
+													<code id="fechaT"></code>
 												</td>
 											</tr>
 											<tr>
 												<th>No. de Cajas</th>
-												<td id="cajas" colspan="3">12</td>
+												<td id="cajas" colspan="3"></td>
 											</tr>
 											<tr>
 												<th>No. de Paquetes</th>
-												<td id="paquetes">0</td>
+												<td id="paquetes"></td>
 											</tr>
 											<tr>
 												<th>Placas de la Unidad.</th>
-												<td id="placas" colspan="4">8691CJ</td>
+												<td id="placas" colspan="4"></td>
 											</tr>
 											<tr>
 												<th>Nombre del Trasportista (CIA)</th>
-												<td id="nombreT" colspan="4">Jose Hernández</td>
+												<td id="nombreT" colspan="4"></td>
 											</tr>
 											
 										</tbody>
@@ -168,17 +168,17 @@
 										<div class="panel-body">
 											<div class="row show-grid">
 												<div class="col-md-4"><strong>Nombre/R. Social:</strong></div>
-												<div class="col-md-8" id="razonS">Abigail Gutierrez</div>
+												<div class="col-md-8" id="razonS"></div>
 											</div>
 											<div class="row show-grid">
 												<div class="col-md-3" ><strong>Calle y No.</strong></div>
-												<div class="col-md-3" id="calle">Margaritas #3</div>
+												<div class="col-md-3" id="calle"></div>
 												<div class="col-md-3"><strong>Col./Munic.</strong></div>
-												<div class="col-md-3" id="colonia">Las Margaritas</div>
+												<div class="col-md-3" id="colonia"></div>
 												<div class="col-md-3"><strong>Ciudad/Estado:</strong></div>
-												<div class="col-md-3" id="estado">Córdoba</div>
+												<div class="col-md-3" id="estado"></div>
 												<div class="col-md-3"><strong>País y C.P.</strong></div>
-												<div class="col-md-3" id="paisCP">México  94553</div>
+												<div class="col-md-3" id="paisCP"></div>
 											</div>
 										</div>
 										
@@ -186,16 +186,16 @@
 									</div>
                                 </div>
                                  <div class="tab-pane fade" id="messages">
-                                    <h4>Embarque: 0023556</h4>
+                                    <h4>Embarque: </h4>
                                     <div class="row show-grid">
 										<div class="col-md-6"><strong>Documentos Asociados a este embarque:</strong></div>
-										<div class="col-md-2">JA 0019697</div>
-										<div class="col-md-2">JA 0019456</div>
-										<div class="col-md-2">JA 1255697</div>
-										<div class="col-md-2">JA 1255697</div>
-										<div class="col-md-2">JA 0019456</div>
-										<div class="col-md-2">JA 1255697</div>
-										<div class="col-md-2">JA 1255697</div>
+										<div class="col-md-2"></div>
+										<div class="col-md-2"></div>
+										<div class="col-md-2"></div>
+										<div class="col-md-2"></div>
+										<div class="col-md-2"></div>
+										<div class="col-md-2"></div>
+										<div class="col-md-2"></div>
 									</div>
                                 </div>
 								<!--

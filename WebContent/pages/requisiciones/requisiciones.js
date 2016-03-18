@@ -1,3 +1,4 @@
+
 function getTraspasos(){
 	$.ajax({
 		type: "POST",
@@ -69,12 +70,12 @@ function tableIni(){
 	    "order": [[ 1, "asc" ]],
 	    "oLanguage": {
 	    	 "oPaginate": {
-	    	      
 	          "sNext": "Pr&oacute;ximo",
 	          "sFirst": "Primero",
 	          "sLast": "&Uacute;ltimo",  
 	          "sPrevious": "Previo",
 	    	 },
+	    	 "sLengthMenu": "Mostrar _MENU_ registros por p&aacute;gina",
 	    	 "sEmptyTable": "No existen datos en la tabla",
 	          "sLoadingRecords": "Espere, cargando registros...",
 	          "sProcessing": "DataTables esta ocupado...",
