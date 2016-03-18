@@ -10,7 +10,7 @@
 <!-- <script type="text/javascript" src="requisicionesNew.js"></script> -->
 <%@include file="../../Headers/headerIncludesRoot.jsp" %>
 <script type="text/javascript" src="traspasos.js"></script>
-
+ <link href="traspasos.css" rel="stylesheet">
 
 </head>
 
@@ -22,6 +22,17 @@
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
           <%@include file="../sideMenu.jsp" %>
         </nav>
+
+        <div id="fountainT" style="display: block;">
+			<div id="fountainT_1" class="fountainT"></div>
+			<div id="fountainT_2" class="fountainT"></div>
+			<div id="fountainT_3" class="fountainT"></div>
+			<div id="fountainT_4" class="fountainT"></div>
+			<div id="fountainT_5" class="fountainT"></div>
+			<div id="fountainT_6" class="fountainT"></div>
+			<div id="fountainT_7" class="fountainT"></div>
+			<div id="fountainT_8" class="fountainT"></div>
+		</div>
 
         <!-- Navigation -->
 		
