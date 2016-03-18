@@ -102,6 +102,7 @@ public class IOAlmacen {
 				if (usuario != null && usuario.getTipousuario().getTipo().equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo())) {
 					log.info("Se ignoro al usuario " + usuario + " porque ya existe en bd como administrador" );
 				} else {
+					asesor.setName(asesorSplit[0]);
 					asesor.setUsername(asesorSplit[1]);
 					asesor.setPasswd(asesorSplit[2]);
 					asesor.setTipousuario(tipousuarioDAO.getTipousuarioAsesor());

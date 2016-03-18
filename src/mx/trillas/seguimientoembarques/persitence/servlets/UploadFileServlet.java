@@ -136,7 +136,7 @@ public class UploadFileServlet extends HttpServlet {
 			for (Asesor asesor : asesoresFromFile) {
 				Usuario usuario = new Usuario();
 
-				if (asesor.getUsername().equals("")|| asesor.getUsername() == null) {
+				if (asesor.getUsername().equals("") || asesor.getUsername() == null) {
 					log.info("Salt� al asesor " + asesor
 							+ " por valor username vacio:  username["
 							+ asesor.getUsername() + "]   password["
@@ -156,7 +156,7 @@ public class UploadFileServlet extends HttpServlet {
 					asesoresList.add(asesor);
 				}
 			}
-
+			int io=0;
 			// Guarda usuarios asesores a bd
 			try {
 				usersDAO.altaUsuarioFromList(listaDeUsuarios);

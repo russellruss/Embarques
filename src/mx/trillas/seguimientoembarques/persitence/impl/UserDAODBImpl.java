@@ -83,6 +83,14 @@ public class UserDAODBImpl implements UserDAO {
 				session.close();
 		}
 	}
+	
+	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
+		for (Usuario usuario : list) {
+			if (usuario != null){
+				altaUsuario(usuario);
+			}
+		}
+	}
 
 	@Override
 	public boolean usernameExists(String username) throws Exception {
@@ -140,7 +148,9 @@ public class UserDAODBImpl implements UserDAO {
 			for (Object usuarioObj : listObj) {
 				if (usuarioObj != null && usuarioObj instanceof Usuario) {
 					Usuario usuario = (Usuario) usuarioObj;
+					HibernateUtil.initializeObject(usuario.getTipousuario());
 					listaUsuarios.add(usuario);
+					
 				}
 			}
 		} catch (Exception ex) {
@@ -195,14 +205,5 @@ public class UserDAODBImpl implements UserDAO {
 			if (session != null)
 				session.close();
 		}
-	}
-
-	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
-		for (Usuario usuario : list) {
-			if (usuario != null){
-				altaUsuario(usuario);
-			}
-		}
-
 	}
 }
