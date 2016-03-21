@@ -19,3 +19,15 @@ function login() {
 		}
 	});
 }
+
+$(document).ready(function() {
+
+	$("#loginform").keypress(function(e) {
+		if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+			login();
+			return false;
+		} else {
+			return true;
+		}
+	});
+})

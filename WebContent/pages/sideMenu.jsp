@@ -1,19 +1,27 @@
- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@page import="mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl"%>
+<%@page import="mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="mx.trillas.seguimientoembarques.persitence.pojos.Usuario" %>
+<%@ page import="mx.trillas.seguimientoembarques.persitence.pojos.Usuario" %>
+<%@ page import="mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario" %>
     <%
+    
+    TipousuarioDAODBImpl tipoUsuarioDAO = new TipousuarioDAODBImpl();
     Object userObj = request.getSession().getAttribute("user");
     String tipo = "";
+    
+    Tipousuario tipoUsuarioSession = null;
+    
     if(userObj!=null && userObj instanceof Usuario){
     	Usuario usuario = (Usuario)userObj;
-    	tipo = usuario.getTipousuario().getTipo();
+    	tipoUsuarioSession = usuario.getTipousuario();
     }
     
     %>
   
   			<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">Toggle navigation</span>	
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -63,7 +71,10 @@
 						<li>
                             <a href="<%=request.getContextPath()%>/pages/requisiciones/requisiciones.jsp"><i class="fa fa-shopping-cart fa-fw"></i> Requisiciones </a>
                         </li>
-                        <% if(tipo != null && tipo.equals("administrador")) { %>
+                        <% 
+                        Tipousuario tipoUsuarioAdmin = new Tipousuario();
+						
+                        if(tipoUsuarioSession != null && tipoUsuarioSession.getTipo().equals(tipoUsuarioDAO.getTipousuarioAdministrador().getTipo())) { %>
                         <li>
                             <a href="<%=request.getContextPath()%>/pages/panelAdmin/panelAdmin.jsp"><i class="fa fa-gears fa-fw"></i> Administrador </a>
                         </li>

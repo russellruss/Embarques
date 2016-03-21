@@ -66,7 +66,7 @@ public class AppFilter implements Filter {
 				url = url.replace(request.getServletPath(), "");
 			if (request.getPathInfo() != null)
 				url = url.replace(request.getPathInfo(), "");
-			url += "/pages/login/login.html";
+			url += "/pages/login/login.jsp";
 			response.sendRedirect(url);
 		}
 
@@ -97,5 +97,4 @@ public class AppFilter implements Filter {
 		}
 		return false;
 	}
-
 }

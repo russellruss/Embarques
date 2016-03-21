@@ -12,14 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
 import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
+
+import mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario;
+import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 
 import org.apache.log4j.Logger;
 
 public class IOAlmacen {
 	private static Logger log = Logger.getLogger(IOAlmacen.class.getName());
 	private static TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
-
+	private static UserDAO userDAO = new UserDAODBImpl();
+	
 	public static boolean verifyFile(File file, String path)
 			throws UnsupportedEncodingException, FileNotFoundException,
 			IOException {
@@ -88,19 +94,28 @@ public class IOAlmacen {
 			while ((line = br.readLine()) != null) {
 				Asesor asesor = new Asesor();
 				String[] asesorSplit = line.split("\\,");
-				asesor.setName(asesorSplit[0]);
-				asesor.setUsername(asesorSplit[1]);
-				asesor.setPasswd(asesorSplit[2]);
-				asesor.setTipousuario(tipousuarioDAO.getTipousuarioAsesor());
-
-				caracter = new ArrayList<>();
-
-				for (int i = 3; i < asesorSplit.length; i++) {
-					caracter.add(asesorSplit[i]);
+				String lineName = asesorSplit[1];
+				
+				//Boolean  usuarioExist = userDAO.usernameExists(lineName);
+				Usuario usuario = userDAO.getUser(lineName);
+				
+				if (usuario != null && usuario.getTipousuario().getTipo().equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo())) {
+					log.info("Se ignoro al usuario " + usuario + " porque ya existe en bd como administrador" );
+				} else {
+					asesor.setName(asesorSplit[0]);
+					asesor.setUsername(asesorSplit[1]);
+					asesor.setPasswd(asesorSplit[2]);
+					asesor.setTipousuario(tipousuarioDAO.getTipousuarioAsesor());
+	
+					caracter = new ArrayList<>();
+	
+					for (int i = 3; i < asesorSplit.length; i++) {
+						caracter.add(asesorSplit[i]);
+					}
+					asesor.setCaracteres(caracter);
+					list.add(asesor);
+					}
 				}
-				asesor.setCaracteres(caracter);
-				list.add(asesor);
-			}
 		} catch (UnsupportedEncodingException e) {
 			throw e;
 		} catch (FileNotFoundException e) {

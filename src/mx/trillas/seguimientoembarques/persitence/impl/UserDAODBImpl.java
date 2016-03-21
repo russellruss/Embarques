@@ -40,7 +40,8 @@ public class UserDAODBImpl implements UserDAO {
 		}
 		return user;
 	}
-
+	
+	@Override
 	public Usuario getUser(String username) throws Exception {
 		Session session = null;
 		Usuario user = null;
@@ -80,6 +81,14 @@ public class UserDAODBImpl implements UserDAO {
 		} finally {
 			if (session != null)
 				session.close();
+		}
+	}
+	
+	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
+		for (Usuario usuario : list) {
+			if (usuario != null){
+				altaUsuario(usuario);
+			}
 		}
 	}
 
@@ -139,7 +148,9 @@ public class UserDAODBImpl implements UserDAO {
 			for (Object usuarioObj : listObj) {
 				if (usuarioObj != null && usuarioObj instanceof Usuario) {
 					Usuario usuario = (Usuario) usuarioObj;
+					HibernateUtil.initializeObject(usuario.getTipousuario());
 					listaUsuarios.add(usuario);
+					
 				}
 			}
 		} catch (Exception ex) {
@@ -194,34 +205,5 @@ public class UserDAODBImpl implements UserDAO {
 			if (session != null)
 				session.close();
 		}
-	}
-
-	// public void altaUsuarioFromList(List<Usuario> list) throws Exception {
-	// Session session = null;
-	// Transaction transaction = null;
-	//
-	// session = HibernateUtil.getSessionFactory().openSession();
-	// try {
-	//
-	// for (Usuario element : list) {
-	// transaction = session.getTransaction();
-	// transaction.begin();
-	// session.save(element);
-	// transaction.commit();
-	// }
-	// } catch (Exception e) {
-	// if (transaction != null)
-	// transaction.rollback();
-	// throw e;
-	// } finally {
-	// if (session != null)
-	// session.close();
-	// }
-	// }
-	public void altaUsuarioFromList(List<Usuario> list) throws Exception {
-		for (Usuario usuario : list) {
-			altaUsuario(usuario);
-		}
-
 	}
 }

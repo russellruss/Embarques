@@ -6,6 +6,8 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 
 public abstract interface UserDAO {
 	public Usuario getUser(String username, String password) throws Exception;
+	
+	public Usuario getUser(String username) throws Exception;
 
 	public void altaUsuario(Usuario usuario) throws Exception;
 

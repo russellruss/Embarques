@@ -136,14 +136,13 @@ public class UploadFileServlet extends HttpServlet {
 			for (Asesor asesor : asesoresFromFile) {
 				Usuario usuario = new Usuario();
 
-				if (asesor.getUsername().equals("")
-						|| asesor.getUsername() == null) {
-					log.info("Salté al asesor " + asesor
+				if (asesor.getUsername().equals("") || asesor.getUsername() == null) {
+					log.info("Saltï¿½ al asesor " + asesor
 							+ " por valor username vacio:  username["
 							+ asesor.getUsername() + "]   password["
 							+ asesor.getPasswd() + "]");
 				} else if (usernameExist.contains(asesor.getUsername())) {
-					log.info("Salté a asesor porque ya existe:  username["
+					log.info("Saltï¿½ a asesor porque ya existe:  username["
 							+ asesor.getUsername() + "]   password["
 							+ asesor.getPasswd() + "]" + "   permisos"
 							+ asesor.getCaracteres());
@@ -157,7 +156,7 @@ public class UploadFileServlet extends HttpServlet {
 					asesoresList.add(asesor);
 				}
 			}
-
+			int io=0;
 			// Guarda usuarios asesores a bd
 			try {
 				usersDAO.altaUsuarioFromList(listaDeUsuarios);
@@ -197,7 +196,7 @@ public class UploadFileServlet extends HttpServlet {
 		}
 
 		if (msg.equals("")) {
-			msg ="Ocurrió un problema. Consulte archivos log del sistema.";
+			msg ="Ocurriï¿½ un problema. Consulte archivos log del sistema.";
 		}
 		
 		response.setContentType("text/plain");
