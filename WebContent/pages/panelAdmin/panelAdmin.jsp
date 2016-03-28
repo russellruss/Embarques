@@ -146,6 +146,7 @@
 												Selecciona el archivo:<input  type="file" id="fileName" name="fileName"> <br> 
 												
 												<button id="btnUploadFile" class="btn btn-primary" type="submit" value="Aceptar" >Aceptar</button>
+												<img id="loadingGif" src="/Embarques/img/loading.gif">
                                     		</form>
                                     	</div><br><br>
                                     	<div class="col-lg-7">
