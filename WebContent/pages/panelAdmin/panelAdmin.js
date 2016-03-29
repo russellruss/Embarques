@@ -5,13 +5,13 @@ function actualizar() {
 		type : "POST",
 		url : "../../AdministradorServlet",
 		success : function(data) {
-			$("#fountainG").css('display', 'none');
+			$("#fountainPA").css('display', 'none');
 			$("#btnActualizar").prop("disabled", false);
 			ultimaActualizacion();
 			alert("Los datos han sido actualizados correctamente");
 		},
 		error : function(data) {
-			$("#fountainG").css('display', 'none');
+			$("#fountainPA").css('display', 'none');
 			$("#btnActualizar").prop("disabled", false);
 			alert('Se encontro un Error al cargar los Datos');
 		}
