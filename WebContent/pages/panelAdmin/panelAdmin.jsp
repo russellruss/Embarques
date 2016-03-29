@@ -22,6 +22,17 @@
         </nav>
 		<!-- Navigation -->
 		
+		<div id="fountainPA">
+			<div id="fountainPA_1" class="fountainPA"></div>
+			<div id="fountainPA_2" class="fountainPA"></div>
+			<div id="fountainPA_3" class="fountainPA"></div>
+			<div id="fountainPA_4" class="fountainPA"></div>
+			<div id="fountainPA_5" class="fountainPA"></div>
+			<div id="fountainPA_6" class="fountainPA"></div>
+			<div id="fountainPA_7" class="fountainPA"></div>
+			<div id="fountainPA_8" class="fountainPA"></div>
+		</div>
+		
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -146,7 +157,6 @@
 												Selecciona el archivo:<input  type="file" id="fileName" name="fileName"> <br> 
 												
 												<button id="btnUploadFile" class="btn btn-primary" type="button" value="Aceptar" >Aceptar</button>
-												<img id="loadingGif" src="<%=request.getContextPath()%>/img/loading.gif">
                                     		</form>
                                     	</div><br><br>
                                     	<div class="col-lg-7">
