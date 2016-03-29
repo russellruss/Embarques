@@ -18,26 +18,6 @@ function actualizar() {
 	});
 }
 
-function altaUsuario() {
-	$.ajax({
-		type : "POST",
-		url : "../../UserAdmin",
-		data : $("#frmalta").serialize(),
-		success : function(data) {
-			if (data.status == 'error') {
-				alert(data.message);
-			} else {
-				getListaUsuarios();
-				getUsuariosasesores();
-				alert("El usuario fue dado de alta correctamente");
-			}
-		},
-		error : function(data) {
-			alert('Se encontro un Error al cargar los Datos');
-		}
-	});
-}
-
 function fillUsuariosasesores() {
 	$.ajax({
 		type : "POST",
@@ -280,7 +260,8 @@ $(document).ready(function() {
 	$('#btnUploadFile').click(function(event) {
 		event.preventDefault();
 		var formData = new FormData($("#formUploadFile")[0]);
-		$("#loadingGif").css('display', 'inline');
+		$("#fountainPA").css('display', 'block');
+		$('#btnUploadFile').attr('disabled', true);
 		
 		$.ajax({
 			type : "POST",
@@ -292,11 +273,11 @@ $(document).ready(function() {
 			processData : false,
 			success : function(response) {
 				UpdaterUsersFile();
-				$("#loadingGif").css('display', 'none');
+				$("#fountainPA").css('display', 'none');
 				alert(response);
 			},
 			error: function() {
-				$("#loadingGif").css('display', 'none');
+				$("#fountainPA").css('display', 'none');
 			}
 		}); /* ajax() */
 		window.location.reload();

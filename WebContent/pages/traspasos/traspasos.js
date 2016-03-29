@@ -68,19 +68,27 @@ function tableIni(){
 	    paging: true,
 	    "order": [[ 1, "asc" ]],
 	    "oLanguage": {
+	    	 "oAria": {
+	    		 	"sSortAscending": " - click/return para orden ascendiente",
+	    	        "sSortDescending": " - click/return para orden descendiente"
+	    	  },
 	    	 "oPaginate": {
 	          "sNext": "Pr&oacute;ximo",
 	          "sFirst": "Primero",
 	          "sLast": "&Uacute;ltimo",  
 	          "sPrevious": "Previo",
-	    	 },
-	    	 "sLengthMenu": "Mostrar _MENU_ registros por p&aacute;gina",
-	    	 "sEmptyTable": "No existen datos en la tabla",
+	          "sFirst": "Primera p&aacute;gina"
+	    	  },
+	    	  "sLengthMenu": "Mostrar _MENU_ registros por p&aacute;gina",
+	    	  "sEmptyTable": "No existen datos en la tabla",
 	          "sLoadingRecords": "Espere, cargando registros...",
 	          "sProcessing": "DataTables esta ocupado...",
-	          "sZeroRecords": "No hay registros que mostrar",
 			  "sInfo": "Se consigui&oacute; un total de  _TOTAL_ entradas que mostrar (_START_ a _END_)",
-			  "sSearch": "Filtrar registros"
+			  "sInfoFiltered": " - filtrando de _MAX_ registros",
+			  "sInfoPostFix": "Todos los registros mostrados son entregados con informaci&oacute;n real.",
+			  "sInfoThousands": ",",
+			  "sSearch": "Filtrar registros",
+			  "sZeroRecords": "No hay registros que mostrar"
 	    }
 	});
 	$("#fountainT").css('display', 'none');
