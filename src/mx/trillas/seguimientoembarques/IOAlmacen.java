@@ -16,7 +16,6 @@ import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
 import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 
-import mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 
 import org.apache.log4j.Logger;
@@ -25,10 +24,9 @@ public class IOAlmacen {
 	private static Logger log = Logger.getLogger(IOAlmacen.class.getName());
 	private static TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
 	private static UserDAO userDAO = new UserDAODBImpl();
-	
+
 	public static boolean verifyFile(File file, String path)
-			throws UnsupportedEncodingException, FileNotFoundException,
-			IOException {
+			throws UnsupportedEncodingException, FileNotFoundException, IOException {
 
 		if (!isTextFile(file)) {
 			log.error("El archivo ingresado no es de tipo texto (.txt). Intentelo nuevamente.");
@@ -41,8 +39,7 @@ public class IOAlmacen {
 		}
 	}
 
-	public static boolean isStruct(File file, String path) throws IOException  
-			 {
+	public static boolean isEmptyLine(File file, String path) throws IOException {
 
 		String line = null;
 		FileInputStream fis = null;
@@ -75,8 +72,44 @@ public class IOAlmacen {
 		return true;
 	}
 
-	public static List<Asesor> getUsersFile(File file, String path)
-			throws Exception, IOException {
+	public static String getEmptyLine(File file, String path) throws IOException {
+
+		String line = null;
+		FileInputStream fis = null;
+		BufferedReader br = null;
+		InputStreamReader isr = null;
+		int counter = 1;
+		String msg = "";
+
+		try {
+			fis = new FileInputStream(file);
+			isr = new InputStreamReader(fis, "CP850");
+			br = new BufferedReader(isr);
+			while ((line = br.readLine()) != null) {
+
+				String[] asesorSplit = line.split("\\,");
+				if (asesorSplit.length <= 1) {
+					msg =  counter + "";
+					break;
+				}
+				counter++;
+			}
+		} catch (UnsupportedEncodingException e) {
+			throw e;
+		} catch (FileNotFoundException e) {
+			throw e;
+		} finally {
+			if (br != null)
+				br.close();
+			if (isr != null)
+				isr.close();
+			if (fis != null)
+				fis.close();
+		}
+		return msg;
+	}
+
+	public static List<Asesor> getUsersFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -95,27 +128,28 @@ public class IOAlmacen {
 				Asesor asesor = new Asesor();
 				String[] asesorSplit = line.split("\\,");
 				String lineName = asesorSplit[1];
-				
-				//Boolean  usuarioExist = userDAO.usernameExists(lineName);
+
+				// Boolean usuarioExist = userDAO.usernameExists(lineName);
 				Usuario usuario = userDAO.getUser(lineName);
-				
-				if (usuario != null && usuario.getTipousuario().getTipo().equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo())) {
-					log.info("Se ignoro al usuario " + usuario + " porque ya existe en bd como administrador" );
+
+				if (usuario != null && usuario.getTipousuario().getTipo()
+						.equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo())) {
+					log.info("Se ignoro al usuario " + usuario + " porque ya existe en bd como administrador");
 				} else {
 					asesor.setName(asesorSplit[0]);
 					asesor.setUsername(asesorSplit[1]);
 					asesor.setPasswd(asesorSplit[2]);
 					asesor.setTipousuario(tipousuarioDAO.getTipousuarioAsesor());
-	
+
 					caracter = new ArrayList<>();
-	
+
 					for (int i = 3; i < asesorSplit.length; i++) {
 						caracter.add(asesorSplit[i]);
 					}
 					asesor.setCaracteres(caracter);
 					list.add(asesor);
-					}
 				}
+			}
 		} catch (UnsupportedEncodingException e) {
 			throw e;
 		} catch (FileNotFoundException e) {
@@ -141,8 +175,7 @@ public class IOAlmacen {
 		return false;
 	}
 
-	public static boolean isEmptyFile(String path)
-			throws FileNotFoundException, IOException {
+	public static boolean isEmptyFile(String path) throws FileNotFoundException, IOException {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(path));
@@ -158,7 +191,7 @@ public class IOAlmacen {
 		return false;
 	}
 
-	public static String getEncoding(String path) throws IOException  {
+	public static String getEncoding(String path) throws IOException {
 		FileInputStream fis = null;
 		InputStreamReader isr = null;
 		String s;
@@ -169,7 +202,7 @@ public class IOAlmacen {
 			s = isr.getEncoding();
 		} catch (FileNotFoundException e) {
 			throw e;
-		}finally {
+		} finally {
 			if (fis != null)
 				fis.close();
 			if (isr != null)

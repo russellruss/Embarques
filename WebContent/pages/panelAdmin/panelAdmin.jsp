@@ -97,7 +97,7 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#home" data-toggle="tab">Actualización de traspasos</a></li>
-                                <li><a href="#users" data-toggle="tab">Alta de Usuarios</a></li>
+<!--                                 <li><a href="#users" data-toggle="tab">Alta de Usuarios</a></li> -->
                                 <li><a href="#usralmacenes" data-toggle="tab">Usuarios - Almacenes</a></li>
                                 <li><a href="#uploadFile" data-toggle="tab">Subir Archivo de Usuarios</a></li>
                             </ul>
@@ -113,25 +113,25 @@
 		                                </div>
 		                            </div>
                                 </div>
-                                <div class="tab-pane fade" id="users">
-                                    <h4>Alta de usuarios</h4>
-                                    	<div class="row">
-                                    		<div class="col-lg-6">
-                                    			<form role="form" id="frmalta">
-                                    				<div class="form-group">
-                                    					<label>Username</label>
-                                    					<input class="form-control" id="username" name="username">
-                                    					<label>Password</label>
-                                    					<input class="form-control" id="password" name="password" type="password" value="">
-                                    					<label>Confirmar password</label>
-                                    					<input class="form-control" id="password2" name="password2" type="password" value="">
-                                    				</div>
-                                    				<button type="button" name="submit" id="submit" onclick="altaUsuario()" value="alta" class="btn btn-default">Submit Button</button>
-                                    			</form>
-                                    		</div>
-                                    	</div>
-                                    	<br /><p class="advice">Nota: Cualquier usuario ingresado aqui, debe ser ingresado en el <b>archivo de contenido de usuarios</b>, de lo contrario el usuario se borrará en la próxima actualización de la base de datos.</p>
-                                    </div>
+<!--                                 <div class="tab-pane fade" id="users"> -->
+<!--                                     <h4>Alta de usuarios</h4> -->
+<!--                                     	<div class="row"> -->
+<!--                                     		<div class="col-lg-6"> -->
+<!--                                     			<form role="form" id="frmalta"> -->
+<!--                                     				<div class="form-group"> -->
+<!--                                     					<label>Username</label> -->
+<!--                                     					<input class="form-control" id="username" name="username"> -->
+<!--                                     					<label>Password</label> -->
+<!--                                     					<input class="form-control" id="password" name="password" type="password" value=""> -->
+<!--                                     					<label>Confirmar password</label> -->
+<!--                                     					<input class="form-control" id="password2" name="password2" type="password" value=""> -->
+<!--                                     				</div> -->
+<!--                                     				<button type="button" name="submit" id="submit" onclick="altaUsuario()" value="alta" class="btn btn-default">Submit Button</button> -->
+<!--                                     			</form> -->
+<!--                                     		</div> -->
+<!--                                     	</div> -->
+<!--                                     	<br /><p class="advice">Nota: Cualquier usuario ingresado aqui, debe ser ingresado en el <b>archivo de contenido de usuarios</b>, de lo contrario el usuario se borrará en la próxima actualización de la base de datos.</p> -->
+<!--                                     </div> -->
                                 <div class="tab-pane fade" id="usralmacenes">
                                     <h4>Asignar almacenes a usuarios</h4>
                                     <div class="row">

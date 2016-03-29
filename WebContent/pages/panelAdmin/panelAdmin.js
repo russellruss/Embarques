@@ -18,26 +18,6 @@ function actualizar() {
 	});
 }
 
-function altaUsuario() {
-	$.ajax({
-		type : "POST",
-		url : "../../UserAdmin",
-		data : $("#frmalta").serialize(),
-		success : function(data) {
-			if (data.status == 'error') {
-				alert(data.message);
-			} else {
-				getListaUsuarios();
-				getUsuariosasesores();
-				alert("El usuario fue dado de alta correctamente");
-			}
-		},
-		error : function(data) {
-			alert('Se encontro un Error al cargar los Datos');
-		}
-	});
-}
-
 function fillUsuariosasesores() {
 	$.ajax({
 		type : "POST",

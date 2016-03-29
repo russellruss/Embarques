@@ -44,19 +44,18 @@ public class UploadFileServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		DiskFileItemFactory fileFactory = new DiskFileItemFactory();
-		File filesDir = (File) getServletContext().getAttribute(
-				"FILES_DIR_FILE");
+		File filesDir = (File) getServletContext().getAttribute("FILES_DIR_FILE");
 		fileFactory.setRepository(filesDir);
 		this.uploader = new ServletFileUpload(fileFactory);
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		//
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String msg = "";
 		boolean flag = false;
@@ -78,8 +77,7 @@ public class UploadFileServlet extends HttpServlet {
 		Iterator<FileItem> fileItemsIterator = fileItemsList.iterator();
 		while (fileItemsIterator.hasNext()) {
 			FileItem fileItem = fileItemsIterator.next();
-			String path = request.getServletContext().getAttribute("FILES_DIR")
-					+ File.separator + fileItem.getName();
+			String path = request.getServletContext().getAttribute("FILES_DIR") + File.separator + fileItem.getName();
 			File file = new File(path);
 
 			log.info("Ruta en el servidor: " + file.getAbsolutePath());
@@ -91,26 +89,28 @@ public class UploadFileServlet extends HttpServlet {
 			}
 			log.info(fileItem.getName() + " ...subido exitosamente");
 
-			try{
-			if (!IOAlmacen.verifyFile(file, path)) {
-				msg = "El archivo ingresado no es valido";
-				log.error("El archivo ingresado no es valido");
-				flag = false;
-			} else if (!IOAlmacen.isStruct(file, path)) {
-				msg = "Una de las lineas del archivo no contiene la estructura sugerida";
-				log.error("Una de las lineas del archivo no contiene la estructura sugerida");
-				flag = false;
-			} else {
-				log.info("Character Encoding:  "
-						+ IOAlmacen.getEncoding(path).toUpperCase());
-				asesoresFromFile.addAll(IOAlmacen.getUsersFile(file, path));
-				flag = true;
-			}
+			try {
+				if (!IOAlmacen.verifyFile(file, path)) {
+					msg = "El archivo ingresado no es valido";
+					log.error("El archivo ingresado no es valido");
+					flag = false;
+				} else if (!IOAlmacen.isEmptyLine(file, path)) {
+
+					msg = "La linea " + IOAlmacen.getEmptyLine(file, path)
+							+ " del archivo ingresado esta vacia. Favor de corregir";
+					log.error("La linea " + IOAlmacen.getEmptyLine(file, path)
+							+ " del archivo ingresado esta vacia. Favor de corregir");
+					flag = false;
+				} else {
+					log.info("Character Encoding:  " + IOAlmacen.getEncoding(path).toUpperCase());
+					asesoresFromFile.addAll(IOAlmacen.getUsersFile(file, path));
+					flag = true;
+				}
 			} catch (Exception e) {
 				log.error(e.getMessage());
 				return;
-			} finally{
-				
+			} finally {
+
 			}
 		}
 		if (flag == true) {
@@ -137,15 +137,11 @@ public class UploadFileServlet extends HttpServlet {
 				Usuario usuario = new Usuario();
 
 				if (asesor.getUsername().equals("") || asesor.getUsername() == null) {
-					log.info("Salt� al asesor " + asesor
-							+ " por valor username vacio:  username["
-							+ asesor.getUsername() + "]   password["
-							+ asesor.getPasswd() + "]");
+					log.info("Salto al asesor " + asesor + " por valor username vacio:  username["
+							+ asesor.getUsername() + "]   password[" + asesor.getPasswd() + "]");
 				} else if (usernameExist.contains(asesor.getUsername())) {
-					log.info("Salt� a asesor porque ya existe:  username["
-							+ asesor.getUsername() + "]   password["
-							+ asesor.getPasswd() + "]" + "   permisos"
-							+ asesor.getCaracteres());
+					log.info("Salto a asesor porque ya existe:  username[" + asesor.getUsername() + "]   password["
+							+ asesor.getPasswd() + "]" + "   permisos" + asesor.getCaracteres());
 				} else if (asesor.getUsername() != null) {
 					usuario.setUsername(asesor.getUsername());
 					usuario.setName(asesor.getName());
@@ -156,7 +152,6 @@ public class UploadFileServlet extends HttpServlet {
 					asesoresList.add(asesor);
 				}
 			}
-			int io=0;
 			// Guarda usuarios asesores a bd
 			try {
 				usersDAO.altaUsuarioFromList(listaDeUsuarios);
@@ -165,40 +160,37 @@ public class UploadFileServlet extends HttpServlet {
 				return;
 			}
 
-			try{
-			// Crea las relaciones usuario-almacen
-			for (Asesor asesor : asesoresList) {
-				LinkedHashSet<Almacen> listaDeAlmacenes = useralmacenDAO
-						.getRelacionUserAlmacen(asesor,
-								almacenDAO.getAlmacenes());
-				if (listaDeAlmacenes.isEmpty()) {
-					log.info("El Asesor   username[" + asesor.getUsername()
-							+ "]   no tiene almacenes relacionados ");
-				} else {
-					for (Almacen almacen : listaDeAlmacenes) {
-						Usuario usuarioAsesor = new Usuario(
-								asesor.getUsername(), asesor.getTipousuario());
-						usuarioAsesor.setPassword(asesor.getPasswd());
-						log.info("Asesor  username[" + asesor.getUsername()
-								+ "]    ::   Almacen"
-								+ listaDeAlmacenes.toString());
-						useralmacenDAO.insert(almacen, usuarioAsesor);
+			try {
+				// Crea las relaciones usuario-almacen
+				for (Asesor asesor : asesoresList) {
+					LinkedHashSet<Almacen> listaDeAlmacenes = useralmacenDAO.getRelacionUserAlmacen(asesor,
+							almacenDAO.getAlmacenes());
+					if (listaDeAlmacenes.isEmpty()) {
+						log.info("El Asesor   username[" + asesor.getUsername()
+								+ "]   no tiene almacenes relacionados ");
+					} else {
+						for (Almacen almacen : listaDeAlmacenes) {
+							Usuario usuarioAsesor = new Usuario(asesor.getUsername(), asesor.getTipousuario());
+							usuarioAsesor.setPassword(asesor.getPasswd());
+							log.info("Asesor  username[" + asesor.getUsername() + "]    ::   Almacen"
+									+ listaDeAlmacenes.toString());
+							useralmacenDAO.insert(almacen, usuarioAsesor);
+						}
 					}
 				}
-			}
-			msg = "Los asesores han sido actualizados exitosamente";
+				msg = "Los asesores han sido actualizados exitosamente";
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}finally{
-				
+			} finally {
+
 			}
 		}
 
 		if (msg.equals("")) {
-			msg ="Ocurri� un problema. Consulte archivos log del sistema.";
+			msg = "Ocurri� un problema. Consulte archivos log del sistema.";
 		}
-		
+
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(msg);

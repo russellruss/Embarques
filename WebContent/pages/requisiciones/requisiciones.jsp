@@ -7,7 +7,6 @@
 <head>
 <title>Requisiciones</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <script type="text/javascript" src="requisicionesNew.js"></script> -->
 <%@include file="../../Headers/headerIncludesRoot.jsp" %>
 <script type="text/javascript" src="requisiciones.js"></script>
  <link href="requisiciones.css" rel="stylesheet">
