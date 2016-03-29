@@ -280,7 +280,8 @@ $(document).ready(function() {
 	$('#btnUploadFile').click(function(event) {
 		event.preventDefault();
 		var formData = new FormData($("#formUploadFile")[0]);
-
+		$("#loadingGif").css('display', 'inline');
+		
 		$.ajax({
 			type : "POST",
 			url : '../../UploadFileServlet',
@@ -291,7 +292,11 @@ $(document).ready(function() {
 			processData : false,
 			success : function(response) {
 				UpdaterUsersFile();
+				$("#loadingGif").css('display', 'none');
 				alert(response);
+			},
+			error: function() {
+				$("#loadingGif").css('display', 'none');
 			}
 		}); /* ajax() */
 		window.location.reload();

@@ -1,6 +1,12 @@
 /**
  * 
  */
+
+function forwardHistory() {
+     	history.forward();
+    	return false;
+} 
+  
 function login() {
 	$.ajax({
 		type : "POST",
