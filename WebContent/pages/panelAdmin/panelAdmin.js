@@ -1,5 +1,5 @@
 function actualizar() {
-	$("#fountainG").css('display', 'block');
+	$("#fountainPA").css('display', 'block');
 	$("#btnActualizar").prop("disabled", true);
 	$.ajax({
 		type : "POST",
