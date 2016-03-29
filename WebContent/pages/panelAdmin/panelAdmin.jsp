@@ -145,7 +145,7 @@
 											<form  id="formUploadFile" name="formUploadFile">
 												Selecciona el archivo:<input  type="file" id="fileName" name="fileName"> <br> 
 												
-												<button id="btnUploadFile" class="btn btn-primary" type="submit" value="Aceptar" >Aceptar</button>
+												<button id="btnUploadFile" class="btn btn-primary" type="button" value="Aceptar" >Aceptar</button>
 												<img id="loadingGif" src="<%=request.getContextPath()%>/img/loading.gif">
                                     		</form>
                                     	</div><br><br>
