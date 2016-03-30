@@ -90,16 +90,24 @@ public class UploadFileServlet extends HttpServlet {
 			log.info(fileItem.getName() + " ...subido exitosamente");
 
 			try {
+				String lineUsernameVacio = IOAlmacen.verifyUsernameFromFile(file, path);
+
 				if (!IOAlmacen.verifyFile(file, path)) {
 					msg = "El archivo ingresado no es valido";
 					log.error("El archivo ingresado no es valido");
 					flag = false;
 				} else if (!IOAlmacen.isEmptyLine(file, path)) {
-
 					msg = "La linea " + IOAlmacen.getEmptyLine(file, path)
-							+ " del archivo ingresado esta vacia. Favor de corregir";
+							+ " del archivo ingresado, esta vacia. Favor de corregir";
 					log.error("La linea " + IOAlmacen.getEmptyLine(file, path)
-							+ " del archivo ingresado esta vacia. Favor de corregir");
+							+ " del archivo ingresado, esta vacia. Favor de corregir");
+					flag = false;
+
+				} else if (lineUsernameVacio != null) {
+					msg = "La linea " + lineUsernameVacio
+							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
+					log.error("La linea " + lineUsernameVacio
+							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.");
 					flag = false;
 				} else {
 					log.info("Character Encoding:  " + IOAlmacen.getEncoding(path).toUpperCase());
