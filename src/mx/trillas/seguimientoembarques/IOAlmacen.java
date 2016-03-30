@@ -17,7 +17,7 @@ import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-
+import mx.trillas.seguimientoembarques.util.Util;
 import org.apache.log4j.Logger;
 
 public class IOAlmacen {
@@ -109,7 +109,7 @@ public class IOAlmacen {
 		return msg;
 	}
 
-	public static String verifyUsernameFromFile(File file, String path) throws Exception, IOException {
+	public static String verifyDataFromFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -124,6 +124,11 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
+				if (!Util.containLineExpression(line)){
+					return counter + ": [" + line;
+				}
+
+			while ((line = br.readLine()) != null) {
 				asesor = new Asesor();
 				String[] asesorSplit = line.split("\\,");
 
@@ -131,9 +136,12 @@ public class IOAlmacen {
 					asesor.setUsername(asesorSplit[1]);
 					asesor.setPasswd(asesorSplit[2]);
 					
-					if (asesor.getUsername() == null || "".equals(asesor.getUsername())){
+					if (asesor.getUsername() == null || "".equals(asesor.getUsername())) {
+						return counter + ": [" + line;
+					} else if (asesor.getPasswd() == null || "".equals(asesor.getPasswd())) {
 						return counter + ": [" + line;
 					}
+				}
 					counter++;
 			}
 		} catch (UnsupportedEncodingException e) {

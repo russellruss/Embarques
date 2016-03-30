@@ -90,7 +90,7 @@ public class UploadFileServlet extends HttpServlet {
 			log.info(fileItem.getName() + " ...subido exitosamente");
 
 			try {
-				String lineUsernameVacio = IOAlmacen.verifyUsernameFromFile(file, path);
+				String lineUsernameVacio = IOAlmacen.verifyDataFromFile(file, path);
 
 				if (!IOAlmacen.verifyFile(file, path)) {
 					msg = "El archivo ingresado no es valido";
@@ -107,7 +107,7 @@ public class UploadFileServlet extends HttpServlet {
 					msg = "La linea " + lineUsernameVacio
 							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
 					log.error("La linea " + lineUsernameVacio
-							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.");
+							+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
 					flag = false;
 				} else {
 					log.info("Character Encoding:  " + IOAlmacen.getEncoding(path).toUpperCase());
