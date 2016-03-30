@@ -109,6 +109,40 @@ public class IOAlmacen {
 		return msg;
 	}
 
+	public static String verifyRegexFromFile(File file, String path) throws Exception, IOException {
+
+		FileInputStream fis = null;
+		BufferedReader br = null;
+		InputStreamReader isr = null;
+
+		String line = null;
+		int counter = 1;
+		try {
+			fis = new FileInputStream(file);
+			isr = new InputStreamReader(fis, "CP850");
+			br = new BufferedReader(isr);
+
+			while ((line = br.readLine()) != null) {
+				if (!Util.containLineExpression(line) || Util.containSpaceExpression(line)){
+					return counter + ": [" + line;
+				}
+				counter++;
+			}
+		} catch (UnsupportedEncodingException e) {
+			throw e;
+		} catch (FileNotFoundException e) {
+			throw e;
+		} finally {
+			if (br != null)
+				br.close();
+			if (isr != null)
+				isr.close();
+			if (fis != null)
+				fis.close();
+		}
+		return null;
+	}
+
 	public static String verifyDataFromFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
@@ -124,11 +158,6 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
-				if (!Util.containLineExpression(line)){
-					return counter + ": [" + line;
-				}
-
-			while ((line = br.readLine()) != null) {
 				asesor = new Asesor();
 				String[] asesorSplit = line.split("\\,");
 
@@ -141,7 +170,6 @@ public class IOAlmacen {
 					} else if (asesor.getPasswd() == null || "".equals(asesor.getPasswd())) {
 						return counter + ": [" + line;
 					}
-				}
 					counter++;
 			}
 		} catch (UnsupportedEncodingException e) {
