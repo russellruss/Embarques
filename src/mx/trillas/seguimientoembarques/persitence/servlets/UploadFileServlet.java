@@ -90,25 +90,31 @@ public class UploadFileServlet extends HttpServlet {
 			log.info(fileItem.getName() + " ...subido exitosamente");
 
 			try {
-				String lineUsernameVacio = IOAlmacen.verifyUsernameFromFile(file, path);
+				String asesorUsernameVacio = IOAlmacen.verifyRegexFromFile(file, path);
+				String lineUsernameVacio = IOAlmacen.verifyDataFromFile(file, path);
 
 				if (!IOAlmacen.verifyFile(file, path)) {
 					msg = "El archivo ingresado no es valido";
 					log.error("El archivo ingresado no es valido");
 					flag = false;
-				} else if (!IOAlmacen.isEmptyLine(file, path)) {
-					msg = "La linea " + IOAlmacen.getEmptyLine(file, path)
-							+ " del archivo ingresado, esta vacia. Favor de corregir";
-					log.error("La linea " + IOAlmacen.getEmptyLine(file, path)
-							+ " del archivo ingresado, esta vacia. Favor de corregir");
-					flag = false;
-
 				} else if (lineUsernameVacio != null) {
 					msg = "La linea " + lineUsernameVacio
 							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
 					log.error("La linea " + lineUsernameVacio
-							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.");
+							+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
 					flag = false;
+				} else if (asesorUsernameVacio != null) {
+					msg = "La linea " + asesorUsernameVacio
+							+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
+					log.error("La linea " + asesorUsernameVacio
+							+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
+					flag = false;
+				} else if (!IOAlmacen.isEmptyLine(file, path)) {
+						msg = "La linea " + IOAlmacen.getEmptyLine(file, path)
+								+ " del archivo ingresado, no contiene datos o esta vacía. Favor de corregir";
+						log.error("La linea " + IOAlmacen.getEmptyLine(file, path)
+								+ " del archivo ingresado, no contiene datos o esta vacía. Favor de corregir");
+						flag = false;
 				} else {
 					log.info("Character Encoding:  " + IOAlmacen.getEncoding(path).toUpperCase());
 					asesoresFromFile.addAll(IOAlmacen.getUsersFile(file, path));
@@ -116,12 +122,15 @@ public class UploadFileServlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				log.error(e.getMessage());
-				return;
+//				return;
 			} finally {
-
+				if (msg.equals("")) {
+					msg = "Una de las lineas del archivo ingresado no contiene el formato válido, esta vacía o la última linea contiene un Salto de Linea (ENTER). Consulte archivos log del sistema.";
+				}
 			}
 		}
 		if (flag == true) {
+			
 			// Borra relacion usuario-almacen
 			try {
 				useralmacenDAO.deleteUserAlmacenByList();
@@ -160,16 +169,20 @@ public class UploadFileServlet extends HttpServlet {
 					asesoresList.add(asesor);
 				}
 			}
+			
 			// Guarda usuarios asesores a bd
 			try {
 				usersDAO.altaUsuarioFromList(listaDeUsuarios);
 			} catch (Exception e) {
 				log.error(e.getMessage());
-				return;
+				if (msg.equals("")) {
+					msg = "Ocurrió un problema al dar de alta los usuarios. Consulte archivos log del sistema.";
+				}
+//				return;
 			}
 
+			// Crea las relaciones usuario-almacen
 			try {
-				// Crea las relaciones usuario-almacen
 				for (Asesor asesor : asesoresList) {
 					LinkedHashSet<Almacen> listaDeAlmacenes = useralmacenDAO.getRelacionUserAlmacen(asesor,
 							almacenDAO.getAlmacenes());
@@ -188,17 +201,13 @@ public class UploadFileServlet extends HttpServlet {
 				}
 				msg = "Los asesores han sido actualizados exitosamente";
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
-
+				if (msg.equals("")) {
+					msg = "Ocurrió un problema. Consulte archivos log del sistema.";
+				}
 			}
 		}
-
-		if (msg.equals("")) {
-			msg = "Ocurri� un problema. Consulte archivos log del sistema.";
-		}
-
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(msg);
