@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -96,7 +96,7 @@
 						<div class="panel-body">
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#home" data-toggle="tab">Actualización
+								<li class="active"><a href="#home" data-toggle="tab">ActualizaciÃ³n
 										de traspasos</a></li>
 								<!--                                 <li><a href="#users" data-toggle="tab">Alta de Usuarios</a></li> -->
 								<li><a href="#usralmacenes" data-toggle="tab">Usuarios
@@ -108,7 +108,7 @@
 							<!-- Tab panes -->
 							<div class="tab-content">
 								<div class="tab-pane fade in active" id="home">
-									<h4>Última Actualización de traspasos y requisiciones</h4>
+									<h4>Ãšltima ActualizaciÃ³n de traspasos y requisiciones</h4>
 									<div class="row">
 										<div class="col-md-6">
 											<code id="ultimaact"></code>
@@ -136,7 +136,7 @@
 								<!--                                     			</form> -->
 								<!--                                     		</div> -->
 								<!--                                     	</div> -->
-								<!--                                     	<br /><p class="advice">Nota: Cualquier usuario ingresado aqui, debe ser ingresado en el <b>archivo de contenido de usuarios</b>, de lo contrario el usuario se borrará en la próxima actualización de la base de datos.</p> -->
+								<!--                                     	<br /><p class="advice">Nota: Cualquier usuario ingresado aqui, debe ser ingresado en el <b>archivo de contenido de usuarios</b>, de lo contrario el usuario se borrarÃ¡ en la prÃ³xima actualizaciÃ³n de la base de datos.</p> -->
 								<!--                                     </div> -->
 								<div class="tab-pane fade" id="usralmacenes">
 									<h4>Asignar almacenes a usuarios</h4>
@@ -175,7 +175,7 @@
 									</div>
 									<div class="row">
 										<div id="updateUsersFile" class="col-md-12">
-											<h4>Última Actualización de archivo de usuarios</h4>
+											<h4>Ãšltima ActualizaciÃ³n de archivo de usuarios</h4>
 											<code id="laterUpdateUsersFile"></code>
 										</div>
 									</div>
