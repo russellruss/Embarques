@@ -248,7 +248,7 @@ public class IOAlmacen {
 		return list;
 	}
 
-	public static boolean isTextFile(File file) {
+	private static boolean isTextFile(File file) {
 		String fileName = file.getName();
 		String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
 
@@ -258,7 +258,7 @@ public class IOAlmacen {
 		return false;
 	}
 
-	public static boolean isEmptyFile(String path) throws FileNotFoundException, IOException {
+	private static boolean isEmptyFile(String path) throws FileNotFoundException, IOException {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(path));
