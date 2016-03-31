@@ -89,7 +89,7 @@ public class IOAlmacen {
 
 				String[] asesorSplit = line.split("\\,");
 				if (asesorSplit.length <= 1) {
-					msg =  counter + "";
+					msg = counter + "";
 					break;
 				}
 				counter++;
@@ -123,7 +123,7 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
-				if (!Util.containLineExpression(line) || Util.containSpaceExpression(line)){
+				if (!Util.containLineExpression(line) || Util.containSpaceExpression(line)) {
 					return counter + ": [" + line;
 				}
 				counter++;
@@ -161,16 +161,22 @@ public class IOAlmacen {
 				asesor = new Asesor();
 				String[] asesorSplit = line.split("\\,");
 
-					asesor.setName(asesorSplit[0]);
-					asesor.setUsername(asesorSplit[1]);
-					asesor.setPasswd(asesorSplit[2]);
-					
-					if (asesor.getUsername() == null || "".equals(asesor.getUsername())) {
-						return counter + ": [" + line;
-					} else if (asesor.getPasswd() == null || "".equals(asesor.getPasswd())) {
-						return counter + ": [" + line;
-					}
-					counter++;
+				if (asesorSplit.length >=1 && asesorSplit[0] != null && !asesorSplit[0].isEmpty()) {
+					asesor.setName(asesorSplit[0].trim());
+				}
+				if (asesorSplit.length >=1 && asesorSplit[1] != null && !asesorSplit[1].isEmpty()) {
+					asesor.setUsername(asesorSplit[1].trim());
+				}
+				if (asesorSplit.length >=1 && asesorSplit[2] != null && !asesorSplit[2].isEmpty()) {
+					asesor.setPasswd(asesorSplit[2].trim());
+				}
+
+				if (asesor.getUsername() == null || "".equals(asesor.getUsername())) {
+					return counter + ": [" + line;
+				} else if (asesor.getPasswd() == null || "".equals(asesor.getPasswd())) {
+					return counter + ": [" + line;
+				}
+				counter++;
 			}
 		} catch (UnsupportedEncodingException e) {
 			throw e;
@@ -186,7 +192,7 @@ public class IOAlmacen {
 		}
 		return null;
 	}
-	
+
 	public static List<Asesor> getUsersFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
@@ -207,7 +213,6 @@ public class IOAlmacen {
 				String[] asesorSplit = line.split("\\,");
 				String lineName = asesorSplit[1];
 
-				// Boolean usuarioExist = userDAO.usernameExists(lineName);
 				Usuario usuario = userDAO.getUser(lineName);
 
 				if (usuario != null && usuario.getTipousuario().getTipo()
