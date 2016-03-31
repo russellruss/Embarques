@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 <title>Requisiciones</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../../Headers/headerIncludesRoot.jsp" %>
 <script type="text/javascript" src="requisiciones.js"></script>
  <link href="requisiciones.css" rel="stylesheet">
@@ -125,7 +125,7 @@
 												<td id="trasporte"></td>
 											</tr>
 											<tr>
-												<th>No. Guía (Porte)</th>
+												<th>No. GuÃ­a (Porte)</th>
 												<td id="guia"></td>
 											</tr>
 											<tr>
@@ -176,7 +176,7 @@
 												<div class="col-md-3" id="colonia"></div>
 												<div class="col-md-3"><strong>Ciudad/Estado:</strong></div>
 												<div class="col-md-3" id="estado"></div>
-												<div class="col-md-3"><strong>País y C.P.</strong></div>
+												<div class="col-md-3"><strong>PaÃ­s y C.P.</strong></div>
 												<div class="col-md-3" id="paisCP"></div>
 											</div>
 										</div>
