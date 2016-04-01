@@ -38,6 +38,17 @@ public class IOAlmacen {
 			return true;
 		}
 	}
+	
+	public static boolean isSize(File file, String path){
+		double bytes = file.length();
+		double kilobytes = (bytes / 1024);
+		double megabytes = (kilobytes / 1024);
+		
+		if (megabytes <= 2){
+			return true;
+		}
+		return false;
+	}
 
 	public static boolean isEmptyLine(File file, String path) throws IOException {
 
