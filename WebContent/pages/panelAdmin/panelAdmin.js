@@ -259,10 +259,8 @@ $(document).ready(function() {
 
 	$('#btnUploadFile').click(function(event) {
 		event.preventDefault();
-		var formData = new FormData($("#formUploadFile")[0]);
-		$("#fountainPA").css('display', 'block');
-		$('#btnUploadFile').attr('disabled', true);
 		
+<<<<<<< HEAD
 		$.ajax({
 			type : "POST",
 			url : 'UploadFileServlet',
@@ -281,5 +279,47 @@ $(document).ready(function() {
 			}
 		}); /* ajax() */
 //		window.location.reload();
+=======
+		  var isSize = true;
+	        $('input[type=file][max-size]').each(function(){
+	            if(typeof this.files[0] !== 'undefined'){
+	                var maxSize = parseInt($(this).attr('max-size'),10),
+	                size = this.files[0].size;
+	                isOk = maxSize > size;
+	                return isOk;
+	            }
+	        });
+	    
+	        if (isSize==true) {
+	        	
+	        	var formData = new FormData($("#formUploadFile")[0]);
+	    		$("#fountainPA").css('display', 'block');
+	    		$('#btnUploadFile').attr('disabled', true);
+	    		
+	        	$.ajax({
+	    			type : "POST",
+	    			url : '../../UploadFileServlet',
+	    			async : false,
+	    			data : formData,
+	    			cache : false,
+	    			contentType : false,
+	    			processData : false,
+	    			success : function(response) {
+	    				UpdaterUsersFile();
+	    				$("#fountainPA").css('display', 'none');
+	    				alert(response);
+	    			},
+	    			error: function() {
+	    				$("#fountainPA").css('display', 'none');
+	    			}
+	    		}); /* ajax() */
+	    		window.location.reload();
+	        }
+	        else {
+	        	alert("El archivo sobrepasa el limite requerido (2MB). No se harán cambios en los registros de usuario.");
+	        }
+		
+		
+>>>>>>> origin/master
 	}); /* click() */
 }); /* document.ready() */
