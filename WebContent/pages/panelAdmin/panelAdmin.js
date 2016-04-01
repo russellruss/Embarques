@@ -265,7 +265,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type : "POST",
-			url : '../../UploadFileServlet',
+			url : 'UploadFileServlet',
 			async : false,
 			data : formData,
 			cache : false,
@@ -280,6 +280,6 @@ $(document).ready(function() {
 				$("#fountainPA").css('display', 'none');
 			}
 		}); /* ajax() */
-		window.location.reload();
+//		window.location.reload();
 	}); /* click() */
 }); /* document.ready() */
