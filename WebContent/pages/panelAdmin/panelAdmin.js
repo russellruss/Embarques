@@ -259,27 +259,6 @@ $(document).ready(function() {
 
 	$('#btnUploadFile').click(function(event) {
 		event.preventDefault();
-		
-<<<<<<< HEAD
-		$.ajax({
-			type : "POST",
-			url : 'UploadFileServlet',
-			async : false,
-			data : formData,
-			cache : false,
-			contentType : false,
-			processData : false,
-			success : function(response) {
-				UpdaterUsersFile();
-				$("#fountainPA").css('display', 'none');
-				alert(response);
-			},
-			error: function() {
-				$("#fountainPA").css('display', 'none');
-			}
-		}); /* ajax() */
-//		window.location.reload();
-=======
 		  var isSize = true;
 	        $('input[type=file][max-size]').each(function(){
 	            if(typeof this.files[0] !== 'undefined'){
@@ -298,7 +277,7 @@ $(document).ready(function() {
 	    		
 	        	$.ajax({
 	    			type : "POST",
-	    			url : '../../UploadFileServlet',
+	    			url : 'UploadFileServlet',
 	    			async : false,
 	    			data : formData,
 	    			cache : false,
@@ -313,13 +292,10 @@ $(document).ready(function() {
 	    				$("#fountainPA").css('display', 'none');
 	    			}
 	    		}); /* ajax() */
-	    		window.location.reload();
+//	    		window.location.reload();
 	        }
 	        else {
 	        	alert("El archivo sobrepasa el limite requerido (2MB). No se harán cambios en los registros de usuario.");
 	        }
-		
-		
->>>>>>> origin/master
 	}); /* click() */
 }); /* document.ready() */
