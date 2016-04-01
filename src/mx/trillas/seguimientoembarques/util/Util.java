@@ -25,5 +25,5 @@ public class Util {
 		pattern = Pattern.compile(EMPTYSPACE_PATTERN);
 		matcher = pattern.matcher(stringToValidate);
 		return matcher.find();
-	}	
+	}
 }
