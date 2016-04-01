@@ -159,7 +159,7 @@
 										<div class="col-lg-5">
 											<form id="formUploadFile" name="formUploadFile">
 												Selecciona el archivo:<input type="file" id="fileName"
-													name="fileName"> <br>
+													name="fileName" accept="text/plain" max-size="2097152"> <br>
 
 												<button id="btnUploadFile" class="btn btn-primary"
 													type="button" value="Aceptar">Aceptar</button>

@@ -101,12 +101,7 @@ public class UploadFileServlet extends HttpServlet {
 					asesorUsernameVacio = IOAlmacen.verifyRegexFromFile(file, path);
 					lineUsernameVacio = IOAlmacen.verifyDataFromFile(file, path);
 
-					if (!IOAlmacen.isSize(file, path)) {
-						msg = "El archivo sobrepasa el limite requerido (2MB). No se harán cambios en los registros de usuario.";
-						log.error(
-								"El archivo sobrepasa el limite requerido (2MB). No se harán cambios en los registros de usuario.");
-						flag = false;
-					} else if (lineUsernameVacio != null) {
+					if (lineUsernameVacio != null) {
 						msg = "La linea " + lineUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
 						log.error("La linea " + lineUsernameVacio

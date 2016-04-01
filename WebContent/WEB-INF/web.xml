@@ -23,10 +23,6 @@
 			<param-name>test-param</param-name>
 			<param-value>Initialization Paramter</param-value>
 		</init-param>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>AppFilter</filter-name>
