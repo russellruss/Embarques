@@ -264,8 +264,8 @@ $(document).ready(function() {
 	            if(typeof this.files[0] !== 'undefined'){
 	                var maxSize = parseInt($(this).attr('max-size'),10),
 	                size = this.files[0].size;
-	                isOk = maxSize > size;
-	                return isOk;
+	                isSize = maxSize > size;
+	             /*   return isOk; */
 	            }
 	        });
 	    

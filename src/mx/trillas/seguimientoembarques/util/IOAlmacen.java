@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques;
+package mx.trillas.seguimientoembarques.util;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,9 +15,8 @@ import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
 import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
-
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-import mx.trillas.seguimientoembarques.util.Util;
+
 import org.apache.log4j.Logger;
 
 public class IOAlmacen {
@@ -26,7 +25,8 @@ public class IOAlmacen {
 	private static UserDAO userDAO = new UserDAODBImpl();
 
 	public static boolean verifyFile(File file, String path)
-			throws UnsupportedEncodingException, FileNotFoundException, IOException {
+			throws UnsupportedEncodingException, FileNotFoundException,
+			IOException {
 
 		if (!isTextFile(file)) {
 			log.error("El archivo ingresado no es de tipo texto (.txt). Intentelo nuevamente.");
@@ -38,19 +38,19 @@ public class IOAlmacen {
 			return true;
 		}
 	}
-	/*
-	public static boolean isSize(File file, String path){
-		double bytes = file.length();
-		double kilobytes = (bytes / 1024);
-		double megabytes = (kilobytes / 1024);
-		
-		if (megabytes <= 2){
+
+	public static boolean isAcceptedSize(File file) {
+		long bytes = file.length();
+		double kilobytes = (bytes / 1024l);
+		double megabytes = (kilobytes / 1024l);
+		if (megabytes <= 2l) {
 			return true;
 		}
 		return false;
-	} */
+	}
 
-	public static boolean isEmptyLine(File file, String path) throws IOException {
+	public static boolean isEmptyLine(File file, String path)
+			throws IOException {
 
 		String line = null;
 		FileInputStream fis = null;
@@ -83,7 +83,8 @@ public class IOAlmacen {
 		return true;
 	}
 
-	public static String getEmptyLine(File file, String path) throws IOException {
+	public static String getEmptyLine(File file, String path)
+			throws IOException {
 
 		String line = null;
 		FileInputStream fis = null;
@@ -120,7 +121,8 @@ public class IOAlmacen {
 		return msg;
 	}
 
-	public static String verifyRegexFromFile(File file, String path) throws Exception, IOException {
+	public static String verifyRegexFromFile(File file, String path)
+			throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -134,7 +136,8 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
-				if (!Util.containLineExpression(line) || Util.containSpaceExpression(line)) {
+				if (!Util.containLineExpression(line)
+						|| Util.containSpaceExpression(line)) {
 					return counter + ": [" + line;
 				}
 				counter++;
@@ -154,14 +157,15 @@ public class IOAlmacen {
 		return null;
 	}
 
-	public static String verifyDataFromFile(File file, String path) throws Exception, IOException {
+	public static String verifyDataFromFile(File file, String path)
+			throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
 		InputStreamReader isr = null;
 
 		String line = null;
-		Asesor asesor = null;
+		AsesorAux asesor = null;
 		int counter = 1;
 		try {
 			fis = new FileInputStream(file);
@@ -169,22 +173,27 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
-				asesor = new Asesor();
+				asesor = new AsesorAux();
 				String[] asesorSplit = line.split("\\,");
 
-				if (asesorSplit.length >=1 && asesorSplit[0] != null && !asesorSplit[0].isEmpty()) {
+				if (asesorSplit.length >= 1 && asesorSplit[0] != null
+						&& !asesorSplit[0].isEmpty()) {
 					asesor.setName(asesorSplit[0].trim());
 				}
-				if (asesorSplit.length >=1 && asesorSplit[1] != null && !asesorSplit[1].isEmpty()) {
+				if (asesorSplit.length >= 1 && asesorSplit[1] != null
+						&& !asesorSplit[1].isEmpty()) {
 					asesor.setUsername(asesorSplit[1].trim());
 				}
-				if (asesorSplit.length >=1 && asesorSplit[2] != null && !asesorSplit[2].isEmpty()) {
+				if (asesorSplit.length >= 1 && asesorSplit[2] != null
+						&& !asesorSplit[2].isEmpty()) {
 					asesor.setPasswd(asesorSplit[2].trim());
 				}
 
-				if (asesor.getUsername() == null || "".equals(asesor.getUsername())) {
+				if (asesor.getUsername() == null
+						|| "".equals(asesor.getUsername())) {
 					return counter + ": [" + line;
-				} else if (asesor.getPasswd() == null || "".equals(asesor.getPasswd())) {
+				} else if (asesor.getPasswd() == null
+						|| "".equals(asesor.getPasswd())) {
 					return counter + ": [" + line;
 				}
 				counter++;
@@ -204,7 +213,8 @@ public class IOAlmacen {
 		return null;
 	}
 
-	public static List<Asesor> getUsersFile(File file, String path) throws Exception, IOException {
+	public static List<AsesorAux> getUsersFile(File file, String path)
+			throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -212,7 +222,7 @@ public class IOAlmacen {
 
 		String line = null;
 		List<String> caracter = null;
-		List<Asesor> list = new ArrayList<>();
+		List<AsesorAux> list = new ArrayList<>();
 
 		try {
 			fis = new FileInputStream(file);
@@ -220,15 +230,21 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
-				Asesor asesor = new Asesor();
+				AsesorAux asesor = new AsesorAux();
 				String[] asesorSplit = line.split("\\,");
 				String lineName = asesorSplit[1];
 
 				Usuario usuario = userDAO.getUser(lineName);
 
-				if (usuario != null && usuario.getTipousuario().getTipo()
-						.equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo())) {
-					log.info("Se ignoro al usuario " + usuario + " porque ya existe en bd como administrador");
+				if (usuario != null
+						&& usuario
+								.getTipousuario()
+								.getTipo()
+								.equals(tipousuarioDAO
+										.getTipousuarioAdministrador()
+										.getTipo())) {
+					log.info("Se ignoro al usuario " + usuario
+							+ " porque ya existe en bd como administrador");
 				} else {
 					asesor.setName(asesorSplit[0]);
 					asesor.setUsername(asesorSplit[1]);
@@ -269,7 +285,8 @@ public class IOAlmacen {
 		return false;
 	}
 
-	private static boolean isEmptyFile(String path) throws FileNotFoundException, IOException {
+	private static boolean isEmptyFile(String path)
+			throws FileNotFoundException, IOException {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(path));

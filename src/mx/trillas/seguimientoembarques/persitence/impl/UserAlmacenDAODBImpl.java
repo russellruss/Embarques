@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import mx.trillas.seguimientoembarques.Asesor;
 import mx.trillas.seguimientoembarques.persitence.HibernateUtil;
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserAlmacenDAO;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
+import mx.trillas.seguimientoembarques.util.AsesorAux;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -132,10 +132,10 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 		}
 	}
 	
-	public List<Almacen> getRelacionesUserAlmacen(List<Asesor> listaDeAsesores, List<Almacen> listaDeAlmacenes) throws Exception {
+	public List<Almacen> getRelacionesUserAlmacen(List<AsesorAux> listaDeAsesores, List<Almacen> listaDeAlmacenes) throws Exception {
 		List<Almacen> almacenAgregado = new ArrayList<>();
 		
-		for ( Asesor asesor : listaDeAsesores ){ 
+		for ( AsesorAux asesor : listaDeAsesores ){ 
 			for (String character : asesor.getCaracteres()){
 				for (int i=0; i< listaDeAlmacenes.size(); i++ )
 					if ( character.charAt(0) == listaDeAlmacenes.get(i).getCaracter() ){
@@ -146,7 +146,7 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 		return almacenAgregado;
 	}
 	
-	public LinkedHashSet<Almacen> getRelacionUserAlmacen(Asesor asesor, List<Almacen> listaDeAlmacenes) throws Exception {
+	public LinkedHashSet<Almacen> getRelacionUserAlmacen(AsesorAux asesor, List<Almacen> listaDeAlmacenes) throws Exception {
 		LinkedHashSet<Almacen> almacenAgregado = new LinkedHashSet<>();
 
 		try {

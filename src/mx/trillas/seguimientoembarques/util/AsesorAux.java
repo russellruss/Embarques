@@ -1,21 +1,21 @@
-package mx.trillas.seguimientoembarques;
+package mx.trillas.seguimientoembarques.util;
 
 import java.util.List;
 
 import mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario;
 
-public class Asesor {
+public class AsesorAux {
 	private String username;
 	private String passwd;
 	private String name;
 	private List<String> caracteres;
 	private Tipousuario tipousuario;
 	
-	public Asesor(){
+	public AsesorAux(){
 		
 	}
 
-	public Asesor(String username, String passwd, String name, List<String> caracteres, Tipousuario tipousuario) {
+	public AsesorAux(String username, String passwd, String name, List<String> caracteres, Tipousuario tipousuario) {
 		super();
 		this.username = username;
 		this.passwd = passwd;
@@ -24,7 +24,7 @@ public class Asesor {
 		this.tipousuario = tipousuario;
 	}
 
-	public Asesor(String username, String passwd, String name, List<String> caracteres) {
+	public AsesorAux(String username, String passwd, String name, List<String> caracteres) {
 		super();
 		this.username = username;
 		this.passwd = passwd;

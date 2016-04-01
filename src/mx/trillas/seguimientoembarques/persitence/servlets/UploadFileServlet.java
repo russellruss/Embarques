@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mx.trillas.seguimientoembarques.Asesor;
-import mx.trillas.seguimientoembarques.IOAlmacen;
 import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
+import mx.trillas.seguimientoembarques.util.AsesorAux;
 import mx.trillas.seguimientoembarques.util.Cripto;
+import mx.trillas.seguimientoembarques.util.IOAlmacen;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -31,7 +31,8 @@ import org.apache.log4j.Logger;
 /**
  * Servlet implementation class UploadFileServlet
  */
-//@MultipartConfig(location = "temporal", fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 2, maxRequestSize = 1024 * 1024 * 2)
+// @MultipartConfig(location = "temporal", fileSizeThreshold = 1024 * 1024 * 2,
+// maxFileSize = 1024 * 1024 * 2, maxRequestSize = 1024 * 1024 * 2)
 @WebServlet("/pages/panelAdmin/UploadFileServlet")
 public class UploadFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -67,7 +68,7 @@ public class UploadFileServlet extends HttpServlet {
 			throw new ServletException("Content type no es multipart/form-data");
 		}
 
-		List<Asesor> asesoresFromFile = new ArrayList<>();
+		List<AsesorAux> asesoresFromFile = new ArrayList<>();
 		List<Usuario> listaDeUsuarios = new ArrayList<>();
 		List<FileItem> fileItemsList;
 		try {
@@ -100,30 +101,43 @@ public class UploadFileServlet extends HttpServlet {
 					log.error("El archivo ingresado no es valido");
 					flag = false;
 				} else {
-					asesorUsernameVacio = IOAlmacen.verifyRegexFromFile(file, path);
-					lineUsernameVacio = IOAlmacen.verifyDataFromFile(file, path);
-
-					if (lineUsernameVacio != null) {
-						msg = "La linea " + lineUsernameVacio
+					asesorUsernameVacio = IOAlmacen.verifyRegexFromFile(file,
+							path);
+					lineUsernameVacio = IOAlmacen
+							.verifyDataFromFile(file, path);
+					if (!IOAlmacen.isAcceptedSize(file)) {
+						msg = "El tamaño del archivo sobrepasa el máximo requerido (2Mb)";
+						log.error("El tamaño del archivo sobrepasa el máximo requerido (2Mb)");
+						flag = false;
+					} else if (lineUsernameVacio != null) {
+						msg = "La linea "
+								+ lineUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
-						log.error("La linea " + lineUsernameVacio
+						log.error("La linea "
+								+ lineUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
 						flag = false;
 					} else if (asesorUsernameVacio != null) {
-						msg = "La linea " + asesorUsernameVacio
+						msg = "La linea "
+								+ asesorUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
-						log.error("La linea " + asesorUsernameVacio
+						log.error("La linea "
+								+ asesorUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
 						flag = false;
 					} else if (!IOAlmacen.isEmptyLine(file, path)) {
-						msg = "La linea " + IOAlmacen.getEmptyLine(file, path)
+						msg = "La linea "
+								+ IOAlmacen.getEmptyLine(file, path)
 								+ " del archivo ingresado, no contiene datos o esta vacía. Favor de corregir";
-						log.error("La linea " + IOAlmacen.getEmptyLine(file, path)
+						log.error("La linea "
+								+ IOAlmacen.getEmptyLine(file, path)
 								+ " del archivo ingresado, no contiene datos o esta vacía. Favor de corregir");
 						flag = false;
 					} else {
-						log.info("Character Encoding:  " + IOAlmacen.getEncoding(path).toUpperCase());
-						asesoresFromFile.addAll(IOAlmacen.getUsersFile(file, path));
+						log.info("Character Encoding:  "
+								+ IOAlmacen.getEncoding(path).toUpperCase());
+						asesoresFromFile.addAll(IOAlmacen.getUsersFile(file,
+								path));
 						flag = true;
 					}
 				}
@@ -156,9 +170,9 @@ public class UploadFileServlet extends HttpServlet {
 			}
 
 			List<String> usernameExist = new ArrayList<>();
-			List<Asesor> asesoresList = new ArrayList<>();
+			List<AsesorAux> asesoresList = new ArrayList<>();
 
-			for (Asesor asesor : asesoresFromFile) {
+			for (AsesorAux asesor : asesoresFromFile) {
 				Usuario usuario = new Usuario();
 
 				if (asesor.getUsername().equals("")
@@ -196,7 +210,7 @@ public class UploadFileServlet extends HttpServlet {
 
 			// Crea las relaciones usuario-almacen
 			try {
-				for (Asesor asesor : asesoresList) {
+				for (AsesorAux asesor : asesoresList) {
 					LinkedHashSet<Almacen> listaDeAlmacenes = useralmacenDAO
 							.getRelacionUserAlmacen(asesor,
 									almacenDAO.getAlmacenes());

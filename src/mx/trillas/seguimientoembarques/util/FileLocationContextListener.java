@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques;
+package mx.trillas.seguimientoembarques.util;
 
 import java.io.File;
 
