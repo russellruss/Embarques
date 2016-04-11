@@ -24,7 +24,7 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Ft96;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@WebServlet("/traspasos")
+@WebServlet("/pages/traspasos/traspasos")
 public class TraspasosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Ft91DAO ft91dao = new Ft91DAODBImpl();

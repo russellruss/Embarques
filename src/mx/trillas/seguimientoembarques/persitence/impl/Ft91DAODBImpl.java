@@ -11,7 +11,9 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Ft91Id;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 
 public class Ft91DAODBImpl implements Ft91DAO {
 
@@ -43,8 +45,13 @@ public class Ft91DAODBImpl implements Ft91DAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(Ft91.class);
-			criteria.add(Restrictions.or(Restrictions.in("alma", idsAlmacenes),
-					Restrictions.in("almao", idsAlmacenes)));
+			LogicalExpression alacenesOr = Restrictions.or(
+					Restrictions.in("alma", idsAlmacenes),
+					Restrictions.in("almad", idsAlmacenes));
+			SimpleExpression idRes = Restrictions.eq("id.tdoc", 2);
+			LogicalExpression restrictions = Restrictions
+					.and(alacenesOr, idRes);
+			criteria.add(restrictions);
 			List<?> tras = criteria.list();
 			if (tras != null) {
 				for (Object o : tras) {

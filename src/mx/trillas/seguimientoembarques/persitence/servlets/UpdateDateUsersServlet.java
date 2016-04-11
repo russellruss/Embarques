@@ -57,7 +57,6 @@ public class UpdateDateUsersServlet extends HttpServlet {
 				generales = generalesDAO.getByKeyaction(Generales.keyactions.ACTUALIZACIONUSUARIOSARCHIVO);
 				Gson gson = new Gson();
 				String salida = gson.toJson(generales);
-
 				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
 				out.write(salida);

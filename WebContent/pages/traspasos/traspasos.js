@@ -1,7 +1,7 @@
 function getTraspasos(){
 	$.ajax({
 		type: "POST",
-		url: "../../traspasos",
+		url: "traspasos",
 		success: function(data){
 			drawTraspasos(data);
 //			console.debug(data)
@@ -43,7 +43,8 @@ function drawTraspasos(data){
 		var classtype = types[flagType];
 		flagType = flagType == 1 ? 0 : 1;
 		tbodyTras += '<tr class="'+classtype+' gradeA" onclick="details('+data[i].folio+',\''+data[i].ser+'\')" style="cursor:pointer">'+
-		'<td>'+data[i].almaceno+'-'+data[i].almacend+'</td>'+	
+		'<td>'+data[i].almaceno+'</td>'+
+		'<td>'+data[i].almacend+'</td>'+
 		'<td>'+data[i].Traspaso+'</td>'+
   			'<td>'+data[i].FechaT+'</td>'+
 			'<td>'+data[i].Requisicion+'</td>'+
@@ -56,8 +57,8 @@ function drawTraspasos(data){
 	}
 	$('#tbodyReq').html(tbodyTras);
 
-	$.getScript( "../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js" );
-	$.getScript( "../../Components/bower_components/datatables/media/js/jquery.dataTables.min.js" );
+//	$.getScript( "../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js" );
+//	$.getScript( "../../Components/bower_components/datatables/media/js/jquery.dataTables.min.js" );
 	
 	setTimeout(tableIni, 1700);
 }
@@ -66,7 +67,7 @@ function tableIni(){
 	$('#dataTables-example').DataTable({
 	    responsive: true,
 	    paging: true,
-	    "order": [[ 1, "asc" ]],
+	    "order": [[ 3, "asc" ]],
 	    "oLanguage": {
 	    	 "oAria": {
 	    		 	"sSortAscending": " - click/return para orden ascendiente",
@@ -85,7 +86,8 @@ function tableIni(){
 	          "sProcessing": "DataTables esta ocupado...",
 			  "sInfo": "Se consigui&oacute; un total de  _TOTAL_ entradas que mostrar (_START_ a _END_)",
 			  "sInfoFiltered": " - filtrando de _MAX_ registros",
-			  "sInfoPostFix": "Todos los registros mostrados son entregados con informaci&oacute;n real.",
+//			  "sInfoPostFix": "Todos los registros mostrados son entregados con informaci&oacute;n real.",
+			  "sInfoPostFix": "",
 			  "sInfoThousands": ",",
 			  "sSearch": "Filtrar registros",
 			  "sZeroRecords": "No hay registros que mostrar"
@@ -98,7 +100,7 @@ function details(folio, serie){
 	console.log(serie);console.log(folio);
 	$.ajax({
 		type: "GET",
-		url: "../../traspasos",
+		url: "traspasos",
 		data:"&folio="+folio+"&serie="+serie,
 		success: function(data){
 			drawDetails(data)

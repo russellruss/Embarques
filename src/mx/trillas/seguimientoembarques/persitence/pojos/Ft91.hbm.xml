@@ -171,8 +171,8 @@
         <property name="cutra" type="java.lang.Integer">
             <column name="CUTRA" />
         </property>
-        <property name="almao" type="java.lang.Integer">
-            <column name="ALMAO" />
+        <property name="almad" type="java.lang.Integer">
+            <column name="ALMAD" />
         </property>
         <property name="serped" type="string">
             <column name="SERPED" length="3" />

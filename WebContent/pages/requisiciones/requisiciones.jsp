@@ -53,7 +53,8 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>Origen-Destino</th>
+                                        	<th>Origen</th>
+                                        	<th>Destino</th>
                                         	<th>No. Requisici&oacute;n</th>
                                             <th>Fecha de Requisici&oacute;n</th>
                                             <th>No. Traspaso</th>
@@ -214,5 +215,9 @@
            
         </div>
     </div>
+
+    <!-- DataTables JavaScript -->
+    <script src="../../Components/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

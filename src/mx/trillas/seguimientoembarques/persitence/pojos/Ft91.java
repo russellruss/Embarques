@@ -67,7 +67,7 @@ public class Ft91  implements java.io.Serializable {
      private String ussae4;
      private Date fecenv;
      private Integer cutra;
-     private Integer almao;
+     private Integer almad;
      private String serped;
      private String numped;
      private Date fechr;
@@ -79,7 +79,7 @@ public class Ft91  implements java.io.Serializable {
     public Ft91(Ft91Id id) {
         this.id = id;
     }
-    public Ft91(Ft91Id id, String idsys, Integer cte, String razsoc, Date fecemi, Date horemi, Date fereal, Date horeal, String usreal, Date fesaal, Date hosall, String ussal, Date fereem, Date horeem, String usreem, Date fesaem, Date horsaem, String ussaem, Date fereeb, Date horeeb, String usreeb, Date fesaeb, Date hosaeb, String ussaeb, String pedido, Integer cvecon, Integer alma, String cve, String status, Integer folini, Integer folfin, Integer cvv, Integer tvta, Date fdoc, Date hdoc, String perrec, String ser, Integer folio, String carta, String guia, String placa, String nomrec, Date fesae2, Date hosa32, String ussae2, Date fesae3, Date hosae3, String ussae3, Date fesae4, Date hosae4, String ussae4, Date fecenv, Integer cutra, Integer almao, String serped, String numped, Date fechr) {
+    public Ft91(Ft91Id id, String idsys, Integer cte, String razsoc, Date fecemi, Date horemi, Date fereal, Date horeal, String usreal, Date fesaal, Date hosall, String ussal, Date fereem, Date horeem, String usreem, Date fesaem, Date horsaem, String ussaem, Date fereeb, Date horeeb, String usreeb, Date fesaeb, Date hosaeb, String ussaeb, String pedido, Integer cvecon, Integer alma, String cve, String status, Integer folini, Integer folfin, Integer cvv, Integer tvta, Date fdoc, Date hdoc, String perrec, String ser, Integer folio, String carta, String guia, String placa, String nomrec, Date fesae2, Date hosa32, String ussae2, Date fesae3, Date hosae3, String ussae3, Date fesae4, Date hosae4, String ussae4, Date fecenv, Integer cutra, Integer almad, String serped, String numped, Date fechr) {
        this.id = id;
        this.idsys = idsys;
        this.cte = cte;
@@ -133,7 +133,7 @@ public class Ft91  implements java.io.Serializable {
        this.ussae4 = ussae4;
        this.fecenv = fecenv;
        this.cutra = cutra;
-       this.almao = almao;
+       this.almad = almad;
        this.serped = serped;
        this.numped = numped;
        this.fechr = fechr;
@@ -510,12 +510,12 @@ public class Ft91  implements java.io.Serializable {
     public void setCutra(Integer cutra) {
         this.cutra = cutra;
     }
-    public Integer getAlmao() {
-        return this.almao;
+    public Integer getAlmad() {
+        return this.almad;
     }
     
-    public void setAlmao(Integer almao) {
-        this.almao = almao;
+    public void setAlmad(Integer almad) {
+        this.almad = almad;
     }
     public String getSerped() {
         return this.serped;

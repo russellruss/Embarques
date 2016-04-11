@@ -20,7 +20,7 @@ public class ft91Adapter implements JsonSerializer<Ft91> {
 		JsonObject jsonO = new JsonObject();
 		try {
 		
-			jsonO.addProperty("Traspaso", ftp91.getId().getSerie()+ftp91.getId().getNdoc());
+			jsonO.addProperty("Traspaso", String.format("%-3s", ftp91.getId().getSerie()) + String.format("%07d", ftp91.getId().getNdoc()));
 			jsonO.addProperty("FechaT", ftp91.getFecemi().toString());
 			jsonO.addProperty("Requisicion", ftp91.getPedido());
 //			jsonO.addProperty("FechaR", ftp91.get);
@@ -30,12 +30,12 @@ public class ft91Adapter implements JsonSerializer<Ft91> {
 			jsonO.addProperty("ser", ftp91.getSer());
 			jsonO.addProperty("folio", ftp91.getFolio());
 			
-			if(ftp91.getAlma()!=null)
-				jsonO.addProperty("almaceno",almacenDAO.getByClave(ftp91.getAlma()).getNombre());
+			if(ftp91.getAlmad()!=null)
+				jsonO.addProperty("almaceno",almacenDAO.getByClave(ftp91.getAlmad()).getNombre());
 			else
 				jsonO.addProperty("almaceno","");
-			if(ftp91.getAlmao()!=null)
-				jsonO.addProperty("almacend", almacenDAO.getByClave(ftp91.getAlmao()).getNombre());
+			if(ftp91.getAlma()!=null)
+				jsonO.addProperty("almacend", almacenDAO.getByClave(ftp91.getAlma()).getNombre());
 			else
 				jsonO.addProperty("almacend", "");
 			
@@ -43,7 +43,7 @@ public class ft91Adapter implements JsonSerializer<Ft91> {
 				jsonO.addProperty("Embarque", "-");
 				jsonO.addProperty("FechaE", "-");
 			}else{
-				jsonO.addProperty("Embarque", ftp91.getSer()+ftp91.getFolio());
+				jsonO.addProperty("Embarque", String.format("%-3s", ftp91.getSer()) + String.format("%07d", ftp91.getFolio()));
 				if(ftp91.getFesaal()==null){
 					jsonO.addProperty("FechaE", "-");
 				}else{

@@ -16,7 +16,7 @@
     <!-- Custom Fonts -->
     <link href="<%=request.getContextPath()%>/Components/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     
-    <link href="<%=request.getContextPath()%>/Components/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+<%--     <link href="<%=request.getContextPath()%>/Components/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"> --%>
     
      <!-- jQuery -->
     <script src="<%=request.getContextPath()%>/Components/bower_components/jquery/dist/jquery.min.js"></script>
@@ -37,5 +37,5 @@
 <!--     <script src="../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script> -->
 	
     <!-- Custom Theme JavaScript -->
-    <script src="<%=request.getContextPath()%>/Components/bower_components/sb-admin-2.js"></script>
+    <script src="<%=request.getContextPath()%>/Components/dist/js/sb-admin-2.js"></script>
 
