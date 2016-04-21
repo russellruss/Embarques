@@ -39,10 +39,16 @@ function drawTraspasos(data){
 		default:
 			tdStatus='<td>'+data[i].Status+'</td>'
 			break;
-		}	
+		}
+		var oc = "";
+		if(data[i].Status == "Enviado"){
+			oc = 'onclick="details('+data[i].folio+',\''+data[i].ser+'\')"';
+		}else{
+			oc = "";
+		}
 		var classtype = types[flagType];
 		flagType = flagType == 1 ? 0 : 1;
-		tbodyTras += '<tr class="'+classtype+' gradeA" onclick="details('+data[i].folio+',\''+data[i].ser+'\')" style="cursor:pointer">'+
+		tbodyTras += '<tr class="'+classtype+' gradeA" ' + oc + ' style="cursor:pointer">'+
 		'<td>'+data[i].almaceno+'</td>'+
 		'<td>'+data[i].almacend+'</td>'+
 		'<td>'+data[i].Traspaso+'</td>'+
@@ -74,7 +80,7 @@ function tableIni(){
 	    	        "sSortDescending": " - click/return para orden descendiente"
 	    	  },
 	    	 "oPaginate": {
-	          "sNext": "Pr&oacute;ximo",
+	          "sNext": "Siguiente",
 	          "sFirst": "Primero",
 	          "sLast": "&Uacute;ltimo",  
 	          "sPrevious": "Previo",

@@ -7,7 +7,35 @@
 <head>
 <title>Requisiciones</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@include file="../../Headers/headerIncludesRoot.jsp" %>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../Components/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../Components/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../../Components/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../Components/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../Components/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- jQuery -->
+    <script src="../../Components/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 <script type="text/javascript" src="requisiciones.js"></script>
  <link href="requisiciones.css" rel="stylesheet">
 </head>
@@ -216,8 +244,17 @@
         </div>
     </div>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../Components/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../Components/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
     <!-- DataTables JavaScript -->
     <script src="../../Components/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../../Components/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../Components/dist/js/sb-admin-2.js"></script>
 </body>
 </html>

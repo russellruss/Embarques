@@ -8,6 +8,8 @@ function forwardHistory() {
 } 
   
 function login() {
+	$("#usuario").val($("#usuario").val().toUpperCase());
+	$("#password").val($("#password").val().toUpperCase());
 	$.ajax({
 		type : "POST",
 		url : "../../login",

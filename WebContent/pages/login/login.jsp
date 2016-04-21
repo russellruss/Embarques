@@ -80,10 +80,10 @@
                         <form role="form" id="loginform">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Usuario" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="Usuario" id="usuario" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" id="password" name="password" type="password" value="">
                                 </div>
 <!--                                 <a href="#" class="btn btn-lg btn-success btn-block" onclick="login();">Login</a> -->
                                 <button id="btnLoginForm"type="button" href="#" class="btn btn-lg btn-success btn-block" onclick="login();">Login</button>
