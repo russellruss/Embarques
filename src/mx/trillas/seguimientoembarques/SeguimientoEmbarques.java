@@ -31,8 +31,7 @@ public  class SeguimientoEmbarques {
 	private int[] arregloPosiciones;
 
 	public SeguimientoEmbarques() {
-		//parseFT91();
-
+		
 	}
 
 private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, Object ftId){
