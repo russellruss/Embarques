@@ -5,6 +5,7 @@
 
 <html>
 <head>
+	<link rel="shortcut icon" href="../../img/Clipboard-icon.png" />
 <title>Requisiciones</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 

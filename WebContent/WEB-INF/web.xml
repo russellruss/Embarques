@@ -11,7 +11,6 @@
 	<session-config>
 		<session-timeout>500</session-timeout>
 	</session-config>
-
 	<context-param>
 		<param-name>tempfile.dir</param-name>
 		<param-value>temporal</param-value>
