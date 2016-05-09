@@ -73,7 +73,8 @@ public class Login extends HttpServlet {
 		JSONObject obj = new JSONObject();
 		Usuario user = null;
 		try {
-			user = userDAO.getUser(request.getParameter("email"),request.getParameter("password"));
+			user = userDAO.getUser(request.getParameter("email"),
+					request.getParameter("password"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,7 +91,9 @@ public class Login extends HttpServlet {
 			List<Almacen> almacenes;
 			try {
 				if (user.getTipousuario().equals(
-						tipousuarioDAO.getTipousuarioAdministrador())) {
+						tipousuarioDAO.getTipousuarioAdministrador())
+						|| user.getTipousuario().equals(
+								tipousuarioDAO.getTipousuarioConultor())) {
 					almacenes = almacenDAO.getAlmacenes();
 				} else {
 					almacenes = almacenDAO.getAlmacenesOfUser(user);
