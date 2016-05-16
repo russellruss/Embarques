@@ -42,7 +42,7 @@ function drawTraspasos(data){
 		}
 		var oc = "";
 		if(data[i].Status == "Enviado"){
-			oc = 'onclick="details('+data[i].folio+',\''+data[i].ser+'\')"';
+			oc = 'onclick="details('+data[i].f+',\''+data[i].s+'\')"';
 		}else{
 			oc = "";
 		}
@@ -103,10 +103,9 @@ function tableIni(){
 }
 
 function details(folio, serie){
-	console.log(serie);console.log(folio);
 	$.ajax({
 		type: "GET",
-		url: "traspasos",
+		url: "../traspasos/TraspasosServlet",
 		data:"&folio="+folio+"&serie="+serie,
 		success: function(data){
 			drawDetails(data)
