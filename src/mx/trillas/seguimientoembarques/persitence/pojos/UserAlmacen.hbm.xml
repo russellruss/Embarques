@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/05/2016 10:04:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen" table="userAlmacen" catalog="Embarques" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="almacen" class="mx.trillas.seguimientoembarques.persitence.pojos.Almacen" fetch="select">
+            <column name="f_almacen" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="mx.trillas.seguimientoembarques.persitence.pojos.Usuario" fetch="select">
+            <column name="f_usuario" length="8" not-null="true" />
+        </many-to-one>
+        <property name="modificacion" type="timestamp">
+            <column name="modificacion" length="19" />
+        </property>
+        <property name="creacion" type="timestamp">
+            <column name="creacion" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

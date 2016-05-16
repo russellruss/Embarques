@@ -219,9 +219,12 @@ public class UploadFileServlet extends HttpServlet {
 								+ "]   no tiene almacenes relacionados ");
 					} else {
 						for (Almacen almacen : listaDeAlmacenes) {
-							Usuario usuarioAsesor = new Usuario(
-									asesor.getUsername(),
-									asesor.getTipousuario());
+							Usuario usuarioAsesor = new Usuario();
+							usuarioAsesor.setUsername(asesor.getUsername());
+							usuarioAsesor.setTipousuario(asesor.getTipousuario());
+//							Usuario usuarioAsesor = new Usuario(
+//									asesor.getUsername(),
+//									asesor.getTipousuario());
 							usuarioAsesor.setPassword(asesor.getPasswd());
 							log.info("Asesor  username[" + asesor.getUsername()
 									+ "]    ::   Almacen"

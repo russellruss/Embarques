@@ -1,7 +1,7 @@
 function getTraspasos(){
 	$.ajax({
 		type: "POST",
-		url: "traspasos",
+		url: "TraspasosServlet",
 		success: function(data){
 			drawTraspasos(data);
 //			console.debug(data)
@@ -49,14 +49,14 @@ function drawTraspasos(data){
 		var classtype = types[flagType];
 		flagType = flagType == 1 ? 0 : 1;
 		tbodyTras += '<tr class="'+classtype+' gradeA" ' + oc + ' style="cursor:pointer">'+
-		'<td>'+data[i].almaceno+'</td>'+
-		'<td>'+data[i].almacend+'</td>'+
+		'<td>'+data[i].AlmacenOrigen+'</td>'+
+		'<td>'+data[i].AlmacenDestino+'</td>'+
 		'<td>'+data[i].Traspaso+'</td>'+
-  			'<td>'+data[i].FechaT+'</td>'+
+  			'<td>'+data[i].FechaTraspaso+'</td>'+
 			'<td>'+data[i].Requisicion+'</td>'+
-			'<td>'+data[i].FechaT+'</td>'+//aquí va la fecha de de la requisicion no traspaso 
+			'<td>'+data[i].FechaRequisicion+'</td>'+//aquí va la fecha de de la requisicion no traspaso 
   			'<td>'+data[i].Embarque+'</td>'+
-  			'<td>'+data[i].FechaE+'</td>'+
+  			'<td>'+data[i].FechaEmbarque+'</td>'+
   			tdStatus+
   			'</tr>'
 			

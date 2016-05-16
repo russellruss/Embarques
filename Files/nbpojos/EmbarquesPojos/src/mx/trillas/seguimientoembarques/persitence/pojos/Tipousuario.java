@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 16/05/2016 10:04:39 AM by Hibernate Tools 4.3.1
+// Generated 16/05/2016 12:09:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -41,13 +41,6 @@ public class Tipousuario  implements java.io.Serializable {
         this.usuarios = usuarios;
     }
 
-
-	public boolean equals(Object obj) {
-		if(obj==null)return false;
-		if(!(obj instanceof Tipousuario))return false;
-		Tipousuario tipousuario = (Tipousuario)obj;
-		return this.tipo.equals(tipousuario.getTipo());
-	}
 
 
 

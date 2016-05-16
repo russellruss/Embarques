@@ -11,49 +11,60 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-public class ft91Adapter implements JsonSerializer<Ft91> {
+public class ft91Adapter implements JsonSerializer<Ft91> {	
+	private AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
 
 	@Override
-	public JsonElement serialize(Ft91 ftp91, Type arg1,
+	public JsonElement serialize(Ft91 ft91, Type arg1,
 			JsonSerializationContext jsc) {
-		AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
 		JsonObject jsonO = new JsonObject();
 		try {
 		
-			jsonO.addProperty("Traspaso", String.format("%-3s", ftp91.getId().getSerie()) + String.format("%07d", ftp91.getId().getNdoc()));
-			jsonO.addProperty("FechaT", ftp91.getFecemi().toString());
-			jsonO.addProperty("Requisicion", ftp91.getPedido());
-//			jsonO.addProperty("FechaR", ftp91.get);
-			jsonO.addProperty("TipoDoc", ftp91.getId().getTdoc());
-			jsonO.addProperty("NDoc", ftp91.getId().getNdoc());
-			jsonO.addProperty("Serie", ftp91.getId().getSerie());
-			jsonO.addProperty("ser", ftp91.getSer());
-			jsonO.addProperty("folio", ftp91.getFolio());
+			if (ft91.getFoltra() == null || ft91.getFoltra().intValue() == 0) {
+				jsonO.addProperty(
+						"Traspaso",
+						String.format("%-3s", ft91.getId().getSerie())
+								+ String.format("%07d", ft91.getId().getNdoc()));
+			} else {
+				String traspaso = "";
+				traspaso += ft91.getSertra() == null ? "   " : String.format(
+						"%-3s", ft91.getSertra());
+				traspaso += String.format("%07d", ft91.getFoltra());
+				jsonO.addProperty("Traspaso", traspaso);
+			}
+			jsonO.addProperty("NoTraspasoCasaOrigen", String.format("%-3s", ft91.getSertra()) + String.format("%07d", ft91.getFoltra()));
+			jsonO.addProperty("FechaTraspaso", ft91.getFecemi().toString());
+			String requisicion = "";
+			requisicion += ft91.getSerped() == null ? "   " : String.format(
+					"%-3s", ft91.getSerped());
+			requisicion += String.format("%07d", ft91.getNumped());
+			jsonO.addProperty("Requisicion", requisicion);
+			jsonO.addProperty("FechaRequisicion", ft91.getFecped().toString());
 			
-			if(ftp91.getAlmad()!=null)
-				jsonO.addProperty("almaceno",almacenDAO.getByClave(ftp91.getAlmad()).getNombre());
+			if(ft91.getAlmad()!=null)
+				jsonO.addProperty("AlmacenOrigen", almacenDAO.getByClave(ft91.getAlmad()).getNombre());
 			else
-				jsonO.addProperty("almaceno","");
-			if(ftp91.getAlma()!=null)
-				jsonO.addProperty("almacend", almacenDAO.getByClave(ftp91.getAlma()).getNombre());
+				jsonO.addProperty("AlmacenOrigen", "");
+			if(ft91.getAlma()!=null)
+				jsonO.addProperty("AlmacenDestino", almacenDAO.getByClave(ft91.getAlma()).getNombre());
 			else
-				jsonO.addProperty("almacend", "");
+				jsonO.addProperty("AlmacenDestino", "");
 			
-			if(ftp91.getSer()==null){
+			if(ft91.getSer()==null){
 				jsonO.addProperty("Embarque", "-");
-				jsonO.addProperty("FechaE", "-");
+				jsonO.addProperty("FechaEmbarque", "-");
 			}else{
-				jsonO.addProperty("Embarque", String.format("%-3s", ftp91.getSer()) + String.format("%07d", ftp91.getFolio()));
-				if(ftp91.getFesaal()==null){
-					jsonO.addProperty("FechaE", "-");
+				jsonO.addProperty("Embarque", String.format("%-3s", ft91.getSer()) + String.format("%07d", ft91.getFolio()));
+				if(ft91.getFesaal()==null){
+					jsonO.addProperty("FechaEmbarque", "-");
 				}else{
-					jsonO.addProperty("FechaE", ftp91.getFesaal().toString());
+					jsonO.addProperty("FechaEmbarque", ft91.getFesaal().toString());
 				}
 			}
-			if(ftp91.getStatus()==null)
+			if(ft91.getStatus()==null)
 				jsonO.addProperty("Status", "Activo");
 			else{
-				switch (ftp91.getStatus()) {
+				switch (ft91.getStatus()) {
 				case "S":
 					jsonO.addProperty("Status", "Surtido");
 					break;
