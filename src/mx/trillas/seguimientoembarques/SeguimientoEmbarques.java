@@ -46,10 +46,10 @@ public class SeguimientoEmbarques {
 
 				String getter = "get" + key.substring(0, 1).toUpperCase()
 						+ key.substring(1, key.length()).toLowerCase();
-				
-//				if(getter.equals("getNdoc")){
-//					System.out.println();
-//				}
+
+				// if(getter.equals("getNdoc")){
+				// System.out.println();
+				// }
 
 				Method getterMethod;
 				Class<?> returntype;
@@ -197,12 +197,7 @@ public class SeguimientoEmbarques {
 		if (valueObj != null && returnType.equals("java.lang.Integer")) {
 			String str = (String) valueObj;
 			if (!str.equals("")) {
-				Integer valueInt = new Integer(str);
-				if (valueInt.intValue() == new Integer(0).intValue()) {
-					value = null;
-				} else {
-					value = new Integer((String) valueObj);
-				}
+				value = new Integer((String) valueObj);
 			} else {
 				value = null;
 			}

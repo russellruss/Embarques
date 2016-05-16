@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 
 import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
 import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft91;
 
 import com.google.gson.JsonElement;
@@ -41,12 +42,22 @@ public class ft91Adapter implements JsonSerializer<Ft91> {
 			jsonO.addProperty("Requisicion", requisicion);
 			jsonO.addProperty("FechaRequisicion", ft91.getFecped().toString());
 			
-			if(ft91.getAlmad()!=null)
-				jsonO.addProperty("AlmacenOrigen", almacenDAO.getByClave(ft91.getAlmad()).getNombre());
+			if (ft91.getAlmad() != null) {
+				Almacen almacen = almacenDAO.getByClave(ft91.getAlmad());
+				String almacens = almacen == null ? null : almacen.getNombre();
+				almacens = almacens == null ? ft91.getAlmad() + "" : almacens;
+				jsonO.addProperty("AlmacenOrigen", almacens);
+			}
 			else
 				jsonO.addProperty("AlmacenOrigen", "");
-			if(ft91.getAlma()!=null)
-				jsonO.addProperty("AlmacenDestino", almacenDAO.getByClave(ft91.getAlma()).getNombre());
+			if (ft91.getAlma() != null) {
+				Almacen almacen = almacenDAO.getByClave(ft91.getAlma());
+				if(almacen==null)
+					System.out.println();
+				String almacens = almacen == null ? null : almacen.getNombre();
+				almacens = almacens == null ? ft91.getAlma() + "" : almacens;
+				jsonO.addProperty("AlmacenDestino", almacens);
+			}
 			else
 				jsonO.addProperty("AlmacenDestino", "");
 			
