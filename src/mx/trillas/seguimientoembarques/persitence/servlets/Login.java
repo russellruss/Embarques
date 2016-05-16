@@ -90,6 +90,7 @@ public class Login extends HttpServlet {
 			}
 			List<Almacen> almacenes;
 			try {
+//				System.out.println(user.getTipousuario().getTipo());
 				if (user.getTipousuario().equals(
 						tipousuarioDAO.getTipousuarioAdministrador())
 						|| user.getTipousuario().equals(

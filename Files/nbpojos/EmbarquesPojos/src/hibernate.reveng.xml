@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="Embarques"/>
+  <table-filter match-name="ft96"/>
+  <table-filter match-name="generales"/>
+  <table-filter match-name="almacen"/>
+  <table-filter match-name="tipousuario"/>
+  <table-filter match-name="ft91"/>
+  <table-filter match-name="userAlmacen"/>
+  <table-filter match-name="usuario"/>
+</hibernate-reverse-engineering>

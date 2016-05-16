@@ -553,18 +553,7 @@ public class Ft91  implements java.io.Serializable {
         this.foltra = foltra;
     }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null)
-			return false;
-		if (!(obj instanceof Ft91))
-			return false;
-		Ft91 ft91 = (Ft91) obj;
-		Ft91Id otherId = ft91.getId();
-		if (otherId == null)
-			return false;
-		return this.id.equals(otherId);
-	}
+
 
 
 }

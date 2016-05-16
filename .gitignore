@@ -65,3 +65,4 @@ local.properties
 .recommenders/
 
 application.log
+/Files/nbpojos/EmbarquesPojos/nbproject/private/

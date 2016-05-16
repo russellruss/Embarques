@@ -24,18 +24,19 @@ import mx.trillas.seguimientoembarques.util.ParseFile;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public  class SeguimientoEmbarques {
+public class SeguimientoEmbarques {
 	private static SimpleDateFormat SDFDATE = new SimpleDateFormat("yyyyMMdd");
 	private static SimpleDateFormat SDFHOUR = new SimpleDateFormat("HHmmss");
 	private String[] arregloClaves;
 	private int[] arregloPosiciones;
 
 	public SeguimientoEmbarques() {
-		
+
 	}
 
-private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, Object ftId){
-		
+	private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera,
+			Object ft, Object ftId) {
+
 		for (Object keyObj : keyset) {
 			if (keyObj != null && keyObj instanceof String) {
 				String key = (String) keyObj;
@@ -45,32 +46,36 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 
 				String getter = "get" + key.substring(0, 1).toUpperCase()
 						+ key.substring(1, key.length()).toLowerCase();
+				
+//				if(getter.equals("getNdoc")){
+//					System.out.println();
+//				}
 
 				Method getterMethod;
 				Class<?> returntype;
 
 				try {
-					if(bandera =="FT91_MAP.properties"){
+					if (bandera == "FT91_MAP.properties") {
 						getterMethod = Ft91.class.getMethod(getter);
 						returntype = getterMethod.getReturnType();
 						returnType = returntype.getName();
-					}else{
+					} else {
 						getterMethod = Ft96.class.getMethod(getter);
 						returntype = getterMethod.getReturnType();
 						returnType = returntype.getName();
 					}
 				} catch (NoSuchMethodException e) {
 					try {
-						if(bandera =="FT91_MAP.properties"){
+						if (bandera == "FT91_MAP.properties") {
 							getterMethod = Ft91Id.class.getMethod(getter);
 							returntype = getterMethod.getReturnType();
 							returnType = returntype.getName();
-						}else{
+						} else {
 							getterMethod = Ft96Id.class.getMethod(getter);
 							returntype = getterMethod.getReturnType();
 							returnType = returntype.getName();
 						}
-						
+
 					} catch (NoSuchMethodException | SecurityException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -82,32 +87,29 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 				seter(ft, ftId, key, valueObj, returnType);
 			}
 		}
-		
+
 	}
-	
-	public void parseFT96(Path path,String bandera) {
-		
+
+	public void parseFT96(Path path, String bandera) {
+
 		loadArreglos(bandera);
 		String encodeCP850 = "CP850";
 
 		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850,
-				arregloClaves, arregloPosiciones);		
+				arregloClaves, arregloPosiciones);
 
 		List<Ft96> listFt96 = new ArrayList<>();
-		
+
 		for (Map<?, ?> map : fileContent) {
 			Set<?> keyset = map.keySet();
-				
-				Ft96 ft96 = new Ft96();
-				Ft96Id ftId96 = new Ft96Id();
-				
-				mapSeter(keyset, map, bandera, ft96, ftId96);	
 
-			if (ftId96.getFolio() == null && ftId96.getSer() == null) {
-			} else {
-				ft96.setId(ftId96);
-				listFt96.add(ft96);
-			}
+			Ft96 ft96 = new Ft96();
+			Ft96Id ftId96 = new Ft96Id();
+
+			mapSeter(keyset, map, bandera, ft96, ftId96);
+
+			ft96.setId(ftId96);
+			listFt96.add(ft96);
 		}
 		Session session = null;
 		Transaction transaction = null;
@@ -130,33 +132,29 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 	}
 
 	public void parseFT91(Path path, String bandera) {
-		
-		
+
 		loadArreglos(bandera);
 		String encodeCP850 = "CP850";
-		
+
 		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850,
 				arregloClaves, arregloPosiciones);
-		
+
 		List<Ft91> listFt91 = new ArrayList<>();
 		for (Map<?, ?> map : fileContent) {
-			
 			Set<?> keyset = map.keySet();
 			Ft91 ft91 = new Ft91();
 			Ft91Id ft91Id = new Ft91Id();
-			
+
 			mapSeter(keyset, map, bandera, ft91, ft91Id);
-			if (ft91Id.getNdoc() == null && ft91Id.getSerie() == null
-					&& ft91Id.getTdoc() == null) {
-				
-			} else {
-				ft91.setId(ft91Id);
+			ft91.setId(ft91Id);
+			if (!listFt91.contains(ft91))
 				listFt91.add(ft91);
-			}
+			else
+				System.out.println("contenido");
 		}
+
 		Session session = null;
 		Transaction transaction = null;
-
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.getTransaction();
@@ -178,7 +176,7 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 	private void seter(Object objectOfClass, Object objectOfKey, String key,
 			Object valueObj, String returnType) {
 		Object value = null;
-		
+
 		if (valueObj != null && returnType.equals("java.lang.Double")) {
 			String str = (String) valueObj;
 			if (!str.equals("")) {
@@ -186,15 +184,16 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 				if (valueDou.doubleValue() == new Double(0).doubleValue()) {
 					value = null;
 				} else {
-					str= new StringBuilder(str).insert(str.length()-2, ".").toString();
+					str = new StringBuilder(str).insert(str.length() - 2, ".")
+							.toString();
 					Double number = Double.parseDouble(str);
-					value = number ;
+					value = number;
 				}
 			} else {
 				value = null;
 			}
 		}
-		
+
 		if (valueObj != null && returnType.equals("java.lang.Integer")) {
 			String str = (String) valueObj;
 			if (!str.equals("")) {
@@ -209,7 +208,21 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 			}
 		}
 
-		if (valueObj != null && returnType.equals("java.lang.String")) {			
+		if (valueObj != null && returnType.equals("int")) {
+			String str = (String) valueObj;
+			if (!str.equals("")) {
+				Integer valueInt = new Integer(str);
+				if (valueInt.intValue() == new Integer(0).intValue()) {
+					value = null;
+				} else {
+					value = new Integer((String) valueObj);
+				}
+			} else {
+				value = null;
+			}
+		}
+
+		if (valueObj != null && returnType.equals("java.lang.String")) {
 			String valueStr = (String) valueObj;
 			valueStr = valueStr.trim();
 			if (valueStr.equals("")) {
@@ -221,14 +234,14 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 
 		if (valueObj != null && returnType.equals("java.util.Date")) {
 			String valueStr = (String) valueObj;
-			
+
 			if (valueStr != null && valueStr.equals("00000000")) {
 				valueStr = null;
 			}
 			if (valueStr != null && valueStr.equals("000000")) {
 				valueStr = null;
 			}
-			
+
 			if (valueStr != null && valueStr.length() == 8) {
 				try {
 					value = SDFDATE.parseObject(valueStr);
@@ -254,9 +267,6 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 		String setter = "set" + key.substring(0, 1).toUpperCase()
 				+ key.substring(1, key.length()).toLowerCase();
 		Method method;
-//		if (setter.equals("setNdoc") || setter.equals("setSerie")
-//				|| setter.equals("setTdoc")) {
-//		}
 		try {
 			method = objectOfClass.getClass().getMethod(setter,
 					value.getClass());
@@ -285,7 +295,8 @@ private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, O
 		InputStream is = null;
 		List<String> lines = new ArrayList<>();
 		try {
-			is = Thread.currentThread().getContextClassLoader().getResourceAsStream(bandera);
+			is = Thread.currentThread().getContextClassLoader()
+					.getResourceAsStream(bandera);
 			isr = new InputStreamReader(is, "UTF8");
 			br = new BufferedReader(isr);
 
