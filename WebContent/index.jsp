@@ -1,5 +1,5 @@
-<%
-    String redirectURL = "pages/requisiciones/requisiciones.jsp";
-    response.sendRedirect(redirectURL);
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <script>
+    	window.location.href = "/Embarques/pages/requisiciones/requisiciones.jsp";
+    </script>
