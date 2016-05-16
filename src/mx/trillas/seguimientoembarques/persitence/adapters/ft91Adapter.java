@@ -52,8 +52,6 @@ public class ft91Adapter implements JsonSerializer<Ft91> {
 				jsonO.addProperty("AlmacenOrigen", "");
 			if (ft91.getAlma() != null) {
 				Almacen almacen = almacenDAO.getByClave(ft91.getAlma());
-				if(almacen==null)
-					System.out.println();
 				String almacens = almacen == null ? null : almacen.getNombre();
 				almacens = almacens == null ? ft91.getAlma() + "" : almacens;
 				jsonO.addProperty("AlmacenDestino", almacens);
