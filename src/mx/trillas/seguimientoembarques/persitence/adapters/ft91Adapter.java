@@ -21,8 +21,8 @@ public class ft91Adapter implements JsonSerializer<Ft91> {
 		JsonObject jsonO = new JsonObject();
 		try {
 			
-			jsonO.addProperty("s", ft91.getId().getSerie());
-			jsonO.addProperty("f", ft91.getId().getNdoc());
+			jsonO.addProperty("s", ft91.getSer());
+			jsonO.addProperty("f", ft91.getFolio());
 		
 			if (ft91.getFoltra() == null || ft91.getFoltra().intValue() == 0) {
 				jsonO.addProperty(
