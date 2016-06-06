@@ -74,7 +74,7 @@ function tableIni(){
 	$('#dataTables-example').DataTable({
 	    responsive: true,
 	    paging: true,
-	    "order": [[ 3, "asc" ]],
+	    "order": [[ 3, "desc" ]],
 	    "oLanguage": {
 	    	 "oAria": {
 	    		 	"sSortAscending": " - click/return para orden ascendiente",
