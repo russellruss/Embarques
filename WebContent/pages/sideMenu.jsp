@@ -11,9 +11,10 @@
     String tipo = "";
     
     Tipousuario tipoUsuarioSession = null;
-    
+
+	Usuario usuario = null;
     if(userObj!=null && userObj instanceof Usuario){
-    	Usuario usuario = (Usuario)userObj;
+    	usuario = (Usuario)userObj;;
     	tipoUsuarioSession = usuario.getTipousuario();
     }
     
@@ -30,21 +31,23 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
+            <li><i class="fa fa-user fa-fw"></i><%=usuario.getName()%> (<%=usuario.getUsername()%>)</li>
+            <li><a href="<%=request.getContextPath()%>/pages/login/LoginServlet"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+<!--                 <li class="dropdown"> -->
+<!--                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> -->
+<!--                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i> -->
+<!--                     </a> -->
+<!--                     <ul class="dropdown-menu dropdown-user"> -->
                         <!-- <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li> -->
-                        <li><a href="../../login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
+<%--                         <li><a href="<%=request.getContextPath()%>/pages/login/LoginServlet"><i class="fa fa-sign-out fa-fw"></i> Logout</a> --%>
+<!--                         </li> -->
+<!--                     </ul> -->
                     <!-- /.dropdown-user -->
-                </li>
+<!--                 </li> -->
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->

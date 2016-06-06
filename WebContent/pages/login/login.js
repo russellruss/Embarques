@@ -12,7 +12,7 @@ function login() {
 	$("#password").val($("#password").val().toUpperCase());
 	$.ajax({
 		type : "POST",
-		url : "../../login",
+		url : "LoginServlet",
 		data : $('#loginform').serialize(),
 		success : function(data) {
 			if (data.status == "ok") {

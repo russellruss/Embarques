@@ -1,6 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="mx.trillas.seguimientoembarques.persitence.pojos.Almacen"%>
+<%@page import="mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario"%>
+<%@page import="mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO"%>
+<%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	Object usuarioObj = session.getAttribute("user");
+	if (usuarioObj != null && usuarioObj instanceof Usuario) {
+		TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
+		Usuario usuario = (Usuario) usuarioObj;
+		Tipousuario tipoUsuario = usuario.getTipousuario();
+		if (tipoUsuario.equals(tipousuarioDAO.getTipousuarioAsesor())) {
+			Object almacenesObj = request.getSession().getAttribute(
+					"almacenes");
+
+			if (almacenesObj != null && almacenesObj instanceof List<?>) {
+				List<?> almacenesListObjs = (List<?>) almacenesObj;
+				if (almacenesListObjs.size() > 1) {
+					String redirectURL = "../login/choseCasaModal.jsp";
+					response.sendRedirect(redirectURL);
+					return;
+				}
+			}
+
+		}
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
