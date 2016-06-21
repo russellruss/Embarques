@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="hssys"/>
+  <table-filter match-name="ubicacionEquipoUsuario"/>
+  <table-filter match-name="estatusHardware"/>
+  <table-filter match-name="comprahardware"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="factura"/>
+  <table-filter match-name="softwareinstalado"/>
+  <table-filter match-name="proveedor"/>
+  <table-filter match-name="ubicacion"/>
+  <table-filter match-name="bitacoraUbicacionEquipoUsuario"/>
+  <table-filter match-name="idioma"/>
+  <table-filter match-name="razonBajaHW"/>
+  <table-filter match-name="estatusUsuario"/>
+  <table-filter match-name="fabricante"/>
+  <table-filter match-name="tipoubicacion"/>
+  <table-filter match-name="comprasoftware"/>
+  <table-filter match-name="computadora"/>
+  <table-filter match-name="moneda"/>
+  <table-filter match-name="departamento"/>
+  <table-filter match-name="estatusSoftware"/>
+  <table-filter match-name="tipohardware"/>
+  <table-filter match-name="almacenamiento"/>
+  <table-filter match-name="localizacion"/>
+  <table-filter match-name="memoriaram"/>
+  <table-filter match-name="hardware"/>
+  <table-filter match-name="software"/>
+  <table-filter match-name="tipoproveedor"/>
+  <table-filter match-name="marca"/>
+  <table-filter match-name="medioInstalacion"/>
+  <table-filter match-name="plataforma"/>
+</hibernate-reverse-engineering>
