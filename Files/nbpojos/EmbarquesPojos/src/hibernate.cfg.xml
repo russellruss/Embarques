@@ -11,6 +11,7 @@
     <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/Ft91.hbm.xml"/>
     <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/Tipousuario.hbm.xml"/>
     <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/UserAlmacen.hbm.xml"/>
+    <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/Ft97.hbm.xml"/>
     <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/Almacen.hbm.xml"/>
     <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/Ft96.hbm.xml"/>
     <mapping resource="mx/trillas/seguimientoembarques/persitence/pojos/Usuario.hbm.xml"/>

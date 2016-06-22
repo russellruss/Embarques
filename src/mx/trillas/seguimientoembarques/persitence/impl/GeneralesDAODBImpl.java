@@ -12,7 +12,7 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
 public class GeneralesDAODBImpl implements GeneralesDAO {
 
 	@Override
-	public Generales getByKeyaction(Generales.keyactions keyaction) throws Exception {
+	public Generales getByKeyaction(GeneralesDAO.keyactions keyaction) throws Exception {
 		Generales generales = null;
 		Session session = null;
 		try {
@@ -33,7 +33,7 @@ public class GeneralesDAODBImpl implements GeneralesDAO {
 	}
 
 	@Override
-	public void setData(Generales.keyactions keyaction, String data) throws Exception {
+	public void setData(GeneralesDAO.keyactions keyaction, String data) throws Exception {
 		Generales generales = getByKeyaction(keyaction);
 		if (generales == null) {
 			generales = new Generales();

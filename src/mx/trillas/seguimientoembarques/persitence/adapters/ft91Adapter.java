@@ -2,18 +2,18 @@ package mx.trillas.seguimientoembarques.persitence.adapters;
 
 import java.lang.reflect.Type;
 
-import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
-import mx.trillas.seguimientoembarques.persitence.pojos.Ft91;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
+import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
+import mx.trillas.seguimientoembarques.persitence.pojos.Ft91;
+
 public class ft91Adapter implements JsonSerializer<Ft91> {	
-	private AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
+	private AlmacenDAO almacenDAO = ImplFactory.getAlmacenDAOImpl();
 
 	@Override
 	public JsonElement serialize(Ft91 ft91, Type arg1,

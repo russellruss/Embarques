@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,26 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mx.trillas.seguimientoembarques.persitence.adapters.AlmacenAdapter;
-import mx.trillas.seguimientoembarques.persitence.adapters.UsuarioAdapter;
-import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
-import mx.trillas.seguimientoembarques.persitence.dao.Ft96DAO;
-import mx.trillas.seguimientoembarques.persitence.dao.GeneralesDAO;
-import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
-import mx.trillas.seguimientoembarques.persitence.dao.UserAlmacenDAO;
-import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.Ft96DAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.GeneralesDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
-import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
-import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
-import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-import mx.trillas.seguimientoembarques.util.Cripto;
-
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,18 +22,33 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import mx.trillas.seguimientoembarques.persitence.adapters.AlmacenAdapter;
+import mx.trillas.seguimientoembarques.persitence.adapters.UsuarioAdapter;
+import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.Ft96DAO;
+import mx.trillas.seguimientoembarques.persitence.dao.GeneralesDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.UserAlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
+import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
+import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
+import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
+import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
+import mx.trillas.seguimientoembarques.util.Cripto;
+
 /**
  * Servlet implementation class UserAdmin
  */
 @WebServlet("/UserAdmin")
 public class UserAdmin extends HttpServlet {
 	private static Logger logger = Logger.getLogger(UserAdmin.class.getName());
-	private static UserDAO userDAO = new UserDAODBImpl();
-	private static AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
-	private static TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
-	private static UserAlmacenDAO userAlmacenDAO = new UserAlmacenDAODBImpl();
-	private static GeneralesDAO generalesDAO = new GeneralesDAODBImpl();
-	private static Ft96DAO ft96DAO = new Ft96DAODBImpl();
+	private static UserDAO userDAO = ImplFactory.getUserDAODBImplImpl();
+	private static AlmacenDAO almacenDAO = ImplFactory.getAlmacenDAOImpl();
+	private static TipousuarioDAO tipousuarioDAO = ImplFactory.getTipousuarioDAODBImplImpl();
+	private static UserAlmacenDAO userAlmacenDAO = ImplFactory.getUserAlmacenDAODBImplImpl();
+	private static GeneralesDAO generalesDAO = ImplFactory.getGeneralesDAODBImplImpl();
+	private static Ft96DAO ft96DAO = ImplFactory.getFt96DAODBImplImpl();
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -292,7 +287,7 @@ public class UserAdmin extends HttpServlet {
 			Generales generales;
 			try {
 				generales = generalesDAO
-						.getByKeyaction(Generales.keyactions.ULTIMAACTUALIZACIONDB);
+						.getByKeyaction(GeneralesDAO.keyactions.ULTIMAACTUALIZACIONDB);
 				Gson gson = new Gson();
 				String salida = gson.toJson(generales);
 

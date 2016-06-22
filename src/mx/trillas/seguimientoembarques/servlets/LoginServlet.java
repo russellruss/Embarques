@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Servlet implementation class login
@@ -28,9 +26,9 @@ import org.json.JSONObject;
 @WebServlet("/pages/login/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static UserDAO userDAO = new UserDAODBImpl();
-	private static AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
-	private static TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
+	private static UserDAO userDAO = ImplFactory.getUserDAODBImplImpl();
+	private static AlmacenDAO almacenDAO = ImplFactory.getAlmacenDAOImpl();
+	private static TipousuarioDAO tipousuarioDAO = ImplFactory.getTipousuarioDAODBImplImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()

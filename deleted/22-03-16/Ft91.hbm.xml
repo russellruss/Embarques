@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/05/2016 12:09:04 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.trillas.seguimientoembarques.persitence.pojos.Ft91" table="ft91" catalog="Embarques" optimistic-lock="version">
+        <composite-id name="id" class="mx.trillas.seguimientoembarques.persitence.pojos.Ft91Id">
+            <key-property name="ndoc" type="int">
+                <column name="NDOC" />
+            </key-property>
+            <key-property name="serie" type="string">
+                <column name="SERIE" length="3" />
+            </key-property>
+            <key-property name="tdoc" type="int">
+                <column name="TDOC" />
+            </key-property>
+        </composite-id>
+        <property name="idsys" type="string">
+            <column name="IDSYS" length="1" />
+        </property>
+        <property name="cte" type="java.lang.Integer">
+            <column name="CTE" />
+        </property>
+        <property name="razsoc" type="string">
+            <column name="RAZSOC" length="50" />
+        </property>
+        <property name="fecemi" type="date">
+            <column name="FECEMI" length="10" />
+        </property>
+        <property name="horemi" type="time">
+            <column name="HOREMI" length="8" />
+        </property>
+        <property name="fereal" type="date">
+            <column name="FEREAL" length="10" />
+        </property>
+        <property name="horeal" type="time">
+            <column name="HOREAL" length="8" />
+        </property>
+        <property name="usreal" type="string">
+            <column name="USREAL" length="8" />
+        </property>
+        <property name="fesaal" type="date">
+            <column name="FESAAL" length="10" />
+        </property>
+        <property name="hosall" type="time">
+            <column name="HOSALL" length="8" />
+        </property>
+        <property name="ussal" type="string">
+            <column name="USSAL" length="8" />
+        </property>
+        <property name="fereem" type="date">
+            <column name="FEREEM" length="10" />
+        </property>
+        <property name="horeem" type="time">
+            <column name="HOREEM" length="8" />
+        </property>
+        <property name="usreem" type="string">
+            <column name="USREEM" length="8" />
+        </property>
+        <property name="fesaem" type="date">
+            <column name="FESAEM" length="10" />
+        </property>
+        <property name="horsaem" type="time">
+            <column name="HORSAEM" length="8" />
+        </property>
+        <property name="ussaem" type="string">
+            <column name="USSAEM" length="8" />
+        </property>
+        <property name="fereeb" type="date">
+            <column name="FEREEB" length="10" />
+        </property>
+        <property name="horeeb" type="time">
+            <column name="HOREEB" length="8" />
+        </property>
+        <property name="usreeb" type="string">
+            <column name="USREEB" length="8" />
+        </property>
+        <property name="fesaeb" type="date">
+            <column name="FESAEB" length="10" />
+        </property>
+        <property name="hosaeb" type="time">
+            <column name="HOSAEB" length="8" />
+        </property>
+        <property name="ussaeb" type="string">
+            <column name="USSAEB" length="8" />
+        </property>
+        <property name="pedido" type="string">
+            <column name="PEDIDO" length="8" />
+        </property>
+        <property name="cvecon" type="java.lang.Integer">
+            <column name="CVECON" />
+        </property>
+        <property name="alma" type="java.lang.Integer">
+            <column name="ALMA" />
+        </property>
+        <property name="cve" type="string">
+            <column name="CVE" length="1" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="folini" type="java.lang.Integer">
+            <column name="FOLINI" />
+        </property>
+        <property name="folfin" type="java.lang.Integer">
+            <column name="FOLFIN" />
+        </property>
+        <property name="cvv" type="java.lang.Integer">
+            <column name="CVV" />
+        </property>
+        <property name="tvta" type="java.lang.Integer">
+            <column name="TVTA" />
+        </property>
+        <property name="fdoc" type="date">
+            <column name="FDOC" length="10" />
+        </property>
+        <property name="hdoc" type="time">
+            <column name="HDOC" length="8" />
+        </property>
+        <property name="perrec" type="string">
+            <column name="PERREC" length="30" />
+        </property>
+        <property name="ser" type="string">
+            <column name="SER" length="3" />
+        </property>
+        <property name="folio" type="java.lang.Integer">
+            <column name="FOLIO" />
+        </property>
+        <property name="carta" type="string">
+            <column name="CARTA" length="55" />
+        </property>
+        <property name="guia" type="string">
+            <column name="GUIA" length="20" />
+        </property>
+        <property name="placa" type="string">
+            <column name="PLACA" length="10" />
+        </property>
+        <property name="nomrec" type="string">
+            <column name="NOMREC" length="30" />
+        </property>
+        <property name="fesae2" type="date">
+            <column name="FESAE2" length="10" />
+        </property>
+        <property name="hosa32" type="time">
+            <column name="HOSA32" length="8" />
+        </property>
+        <property name="ussae2" type="string">
+            <column name="USSAE2" length="8" />
+        </property>
+        <property name="fesae3" type="date">
+            <column name="FESAE3" length="10" />
+        </property>
+        <property name="hosae3" type="time">
+            <column name="HOSAE3" length="8" />
+        </property>
+        <property name="ussae3" type="string">
+            <column name="USSAE3" length="8" />
+        </property>
+        <property name="fesae4" type="date">
+            <column name="FESAE4" length="10" />
+        </property>
+        <property name="hosae4" type="time">
+            <column name="HOSAE4" length="8" />
+        </property>
+        <property name="ussae4" type="string">
+            <column name="USSAE4" length="8" />
+        </property>
+        <property name="fecenv" type="date">
+            <column name="FECENV" length="10" />
+        </property>
+        <property name="cutra" type="java.lang.Integer">
+            <column name="CUTRA" />
+        </property>
+        <property name="almad" type="java.lang.Integer">
+            <column name="ALMAD" />
+        </property>
+        <property name="serped" type="string">
+            <column name="SERPED" length="3" />
+        </property>
+        <property name="numped" type="java.lang.Integer">
+            <column name="NUMPED" />
+        </property>
+        <property name="fecped" type="date">
+            <column name="FECPED" length="10" />
+        </property>
+        <property name="sertra" type="string">
+            <column name="SERTRA" length="3" />
+        </property>
+        <property name="foltra" type="java.lang.Integer">
+            <column name="FOLTRA" />
+        </property>
+    </class>
+</hibernate-mapping>

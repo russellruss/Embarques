@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -16,23 +16,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import mx.trillas.seguimientoembarques.SeguimientoEmbarques;
-import mx.trillas.seguimientoembarques.persitence.FTP.FTPDownloader;
+import mx.trillas.seguimientoembarques.FTP.FTPDownloader;
 import mx.trillas.seguimientoembarques.persitence.dao.Ft91DAO;
 import mx.trillas.seguimientoembarques.persitence.dao.Ft96DAO;
+import mx.trillas.seguimientoembarques.persitence.dao.Ft97DAO;
 import mx.trillas.seguimientoembarques.persitence.dao.GeneralesDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.Ft91DAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.Ft96DAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.GeneralesDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.util.HashUtil;
 
 @WebServlet("/AdministradorServlet")
 public class AdministradorServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(AdministradorServlet.class);
 	private static final long serialVersionUID = 1L;
-	private static GeneralesDAO generalesDAO = new GeneralesDAODBImpl();
-	private static Ft96DAO ft96DAO = new Ft96DAODBImpl();
-	private static Ft91DAO ft91DAO = new Ft91DAODBImpl();
+	private static GeneralesDAO generalesDAO = ImplFactory.getGeneralesDAODBImplImpl();
+	private static Ft96DAO ft96DAO = ImplFactory.getFt96DAODBImplImpl();
+	private static Ft91DAO ft91DAO = ImplFactory.getFt91DAODBImplImpl();
+	private static Ft97DAO ft97DAO = ImplFactory.getFt97DAODBImplImpl();
 
 	public AdministradorServlet() {
 		super();
@@ -74,6 +73,7 @@ public class AdministradorServlet extends HttpServlet {
 		try {
 			ft91DAO.deleteAll();
 			ft96DAO.deleteAll();
+			ft97DAO.deleteAll();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -93,7 +93,7 @@ public class AdministradorServlet extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat(
 				"d 'de' MMMM 'de' yyyy ' a las ' HH:mm:ss aa");
 		try {
-			generalesDAO.setData(Generales.keyactions.ULTIMAACTUALIZACIONDB,
+			generalesDAO.setData(GeneralesDAO.keyactions.ULTIMAACTUALIZACIONDB,
 					sdf.format(new Date()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

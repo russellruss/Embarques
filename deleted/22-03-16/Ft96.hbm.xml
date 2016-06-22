@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/05/2016 10:04:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.trillas.seguimientoembarques.persitence.pojos.Ft96" table="ft96" catalog="Embarques" optimistic-lock="version">
+        <composite-id name="id" class="mx.trillas.seguimientoembarques.persitence.pojos.Ft96Id">
+            <key-property name="ser" type="string">
+                <column name="SER" length="3" />
+            </key-property>
+            <key-property name="folio" type="int">
+                <column name="FOLIO" />
+            </key-property>
+        </composite-id>
+        <property name="ident" type="string">
+            <column name="IDENT" length="1" />
+        </property>
+        <property name="ctrl" type="string">
+            <column name="CTRL" length="1" />
+        </property>
+        <property name="tipodoc" type="java.lang.Integer">
+            <column name="TIPODOC" />
+        </property>
+        <property name="sta" type="string">
+            <column name="STA" length="1" />
+        </property>
+        <property name="f1" type="string">
+            <column name="F1" length="6" />
+        </property>
+        <property name="rsocf" type="string">
+            <column name="RSOCF" length="120" />
+        </property>
+        <property name="dirf" type="string">
+            <column name="DIRF" length="60" />
+        </property>
+        <property name="colf" type="string">
+            <column name="COLF" length="40" />
+        </property>
+        <property name="delf" type="string">
+            <column name="DELF" length="40" />
+        </property>
+        <property name="cdf" type="string">
+            <column name="CDF" length="30" />
+        </property>
+        <property name="edof" type="string">
+            <column name="EDOF" length="30" />
+        </property>
+        <property name="paisf" type="string">
+            <column name="PAISF" length="30" />
+        </property>
+        <property name="cpf" type="java.lang.Integer">
+            <column name="CPF" />
+        </property>
+        <property name="f2" type="string">
+            <column name="F2" length="123" />
+        </property>
+        <property name="rsoce" type="string">
+            <column name="RSOCE" length="120" />
+        </property>
+        <property name="dire" type="string">
+            <column name="DIRE" length="60" />
+        </property>
+        <property name="cole" type="string">
+            <column name="COLE" length="40" />
+        </property>
+        <property name="dele" type="string">
+            <column name="DELE" length="40" />
+        </property>
+        <property name="cde" type="string">
+            <column name="CDE" length="30" />
+        </property>
+        <property name="edoe" type="string">
+            <column name="EDOE" length="30" />
+        </property>
+        <property name="paise" type="string">
+            <column name="PAISE" length="30" />
+        </property>
+        <property name="cpe" type="java.lang.Integer">
+            <column name="CPE" />
+        </property>
+        <property name="f3" type="string">
+            <column name="F3" length="144" />
+        </property>
+        <property name="cta" type="java.lang.Integer">
+            <column name="CTA" />
+        </property>
+        <property name="tunid" type="java.lang.Integer">
+            <column name="TUNID" />
+        </property>
+        <property name="timpnm" type="java.lang.Double">
+            <column name="TIMPNM" precision="10" />
+        </property>
+        <property name="timpdl" type="java.lang.Double">
+            <column name="TIMPDL" precision="7" />
+        </property>
+        <property name="tdoc" type="java.lang.Integer">
+            <column name="TDOC" />
+        </property>
+        <property name="f4" type="string">
+            <column name="F4" length="59" />
+        </property>
+        <property name="cvtra" type="java.lang.Integer">
+            <column name="CVTRA" />
+        </property>
+        <property name="ciatra" type="string">
+            <column name="CIATRA" length="55" />
+        </property>
+        <property name="guia" type="string">
+            <column name="GUIA" length="20" />
+        </property>
+        <property name="fecenv" type="date">
+            <column name="FECENV" length="10" />
+        </property>
+        <property name="ncaj" type="java.lang.Integer">
+            <column name="NCAJ" />
+        </property>
+        <property name="npac" type="java.lang.Integer">
+            <column name="NPAC" />
+        </property>
+        <property name="placas" type="string">
+            <column name="PLACAS" length="10" />
+        </property>
+        <property name="nomrec" type="string">
+            <column name="NOMREC" length="30" />
+        </property>
+        <property name="trep" type="string">
+            <column name="TREP" length="1" />
+        </property>
+        <property name="folpas" type="string">
+            <column name="FOLPAS" length="10" />
+        </property>
+        <property name="f5" type="string">
+            <column name="F5" length="79" />
+        </property>
+        <property name="feccap" type="date">
+            <column name="FECCAP" length="10" />
+        </property>
+        <property name="horcap" type="time">
+            <column name="HORCAP" length="8" />
+        </property>
+        <property name="sucap" type="string">
+            <column name="SUCAP" length="8" />
+        </property>
+        <property name="horenv" type="time">
+            <column name="HORENV" length="8" />
+        </property>
+        <property name="f6" type="string">
+            <column name="F6" length="46" />
+        </property>
+        <property name="facpa12g" type="string">
+            <column name="FACPA12G" length="12" />
+        </property>
+        <property name="faccan" type="string">
+            <column name="FACCAN" length="12" />
+        </property>
+        <property name="impfle" type="java.lang.Double">
+            <column name="IMPFLE" precision="7" />
+        </property>
+        <property name="impseg" type="java.lang.Double">
+            <column name="IMPSEG" precision="7" />
+        </property>
+        <property name="imtot" type="java.lang.Double">
+            <column name="IMTOT" precision="7" />
+        </property>
+        <property name="nordco" type="string">
+            <column name="NORDCO" length="12" />
+        </property>
+        <property name="nconre" type="string">
+            <column name="NCONRE" length="12" />
+        </property>
+        <property name="ndevo" type="string">
+            <column name="NDEVO" length="10" />
+        </property>
+        <property name="relemp" type="java.lang.Integer">
+            <column name="RELEMP" />
+        </property>
+        <property name="origi" type="java.lang.Integer">
+            <column name="ORIGI" />
+        </property>
+        <property name="carins" type="java.lang.Integer">
+            <column name="CARINS" />
+        </property>
+        <property name="pagcaj" type="java.lang.Integer">
+            <column name="PAGCAJ" />
+        </property>
+        <property name="cpama" type="java.lang.Integer">
+            <column name="CPAMA" />
+        </property>
+        <property name="idoper" type="java.lang.Integer">
+            <column name="IDOPER" />
+        </property>
+        <property name="idootr" type="string">
+            <column name="IDOOTR" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,20 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserAlmacenDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
-import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-import mx.trillas.seguimientoembarques.util.AsesorAux;
-import mx.trillas.seguimientoembarques.util.Cripto;
-import mx.trillas.seguimientoembarques.util.IOAlmacen;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
+
+import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.UserAlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
+import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
+import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
+import mx.trillas.seguimientoembarques.util.AsesorAux;
+import mx.trillas.seguimientoembarques.util.Cripto;
+import mx.trillas.seguimientoembarques.util.IOAlmacen;
 
 /**
  * Servlet implementation class UploadFileServlet
@@ -38,10 +39,10 @@ public class UploadFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletFileUpload uploader = null;
 
-	private static UserDAODBImpl usersDAO = new UserDAODBImpl();
-	private static AlmacenDAODBImpl almacenDAO = new AlmacenDAODBImpl();
+	private static UserDAO usersDAO = ImplFactory.getUserDAODBImplImpl();
+	private static AlmacenDAO almacenDAO = ImplFactory.getAlmacenDAOImpl();
 	static Logger log = Logger.getLogger(UploadFileServlet.class.getName());
-	private static UserAlmacenDAODBImpl useralmacenDAO = new UserAlmacenDAODBImpl();
+	private static UserAlmacenDAO useralmacenDAO = ImplFactory.getUserAlmacenDAODBImplImpl();
 
 	@Override
 	public void init() throws ServletException {

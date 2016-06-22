@@ -11,18 +11,17 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.UserDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
-
-import org.apache.log4j.Logger;
 
 public class IOAlmacen {
 	private static Logger log = Logger.getLogger(IOAlmacen.class.getName());
-	private static TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
-	private static UserDAO userDAO = new UserDAODBImpl();
+	private static TipousuarioDAO tipousuarioDAO = ImplFactory.getTipousuarioDAODBImplImpl();
+	private static UserDAO userDAO = ImplFactory.getUserDAODBImplImpl();
 
 	public static boolean verifyFile(File file, String path)
 			throws UnsupportedEncodingException, FileNotFoundException,

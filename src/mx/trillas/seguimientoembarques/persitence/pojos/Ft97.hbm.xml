@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2016 11:19:50 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.trillas.seguimientoembarques.persitence.pojos.Ft97" table="ft97" catalog="Embarques" optimistic-lock="version">
+        <composite-id name="id" class="mx.trillas.seguimientoembarques.persitence.pojos.Ft97Id">
+            <key-property name="serie" type="string">
+                <column name="SERIE" length="3" />
+            </key-property>
+            <key-property name="nudoc" type="int">
+                <column name="NUDOC" />
+            </key-property>
+            <key-property name="noreg" type="int">
+                <column name="NOREG" />
+            </key-property>
+            <key-property name="linea" type="int">
+                <column name="LINEA" />
+            </key-property>
+            <key-property name="codbar" type="int">
+                <column name="CODBAR" />
+            </key-property>
+        </composite-id>
+        <property name="ident" type="string">
+            <column name="IDENT" length="1" />
+        </property>
+        <property name="control" type="string">
+            <column name="CONTROL" length="1" />
+        </property>
+        <property name="autit" type="string">
+            <column name="AUTIT" length="40" />
+        </property>
+        <property name="ed" type="java.lang.Integer">
+            <column name="ED" />
+        </property>
+        <property name="cvpen" type="string">
+            <column name="CVPEN" length="1" />
+        </property>
+        <property name="epend" type="java.lang.Integer">
+            <column name="EPEND" />
+        </property>
+        <property name="esurt" type="java.lang.Integer">
+            <column name="ESURT" />
+        </property>
+        <property name="cvpre" type="string">
+            <column name="CVPRE" length="1" />
+        </property>
+        <property name="plista" type="big_decimal">
+            <column name="PLISTA" precision="9" />
+        </property>
+        <property name="pnet" type="big_decimal">
+            <column name="PNET" precision="9" />
+        </property>
+        <property name="impobn" type="big_decimal">
+            <column name="IMPOBN" precision="15" />
+        </property>
+        <property name="tipcam" type="big_decimal">
+            <column name="TIPCAM" precision="11" />
+        </property>
+        <property name="desca" type="string">
+            <column name="DESCA" length="45" />
+        </property>
+        <property name="mone" type="java.lang.Integer">
+            <column name="MONE" />
+        </property>
+        <property name="adest1" type="java.lang.Integer">
+            <column name="ADEST1" />
+        </property>
+        <property name="cdest1" type="string">
+            <column name="CDEST1" length="1" />
+        </property>
+        <property name="rexist" type="java.lang.Integer">
+            <column name="REXIST" />
+        </property>
+        <property name="cvrga" type="string">
+            <column name="CVRGA" length="1" />
+        </property>
+        <property name="cvapro" type="string">
+            <column name="CVAPRO" length="1" />
+        </property>
+        <property name="fecham" type="java.lang.Integer">
+            <column name="FECHAM" />
+        </property>
+        <property name="plisv" type="big_decimal">
+            <column name="PLISV" precision="9" />
+        </property>
+        <property name="acsal1" type="java.lang.Integer">
+            <column name="ACSAL1" />
+        </property>
+        <property name="acsal2" type="java.lang.Integer">
+            <column name="ACSAL2" />
+        </property>
+        <property name="consig" type="string">
+            <column name="CONSIG" length="1" />
+        </property>
+        <property name="ncte" type="java.lang.Integer">
+            <column name="NCTE" />
+        </property>
+        <property name="piva" type="big_decimal">
+            <column name="PIVA" precision="6" />
+        </property>
+        <property name="impiva" type="big_decimal">
+            <column name="IMPIVA" precision="13" />
+        </property>
+        <property name="impdes" type="big_decimal">
+            <column name="IMPDES" precision="11" />
+        </property>
+        <property name="conoc" type="java.lang.Integer">
+            <column name="CONOC" />
+        </property>
+        <property name="dctoa" type="big_decimal">
+            <column name="DCTOA" precision="6" scale="3" />
+        </property>
+        <property name="idesa" type="big_decimal">
+            <column name="IDESA" precision="13" />
+        </property>
+        <property name="cvest" type="string">
+            <column name="CVEST" length="1" />
+        </property>
+        <property name="isbnp" type="java.lang.Integer">
+            <column name="ISBNP" />
+        </property>
+        <property name="tiptra" type="java.lang.Integer">
+            <column name="TIPTRA" />
+        </property>
+        <property name="subtra" type="java.lang.Integer">
+            <column name="SUBTRA" />
+        </property>
+        <property name="plis4" type="big_decimal">
+            <column name="PLIS4" precision="12" scale="4" />
+        </property>
+        <property name="pnet4" type="big_decimal">
+            <column name="PNET4" precision="12" scale="4" />
+        </property>
+        <property name="cnov" type="string">
+            <column name="CNOV" length="1" />
+        </property>
+        <property name="format" type="string">
+            <column name="FORMAT" length="6" />
+        </property>
+        <property name="perren" type="java.lang.Integer">
+            <column name="PERREN" />
+        </property>
+        <property name="cvpro" type="string">
+            <column name="CVPRO" length="1" />
+        </property>
+        <property name="seriepd" type="string">
+            <column name="SERIEPD" length="45" />
+        </property>
+        <property name="folpd" type="java.lang.Integer">
+            <column name="FOLPD" />
+        </property>
+        <property name="cvecan" type="string">
+            <column name="CVECAN" length="1" />
+        </property>
+        <property name="cveopo" type="string">
+            <column name="CVEOPO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

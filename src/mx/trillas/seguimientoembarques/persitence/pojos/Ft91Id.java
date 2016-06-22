@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 16/05/2016 10:04:39 AM by Hibernate Tools 4.3.1
+// Generated 22/06/2016 11:19:49 AM by Hibernate Tools 4.3.1
 
 
 
@@ -9,24 +9,24 @@ package mx.trillas.seguimientoembarques.persitence.pojos;
 public class Ft91Id  implements java.io.Serializable {
 
 
-     private Integer ndoc;
+     private int ndoc;
      private String serie;
-     private Integer tdoc;
+     private int tdoc;
 
     public Ft91Id() {
     }
 
-    public Ft91Id(Integer ndoc, String serie, Integer tdoc) {
+    public Ft91Id(int ndoc, String serie, int tdoc) {
        this.ndoc = ndoc;
        this.serie = serie;
        this.tdoc = tdoc;
     }
    
-    public Integer getNdoc() {
+    public int getNdoc() {
         return this.ndoc;
     }
     
-    public void setNdoc(Integer ndoc) {
+    public void setNdoc(int ndoc) {
         this.ndoc = ndoc;
     }
     public String getSerie() {
@@ -36,11 +36,11 @@ public class Ft91Id  implements java.io.Serializable {
     public void setSerie(String serie) {
         this.serie = serie;
     }
-    public Integer getTdoc() {
+    public int getTdoc() {
         return this.tdoc;
     }
     
-    public void setTdoc(Integer tdoc) {
+    public void setTdoc(int tdoc) {
         this.tdoc = tdoc;
     }
 
@@ -57,7 +57,7 @@ public class Ft91Id  implements java.io.Serializable {
    }
    
    public int hashCode() {
-         Integer result = 17;
+         int result = 17;
          
          result = 37 * result + this.getNdoc();
          result = 37 * result + ( getSerie() == null ? 0 : this.getSerie().hashCode() );

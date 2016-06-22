@@ -7,6 +7,7 @@ import java.util.List;
 import mx.trillas.seguimientoembarques.persitence.HibernateUtil;
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserAlmacenDAO;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.UserAlmacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
@@ -91,7 +92,7 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 	public List<UserAlmacen> getUsuariosAsesoresList() throws Exception {
 		Session session = null;
 		List<UserAlmacen> listaUsuariosasesores = new ArrayList<>();
-		TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
+		TipousuarioDAO tipousuarioDAO = ImplFactory.getTipousuarioDAODBImplImpl();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(UserAlmacen.class, "ua");
@@ -146,6 +147,7 @@ public class UserAlmacenDAODBImpl implements UserAlmacenDAO {
 		return almacenAgregado;
 	}
 	
+	@Override
 	public LinkedHashSet<Almacen> getRelacionUserAlmacen(AsesorAux asesor, List<Almacen> listaDeAlmacenes) throws Exception {
 		LinkedHashSet<Almacen> almacenAgregado = new LinkedHashSet<>();
 

@@ -6,6 +6,7 @@ import java.util.List;
 import mx.trillas.seguimientoembarques.persitence.HibernateUtil;
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
 import mx.trillas.seguimientoembarques.persitence.dao.UserDAO;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 import mx.trillas.seguimientoembarques.util.Cripto;
 
@@ -115,7 +116,7 @@ public class UserDAODBImpl implements UserDAO {
 	public List<Usuario> getUsuariosAsesores() throws Exception {
 		Session session = null;
 		List<Usuario> listaUsuariosasesores = new ArrayList<>();
-		TipousuarioDAO tipousuarioDAO = new TipousuarioDAODBImpl();
+		TipousuarioDAO tipousuarioDAO = ImplFactory.getTipousuarioDAODBImplImpl();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(Usuario.class);

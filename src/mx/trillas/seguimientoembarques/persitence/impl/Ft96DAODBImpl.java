@@ -49,8 +49,7 @@ public class Ft96DAODBImpl implements Ft96DAO {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Criteria criteria = session.createCriteria(Ft96.class.getName());
-			criteria.setProjection(Projections.distinct(Projections
-					.property("rsocf")));
+			criteria.setProjection(Projections.distinct(Projections.property("rsocf")));
 			Object ft96ListObj = criteria.list();
 			if (ft96ListObj != null && ft96ListObj instanceof List) {
 				List<?> ft96List = (List<?>) ft96ListObj;
@@ -98,6 +97,6 @@ public class Ft96DAODBImpl implements Ft96DAO {
 		} finally {
 			if (session != null)
 				session.close();
-		}		
+		}
 	}
 }

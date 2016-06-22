@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,24 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import mx.trillas.seguimientoembarques.persitence.adapters.ft91Adapter;
 import mx.trillas.seguimientoembarques.persitence.adapters.ft96Adapter;
 import mx.trillas.seguimientoembarques.persitence.dao.Ft91DAO;
 import mx.trillas.seguimientoembarques.persitence.dao.Ft96DAO;
-import mx.trillas.seguimientoembarques.persitence.impl.Ft91DAODBImpl;
-import mx.trillas.seguimientoembarques.persitence.impl.Ft96DAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft91;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft96;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 @WebServlet("/pages/traspasos/TraspasosServlet")
 public class TraspasosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Ft91DAO ft91dao = new Ft91DAODBImpl();
-	private static Ft96DAO ft96dao = new Ft96DAODBImpl();
+	private static Ft91DAO ft91dao = ImplFactory.getFt91DAODBImplImpl();
+	private static Ft96DAO ft96dao = ImplFactory.getFt96DAODBImplImpl();
 
 	public TraspasosServlet() {
 		super();

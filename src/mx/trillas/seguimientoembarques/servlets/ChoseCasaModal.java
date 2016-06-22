@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import mx.trillas.seguimientoembarques.persitence.dao.AlmacenDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.AlmacenDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 
 /**
@@ -24,7 +24,7 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Almacen;
 @WebServlet("/pages/login/ChoseCasaModal")
 public class ChoseCasaModal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static AlmacenDAO almacenDAO = new AlmacenDAODBImpl();
+	private static AlmacenDAO almacenDAO = ImplFactory.getAlmacenDAOImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()

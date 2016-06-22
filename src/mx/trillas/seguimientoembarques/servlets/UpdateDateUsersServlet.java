@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.servlets;
+package mx.trillas.seguimientoembarques.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 import com.google.gson.Gson;
 
 import mx.trillas.seguimientoembarques.persitence.dao.GeneralesDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.GeneralesDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
 
 /**
@@ -26,7 +26,7 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Generales;
 public class UpdateDateUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(UpdateDateUsersServlet.class.getName());
-	private static GeneralesDAO generalesDAO = new GeneralesDAODBImpl();
+	private static GeneralesDAO generalesDAO = ImplFactory.getGeneralesDAODBImplImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -54,7 +54,7 @@ public class UpdateDateUsersServlet extends HttpServlet {
 		if (action != null && action.equals("laterUpdate")) {
 			Generales generales;
 			try {
-				generales = generalesDAO.getByKeyaction(Generales.keyactions.ACTUALIZACIONUSUARIOSARCHIVO);
+				generales = generalesDAO.getByKeyaction(GeneralesDAO.keyactions.ACTUALIZACIONUSUARIOSARCHIVO);
 				Gson gson = new Gson();
 				String salida = gson.toJson(generales);
 				response.setContentType("application/json");
@@ -76,7 +76,7 @@ public class UpdateDateUsersServlet extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat(
 				"d 'de' MMMM 'de' yyyy ' a las ' HH:mm:ss aa");
 		try {
-			generalesDAO.setData(Generales.keyactions.ACTUALIZACIONUSUARIOSARCHIVO, sdf.format(new Date()));
+			generalesDAO.setData(GeneralesDAO.keyactions.ACTUALIZACIONUSUARIOSARCHIVO, sdf.format(new Date()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

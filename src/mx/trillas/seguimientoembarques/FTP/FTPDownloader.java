@@ -1,4 +1,4 @@
-package mx.trillas.seguimientoembarques.persitence.FTP;
+package mx.trillas.seguimientoembarques.FTP;
 
 import java.io.File;
 import java.io.IOException;

@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO;
-import mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl;
+import mx.trillas.seguimientoembarques.persitence.factory.ImplFactory;
 import mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario;
 import mx.trillas.seguimientoembarques.persitence.pojos.Usuario;
 
 public class AppFilter implements Filter {
 	private static List<String> urlPermitidas;
 	private static List<String> urlAdministrador;
-	private static TipousuarioDAO tipoUsuarioDAO = new TipousuarioDAODBImpl();
+	private static TipousuarioDAO tipoUsuarioDAO = ImplFactory.getTipousuarioDAODBImplImpl();
 
 	@Override
 	public void destroy() {

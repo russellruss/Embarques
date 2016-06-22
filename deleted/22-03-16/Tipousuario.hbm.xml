@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/05/2016 10:04:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario" table="tipousuario" catalog="Embarques" optimistic-lock="version">
+        <id name="tipo" type="string">
+            <column name="tipo" length="13" />
+            <generator class="assigned" />
+        </id>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="f_tipousuario" length="13" not-null="true" />
+            </key>
+            <one-to-many class="mx.trillas.seguimientoembarques.persitence.pojos.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>
