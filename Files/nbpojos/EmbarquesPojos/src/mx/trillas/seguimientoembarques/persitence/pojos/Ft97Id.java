@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 11:19:49 AM by Hibernate Tools 4.3.1
+// Generated 22/06/2016 03:58:43 PM by Hibernate Tools 4.3.1
 
 
 
@@ -13,12 +13,12 @@ public class Ft97Id  implements java.io.Serializable {
      private int nudoc;
      private int noreg;
      private int linea;
-     private int codbar;
+     private long codbar;
 
     public Ft97Id() {
     }
 
-    public Ft97Id(String serie, int nudoc, int noreg, int linea, int codbar) {
+    public Ft97Id(String serie, int nudoc, int noreg, int linea, long codbar) {
        this.serie = serie;
        this.nudoc = nudoc;
        this.noreg = noreg;
@@ -54,11 +54,11 @@ public class Ft97Id  implements java.io.Serializable {
     public void setLinea(int linea) {
         this.linea = linea;
     }
-    public int getCodbar() {
+    public long getCodbar() {
         return this.codbar;
     }
     
-    public void setCodbar(int codbar) {
+    public void setCodbar(long codbar) {
         this.codbar = codbar;
     }
 
@@ -83,7 +83,7 @@ public class Ft97Id  implements java.io.Serializable {
          result = 37 * result + this.getNudoc();
          result = 37 * result + this.getNoreg();
          result = 37 * result + this.getLinea();
-         result = 37 * result + this.getCodbar();
+         result = 37 * result + (int) this.getCodbar();
          return result;
    }   
 

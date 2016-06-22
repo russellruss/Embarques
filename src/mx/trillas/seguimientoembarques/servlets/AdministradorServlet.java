@@ -71,24 +71,31 @@ public class AdministradorServlet extends HttpServlet {
 		ServletContext servletContext = getServletContext();
 
 		try {
-			ft91DAO.deleteAll();
-			ft96DAO.deleteAll();
+//			ft91DAO.deleteAll();
+//			ft96DAO.deleteAll();
 			ft97DAO.deleteAll();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		String bandera;
+		SeguimientoEmbarques ps = new SeguimientoEmbarques();
 
 		Path path91 = Paths.get(servletContext.getRealPath("/data/FT91PC.TXT"));
 		FTPDownloader.downloadFile(path91);
-		SeguimientoEmbarques ps = new SeguimientoEmbarques();
-		String bandera = "FT91_MAP.properties";
+		bandera = "FT91_MAP.properties";
 		ps.parseFT91(path91, bandera);
 
 		Path path96 = Paths.get(servletContext.getRealPath("/data/FT96PC.TXT"));
 		FTPDownloader.downloadFile(path96);
 		bandera = "FT96_MAP.properties";
 		ps.parseFT96(path96, bandera);
+
+		Path path97 = Paths.get(servletContext.getRealPath("/data/FT97PC.TXT"));
+		FTPDownloader.downloadFile(path97);
+		bandera = "FT97_MAP.properties";
+		ps.parseFT97(path97, bandera);
 
 		SimpleDateFormat sdf = new SimpleDateFormat(
 				"d 'de' MMMM 'de' yyyy ' a las ' HH:mm:ss aa");

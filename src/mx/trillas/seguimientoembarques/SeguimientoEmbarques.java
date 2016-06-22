@@ -19,6 +19,8 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Ft91;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft91Id;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft96;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft96Id;
+import mx.trillas.seguimientoembarques.persitence.pojos.Ft97;
+import mx.trillas.seguimientoembarques.persitence.pojos.Ft97Id;
 import mx.trillas.seguimientoembarques.util.ParseFile;
 
 import org.hibernate.Session;
@@ -34,8 +36,7 @@ public class SeguimientoEmbarques {
 
 	}
 
-	private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera,
-			Object ft, Object ftId) {
+	private void mapSeter(Set<?> keyset, Map<?, ?> map, String bandera, Object ft, Object ftId) {
 
 		for (Object keyObj : keyset) {
 			if (keyObj != null && keyObj instanceof String) {
@@ -59,8 +60,14 @@ public class SeguimientoEmbarques {
 						getterMethod = Ft91.class.getMethod(getter);
 						returntype = getterMethod.getReturnType();
 						returnType = returntype.getName();
-					} else {
+					}
+					if (bandera == "FT96_MAP.properties") {
 						getterMethod = Ft96.class.getMethod(getter);
+						returntype = getterMethod.getReturnType();
+						returnType = returntype.getName();
+					}
+					if (bandera == "FT97_MAP.properties") {
+						getterMethod = Ft97.class.getMethod(getter);
 						returntype = getterMethod.getReturnType();
 						returnType = returntype.getName();
 					}
@@ -70,12 +77,17 @@ public class SeguimientoEmbarques {
 							getterMethod = Ft91Id.class.getMethod(getter);
 							returntype = getterMethod.getReturnType();
 							returnType = returntype.getName();
-						} else {
+						} 
+						if (bandera == "FT96_MAP.properties") {
 							getterMethod = Ft96Id.class.getMethod(getter);
 							returntype = getterMethod.getReturnType();
 							returnType = returntype.getName();
 						}
-
+						if (bandera == "FT97_MAP.properties") {
+							getterMethod = Ft97Id.class.getMethod(getter);
+							returntype = getterMethod.getReturnType();
+							returnType = returntype.getName();
+						}
 					} catch (NoSuchMethodException | SecurityException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -95,8 +107,7 @@ public class SeguimientoEmbarques {
 		loadArreglos(bandera);
 		String encodeCP850 = "CP850";
 
-		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850,
-				arregloClaves, arregloPosiciones);
+		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850, arregloClaves, arregloPosiciones);
 
 		List<Ft96> listFt96 = new ArrayList<>();
 
@@ -136,8 +147,7 @@ public class SeguimientoEmbarques {
 		loadArreglos(bandera);
 		String encodeCP850 = "CP850";
 
-		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850,
-				arregloClaves, arregloPosiciones);
+		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850, arregloClaves, arregloPosiciones);
 
 		List<Ft91> listFt91 = new ArrayList<>();
 		for (Map<?, ?> map : fileContent) {
@@ -173,8 +183,47 @@ public class SeguimientoEmbarques {
 
 	}
 
-	private void seter(Object objectOfClass, Object objectOfKey, String key,
-			Object valueObj, String returnType) {
+	public void parseFT97(Path path, String bandera) {
+
+		loadArreglos(bandera);
+		String encodeCP850 = "CP850";
+
+		List<Map<?, ?>> fileContent = ParseFile.parse(path, encodeCP850, arregloClaves, arregloPosiciones);
+
+		List<Ft97> listFt97 = new ArrayList<>();
+
+		for (Map<?, ?> map : fileContent) {
+			Set<?> keyset = map.keySet();
+
+			Ft97 ft97 = new Ft97();
+			Ft97Id ftId97 = new Ft97Id();
+
+			mapSeter(keyset, map, bandera, ft97, ftId97);
+
+			ft97.setId(ftId97);
+			listFt97.add(ft97);
+		}
+		Session session = null;
+		Transaction transaction = null;
+
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.getTransaction();
+			transaction.begin();
+			for (Ft97 ft97 : listFt97)
+				session.saveOrUpdate(ft97);
+			transaction.commit();
+		} catch (Exception ex) {
+			if (transaction != null)
+				transaction.rollback();
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+
+	private void seter(Object objectOfClass, Object objectOfKey, String key, Object valueObj, String returnType) {
 		Object value = null;
 
 		if (valueObj != null && returnType.equals("java.lang.Double")) {
@@ -184,8 +233,7 @@ public class SeguimientoEmbarques {
 				if (valueDou.doubleValue() == new Double(0).doubleValue()) {
 					value = null;
 				} else {
-					str = new StringBuilder(str).insert(str.length() - 2, ".")
-							.toString();
+					str = new StringBuilder(str).insert(str.length() - 2, ".").toString();
 					Double number = Double.parseDouble(str);
 					value = number;
 				}
@@ -259,25 +307,20 @@ public class SeguimientoEmbarques {
 			return;
 		}
 
-		String setter = "set" + key.substring(0, 1).toUpperCase()
-				+ key.substring(1, key.length()).toLowerCase();
+		String setter = "set" + key.substring(0, 1).toUpperCase() + key.substring(1, key.length()).toLowerCase();
 		Method method;
 		try {
-			method = objectOfClass.getClass().getMethod(setter,
-					value.getClass());
+			method = objectOfClass.getClass().getMethod(setter, value.getClass());
 			method.invoke(objectOfClass, value);
 		} catch (NoSuchMethodException e) {
 			try {
-				method = objectOfKey.getClass().getMethod(setter,
-						value.getClass());
+				method = objectOfKey.getClass().getMethod(setter, value.getClass());
 				method.invoke(objectOfKey, value);
-			} catch (NoSuchMethodException | SecurityException
-					| IllegalAccessException | IllegalArgumentException
+			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e1) {
 				e1.printStackTrace();
 			}
-		} catch (SecurityException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException
+		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -290,8 +333,7 @@ public class SeguimientoEmbarques {
 		InputStream is = null;
 		List<String> lines = new ArrayList<>();
 		try {
-			is = Thread.currentThread().getContextClassLoader()
-					.getResourceAsStream(bandera);
+			is = Thread.currentThread().getContextClassLoader().getResourceAsStream(bandera);
 			isr = new InputStreamReader(is, "UTF8");
 			br = new BufferedReader(isr);
 

@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 11:19:49 AM by Hibernate Tools 4.3.1
+// Generated 22/06/2016 03:58:43 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,15 +10,15 @@ public class Ft97Id  implements java.io.Serializable {
 
 
      private String serie;
-     private int nudoc;
-     private int noreg;
-     private int linea;
-     private int codbar;
+     private Integer nudoc;
+     private Integer noreg;
+     private Integer linea;
+     private Long codbar;
 
     public Ft97Id() {
     }
 
-    public Ft97Id(String serie, int nudoc, int noreg, int linea, int codbar) {
+    public Ft97Id(String serie, Integer nudoc, Integer noreg, Integer linea, Long codbar) {
        this.serie = serie;
        this.nudoc = nudoc;
        this.noreg = noreg;
@@ -33,32 +33,32 @@ public class Ft97Id  implements java.io.Serializable {
     public void setSerie(String serie) {
         this.serie = serie;
     }
-    public int getNudoc() {
+    public Integer getNudoc() {
         return this.nudoc;
     }
     
-    public void setNudoc(int nudoc) {
+    public void setNudoc(Integer nudoc) {
         this.nudoc = nudoc;
     }
-    public int getNoreg() {
+    public Integer getNoreg() {
         return this.noreg;
     }
     
-    public void setNoreg(int noreg) {
+    public void setNoreg(Integer noreg) {
         this.noreg = noreg;
     }
-    public int getLinea() {
+    public Integer getLinea() {
         return this.linea;
     }
     
-    public void setLinea(int linea) {
+    public void setLinea(Integer linea) {
         this.linea = linea;
     }
-    public int getCodbar() {
+    public Long getCodbar() {
         return this.codbar;
     }
     
-    public void setCodbar(int codbar) {
+    public void setCodbar(Long codbar) {
         this.codbar = codbar;
     }
 
@@ -83,7 +83,7 @@ public class Ft97Id  implements java.io.Serializable {
          result = 37 * result + this.getNudoc();
          result = 37 * result + this.getNoreg();
          result = 37 * result + this.getLinea();
-         result = 37 * result + this.getCodbar();
+         result = (int) (37 * result + this.getCodbar());
          return result;
    }   
 

@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 11:19:49 AM by Hibernate Tools 4.3.1
+// Generated 22/06/2016 03:58:43 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -65,7 +65,7 @@ public class Ft91  implements java.io.Serializable {
      private Integer cutra;
      private Integer almad;
      private String serped;
-     private String numped;
+     private Integer numped;
      private Date fecped;
      private String sertra;
      private Integer foltra;
@@ -77,7 +77,7 @@ public class Ft91  implements java.io.Serializable {
     public Ft91(Ft91Id id) {
         this.id = id;
     }
-    public Ft91(Ft91Id id, String idsys, Integer cte, String razsoc, Date fecemi, Date horemi, Date fereal, Date horeal, String usreal, Date fesaal, Date hosall, String ussal, Date fereem, Date horeem, String usreem, Date fesaem, Date horsaem, String ussaem, Date fereeb, Date horeeb, String usreeb, Date fesaeb, Date hosaeb, String ussaeb, String pedido, Integer cvecon, Integer alma, String cve, String status, Integer folini, Integer folfin, Integer cvv, Integer tvta, Date fdoc, Date hdoc, String perrec, String ser, Integer folio, String carta, String guia, String placa, String nomrec, Date fesae2, Date hosa32, String ussae2, Date fesae3, Date hosae3, String ussae3, Date fesae4, Date hosae4, String ussae4, Date fecenv, Integer cutra, Integer almad, String serped, String numped, Date fecped, String sertra, Integer foltra) {
+    public Ft91(Ft91Id id, String idsys, Integer cte, String razsoc, Date fecemi, Date horemi, Date fereal, Date horeal, String usreal, Date fesaal, Date hosall, String ussal, Date fereem, Date horeem, String usreem, Date fesaem, Date horsaem, String ussaem, Date fereeb, Date horeeb, String usreeb, Date fesaeb, Date hosaeb, String ussaeb, String pedido, Integer cvecon, Integer alma, String cve, String status, Integer folini, Integer folfin, Integer cvv, Integer tvta, Date fdoc, Date hdoc, String perrec, String ser, Integer folio, String carta, String guia, String placa, String nomrec, Date fesae2, Date hosa32, String ussae2, Date fesae3, Date hosae3, String ussae3, Date fesae4, Date hosae4, String ussae4, Date fecenv, Integer cutra, Integer almad, String serped, Integer numped, Date fecped, String sertra, Integer foltra) {
        this.id = id;
        this.idsys = idsys;
        this.cte = cte;
@@ -524,11 +524,11 @@ public class Ft91  implements java.io.Serializable {
     public void setSerped(String serped) {
         this.serped = serped;
     }
-    public String getNumped() {
+    public Integer getNumped() {
         return this.numped;
     }
     
-    public void setNumped(String numped) {
+    public void setNumped(Integer numped) {
         this.numped = numped;
     }
     public Date getFecped() {

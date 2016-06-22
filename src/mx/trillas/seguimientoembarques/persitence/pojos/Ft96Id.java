@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 11:19:49 AM by Hibernate Tools 4.3.1
+// Generated 22/06/2016 01:50:26 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,12 +10,12 @@ public class Ft96Id  implements java.io.Serializable {
 
 
      private String ser;
-     private int folio;
+     private Integer folio;
 
     public Ft96Id() {
     }
 
-    public Ft96Id(String ser, int folio) {
+    public Ft96Id(String ser, Integer folio) {
        this.ser = ser;
        this.folio = folio;
     }
@@ -27,11 +27,11 @@ public class Ft96Id  implements java.io.Serializable {
     public void setSer(String ser) {
         this.ser = ser;
     }
-    public int getFolio() {
+    public Integer getFolio() {
         return this.folio;
     }
     
-    public void setFolio(int folio) {
+    public void setFolio(Integer folio) {
         this.folio = folio;
     }
 

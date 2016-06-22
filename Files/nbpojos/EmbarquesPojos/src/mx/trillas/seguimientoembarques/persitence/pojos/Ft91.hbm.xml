@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/06/2016 11:19:50 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/06/2016 03:58:44 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="mx.trillas.seguimientoembarques.persitence.pojos.Ft91" table="ft91" catalog="Embarques" optimistic-lock="version">
         <composite-id name="id" class="mx.trillas.seguimientoembarques.persitence.pojos.Ft91Id">
@@ -177,8 +177,8 @@
         <property name="serped" type="string">
             <column name="SERPED" length="3" />
         </property>
-        <property name="numped" type="string">
-            <column name="NUMPED" length="8" />
+        <property name="numped" type="java.lang.Integer">
+            <column name="NUMPED" />
         </property>
         <property name="fecped" type="date">
             <column name="FECPED" length="10" />
