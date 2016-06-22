@@ -71,8 +71,8 @@ public class AdministradorServlet extends HttpServlet {
 		ServletContext servletContext = getServletContext();
 
 		try {
-//			ft91DAO.deleteAll();
-//			ft96DAO.deleteAll();
+			ft91DAO.deleteAll();
+			ft96DAO.deleteAll();
 			ft97DAO.deleteAll();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
