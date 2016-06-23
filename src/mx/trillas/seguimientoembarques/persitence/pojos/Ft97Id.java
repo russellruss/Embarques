@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 03:58:43 PM by Hibernate Tools 4.3.1
+// Generated 23/06/2016 11:16:11 AM by Hibernate Tools 4.3.1
 
 
 
@@ -13,12 +13,12 @@ public class Ft97Id  implements java.io.Serializable {
      private Integer nudoc;
      private Integer noreg;
      private Integer linea;
-     private Long codbar;
+     private String codbar;
 
     public Ft97Id() {
     }
 
-    public Ft97Id(String serie, Integer nudoc, Integer noreg, Integer linea, Long codbar) {
+    public Ft97Id(String serie, Integer nudoc, Integer noreg, Integer linea, String codbar) {
        this.serie = serie;
        this.nudoc = nudoc;
        this.noreg = noreg;
@@ -54,11 +54,11 @@ public class Ft97Id  implements java.io.Serializable {
     public void setLinea(Integer linea) {
         this.linea = linea;
     }
-    public Long getCodbar() {
+    public String getCodbar() {
         return this.codbar;
     }
     
-    public void setCodbar(Long codbar) {
+    public void setCodbar(String codbar) {
         this.codbar = codbar;
     }
 
@@ -73,7 +73,7 @@ public class Ft97Id  implements java.io.Serializable {
  && (this.getNudoc()==castOther.getNudoc())
  && (this.getNoreg()==castOther.getNoreg())
  && (this.getLinea()==castOther.getLinea())
- && (this.getCodbar()==castOther.getCodbar());
+ && ( (this.getCodbar()==castOther.getCodbar()) || ( this.getCodbar()!=null && castOther.getCodbar()!=null && this.getCodbar().equals(castOther.getCodbar()) ) );
    }
    
    public int hashCode() {
@@ -83,7 +83,7 @@ public class Ft97Id  implements java.io.Serializable {
          result = 37 * result + this.getNudoc();
          result = 37 * result + this.getNoreg();
          result = 37 * result + this.getLinea();
-         result = (int) (37 * result + this.getCodbar());
+         result = 37 * result + ( getCodbar() == null ? 0 : this.getCodbar().hashCode() );
          return result;
    }   
 

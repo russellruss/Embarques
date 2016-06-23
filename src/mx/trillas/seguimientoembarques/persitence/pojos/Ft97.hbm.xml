@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/06/2016 01:50:26 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 23/06/2016 11:16:12 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="mx.trillas.seguimientoembarques.persitence.pojos.Ft97" table="ft97" catalog="Embarques" optimistic-lock="version">
         <composite-id name="id" class="mx.trillas.seguimientoembarques.persitence.pojos.Ft97Id">
@@ -17,8 +17,8 @@
             <key-property name="linea" type="int">
                 <column name="LINEA" />
             </key-property>
-            <key-property name="codbar" type="int">
-                <column name="CODBAR" />
+            <key-property name="codbar" type="string">
+                <column name="CODBAR" length="13" />
             </key-property>
         </composite-id>
         <property name="ident" type="string">
@@ -68,6 +68,12 @@
         </property>
         <property name="cdest1" type="string">
             <column name="CDEST1" length="1" />
+        </property>
+        <property name="adest2" type="java.lang.Integer">
+            <column name="ADEST2" />
+        </property>
+        <property name="cdest2" type="string">
+            <column name="CDEST2" length="1" />
         </property>
         <property name="rexist" type="java.lang.Integer">
             <column name="REXIST" />

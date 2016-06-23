@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 03:58:43 PM by Hibernate Tools 4.3.1
+// Generated 23/06/2016 11:16:11 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

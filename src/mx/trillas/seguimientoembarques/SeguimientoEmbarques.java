@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,9 +49,9 @@ public class SeguimientoEmbarques {
 				String getter = "get" + key.substring(0, 1).toUpperCase()
 						+ key.substring(1, key.length()).toLowerCase();
 
-				// if(getter.equals("getNdoc")){
-				// System.out.println();
-				// }
+//				if (getter.equals("getPnet")) {
+//					System.out.println();
+//				}
 
 				Method getterMethod;
 				Class<?> returntype;
@@ -77,7 +78,7 @@ public class SeguimientoEmbarques {
 							getterMethod = Ft91Id.class.getMethod(getter);
 							returntype = getterMethod.getReturnType();
 							returnType = returntype.getName();
-						} 
+						}
 						if (bandera == "FT96_MAP.properties") {
 							getterMethod = Ft96Id.class.getMethod(getter);
 							returntype = getterMethod.getReturnType();
@@ -300,6 +301,19 @@ public class SeguimientoEmbarques {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}
+		}
+
+		if (valueObj != null && returnType.equals("java.math.BigDecimal")) {
+			String valueStr = (String) valueObj;
+
+			if (valueStr != null && valueStr.equals("")) {
+				valueStr = null;
+			}
+
+			if (valueStr != null) {
+				BigDecimal bd = new BigDecimal(valueStr);
+				value = bd;
 			}
 		}
 

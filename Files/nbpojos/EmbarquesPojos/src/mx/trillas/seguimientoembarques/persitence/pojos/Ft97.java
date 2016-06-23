@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 22/06/2016 03:58:43 PM by Hibernate Tools 4.3.1
+// Generated 23/06/2016 11:16:11 AM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -27,6 +27,8 @@ public class Ft97  implements java.io.Serializable {
      private Integer mone;
      private Integer adest1;
      private String cdest1;
+     private Integer adest2;
+     private String cdest2;
      private Integer rexist;
      private String cvrga;
      private String cvapro;
@@ -64,7 +66,7 @@ public class Ft97  implements java.io.Serializable {
     public Ft97(Ft97Id id) {
         this.id = id;
     }
-    public Ft97(Ft97Id id, String ident, String control, String autit, Integer ed, String cvpen, Integer epend, Integer esurt, String cvpre, BigDecimal plista, BigDecimal pnet, BigDecimal impobn, BigDecimal tipcam, String desca, Integer mone, Integer adest1, String cdest1, Integer rexist, String cvrga, String cvapro, Integer fecham, BigDecimal plisv, Integer acsal1, Integer acsal2, String consig, Integer ncte, BigDecimal piva, BigDecimal impiva, BigDecimal impdes, Integer conoc, BigDecimal dctoa, BigDecimal idesa, String cvest, Integer isbnp, Integer tiptra, Integer subtra, BigDecimal plis4, BigDecimal pnet4, String cnov, String format, Integer perren, String cvpro, String seriepd, Integer folpd, String cvecan, String cveopo) {
+    public Ft97(Ft97Id id, String ident, String control, String autit, Integer ed, String cvpen, Integer epend, Integer esurt, String cvpre, BigDecimal plista, BigDecimal pnet, BigDecimal impobn, BigDecimal tipcam, String desca, Integer mone, Integer adest1, String cdest1, Integer adest2, String cdest2, Integer rexist, String cvrga, String cvapro, Integer fecham, BigDecimal plisv, Integer acsal1, Integer acsal2, String consig, Integer ncte, BigDecimal piva, BigDecimal impiva, BigDecimal impdes, Integer conoc, BigDecimal dctoa, BigDecimal idesa, String cvest, Integer isbnp, Integer tiptra, Integer subtra, BigDecimal plis4, BigDecimal pnet4, String cnov, String format, Integer perren, String cvpro, String seriepd, Integer folpd, String cvecan, String cveopo) {
        this.id = id;
        this.ident = ident;
        this.control = control;
@@ -82,6 +84,8 @@ public class Ft97  implements java.io.Serializable {
        this.mone = mone;
        this.adest1 = adest1;
        this.cdest1 = cdest1;
+       this.adest2 = adest2;
+       this.cdest2 = cdest2;
        this.rexist = rexist;
        this.cvrga = cvrga;
        this.cvapro = cvapro;
@@ -231,6 +235,20 @@ public class Ft97  implements java.io.Serializable {
     
     public void setCdest1(String cdest1) {
         this.cdest1 = cdest1;
+    }
+    public Integer getAdest2() {
+        return this.adest2;
+    }
+    
+    public void setAdest2(Integer adest2) {
+        this.adest2 = adest2;
+    }
+    public String getCdest2() {
+        return this.cdest2;
+    }
+    
+    public void setCdest2(String cdest2) {
+        this.cdest2 = cdest2;
     }
     public Integer getRexist() {
         return this.rexist;
