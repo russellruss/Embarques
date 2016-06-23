@@ -150,28 +150,5 @@ public class AlmacenDAODBImpl implements AlmacenDAO {
 				session.close();
 		}
 	}
-	/*
-	public List<Character> getAlmacenCaracter() throws Exception {
-		Session session = null;
-		List<Character> list = new ArrayList<>();
-		
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			Criteria criteria = session.createCriteria(Almacen.class);
-			list = criteria.list();
-			for (Object element : list) {
-				if (element != null && element instanceof Almacen) {
-					Almacen almacen = (Almacen) element;
-					list.addAll(almacen.getCaracter());
-				}
-			}
-		} catch (Exception ex) {
-			throw ex;
-		} finally {
-			if (session != null)
-				session.close();
-		}
-		return list;
-	}  */
 }
 

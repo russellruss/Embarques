@@ -160,10 +160,9 @@
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#embarque" data-toggle="tab">Embarque</a>
-                                </li>
-                                <li><a href="#cliente" data-toggle="tab">Cliente</a>
-                                </li>
+                                <li class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
+                                <li><a href="#embarque" data-toggle="tab">Embarque</a></li>
+                                <li><a href="#cliente" data-toggle="tab">Cliente</a></li>
 <!--                                 <li><a href="#messages" data-toggle="tab">Documentos</a> -->
 <!--                                 </li> -->
 								<!-- 
@@ -173,7 +172,26 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane fade in active" id="embarque">
+                                <div class="tab-pane fade in active" id="detalle">
+									<div class="table-responsive">
+										<table class="table">
+                                    		<thead>
+                                        		<tr>
+                                            		<th>LINEA</th>
+                                            		<th>ISBN</th>
+                                            		<th>EDICION</th>
+                                            		<th>AUTOR - TÍTULO</th>
+                                            		<th>CANTIDAD</th>
+                                            		<th>P NETO</th>
+                                        		</tr>
+                                    		</thead>
+                                    	<tbody id="tablaContenido">
+                                    	</tbody>
+                                	</table>
+                            	</div>
+                            	<!-- /.table-responsive -->
+                                </div>
+                                <div class="tab-pane fade" id="embarque">
 									<table class="table table-bordered table-striped">
 										<tbody>
 											<tr>

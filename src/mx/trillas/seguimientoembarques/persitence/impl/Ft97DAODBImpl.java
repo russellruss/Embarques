@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import mx.trillas.seguimientoembarques.persitence.HibernateUtil;
 import mx.trillas.seguimientoembarques.persitence.dao.Ft97DAO;
@@ -41,5 +42,30 @@ public class Ft97DAODBImpl implements Ft97DAO {
 			if (session != null)
 				session.close();
 		}
+	}
+
+	@Override
+	public List<Ft97> getDetailsOf(String serie, Integer nudoc) throws Exception {
+		List<Ft97> listFt97;
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Criteria criteria = session.createCriteria(Ft97.class);
+			criteria.add(Restrictions.and(Restrictions.eq("id.serie", serie), Restrictions.eq("id.nudoc", nudoc)));
+			List<?> listObjs = criteria.list();
+			listFt97 = new ArrayList<>();
+			for (Object obj : listObjs) {
+				if (obj != null && obj instanceof Ft97) {
+					Ft97 ft97 = (Ft97) obj;
+					listFt97.add(ft97);
+				}
+			}
+		} catch (Exception ex) {
+			throw ex;
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return listFt97;
 	}
 }

@@ -17,6 +17,7 @@ function drawTraspasos(data){
 	var types  = ["even","odd"];
 	var flagType = 0;
 	for (var i in data) {
+//		console.log(data);
 		switch (data[i].Status) {
 		case "Surtido":
 			tdStatus='<td style="color:blue">'+data[i].Status+'</td>'
@@ -43,7 +44,7 @@ function drawTraspasos(data){
 		}
 		var oc = "";
 		if(data[i].Status == "Enviado"){
-			oc = 'onclick="details('+data[i].f+',\''+data[i].s+'\')"';
+			oc = 'onclick="details('+data[i].f+',\''+data[i].s+'\','+data[i].foltra+',\''+data[i].sertra+'\')"';
 		}else{
 			oc = "";
 		}
@@ -103,21 +104,44 @@ function tableIni(){
 	$("#fountainR").css('display', 'none');
 }
 
-function details(folio, serie){
-//	console.log(serie);console.log(folio);
+function details(folio, serie, foltra, sertra){
+//	console.log(sertra);console.log(foltra);
 	$.ajax({
 		type: "GET",
 		url: "../traspasos/TraspasosServlet",
-		data:"&folio="+folio+"&serie="+serie,
+		data:"&folio="+folio+"&serie="+serie+"&action=drawDetails",
 		success: function(data){
-			drawDetails(data)
+			drawDetails(data);
 		},error:function(data){
 			alert('Se encontro un Error al cargar los Datos');
-    }});	
+    }});
 	$(".tablePage").css("display", "none");
 	$(".detail").css("display", "block");
-	
+	$.ajax({
+		type: "GET",
+		url: "../traspasos/TraspasosServlet",
+		data:"&folio="+foltra+"&serie="+sertra+"&action=drawContenido",
+		success: function(data){
+			drawContenido(data);
+		},error:function(data){
+			alert('Se encontro un Error al cargar los Datos');
+    }});
+	$(".tablePage").css("display", "none");
+	$(".detail").css("display", "block");
 }
+
+function drawContenido(data){
+	var objetos = data.objetos;
+	var s = "";
+	for(d in objetos){
+		var elemento = objetos[d];
+//		console.log(elemento.esurt);
+		s += '<tr><td>'+elemento.id.linea+'</td><td>'+elemento.id.codbar+'</td><td>'+elemento.ed+'</td><td>'+elemento.autit+'</td><td>'+elemento.esurt+'</td><td>'+elemento.pnet+'</td></tr>';
+		
+	}
+	$("#tablaContenido").html(s);
+}
+
 function drawDetails(data){
 	if(data !="NA"){
 		$("#idorden2").html("<i class=\"fa fa-arrow-circle-left\" style=\"color: #337ab7;margin-right: 2%;cursor:pointer\" onclick=\"backPedidos()\"></i>Embarque " + data.serie + data.folio);
@@ -157,6 +181,5 @@ function backPedidos(){
 }
 
 $(document).ready(function() {
-	getTraspasos()
-	
+	getTraspasos();
 });

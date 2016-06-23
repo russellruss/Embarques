@@ -23,6 +23,7 @@ import mx.trillas.seguimientoembarques.persitence.pojos.Ft96Id;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft97;
 import mx.trillas.seguimientoembarques.persitence.pojos.Ft97Id;
 import mx.trillas.seguimientoembarques.util.ParseFile;
+import mx.trillas.seguimientoembarques.util.UtilMoneda;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -200,6 +201,16 @@ public class SeguimientoEmbarques {
 			Ft97Id ftId97 = new Ft97Id();
 
 			mapSeter(keyset, map, bandera, ft97, ftId97);
+			ft97.setPnet(UtilMoneda.reduceDosDecimales(ft97.getPnet()));
+			ft97.setPlista(UtilMoneda.reduceDosDecimales(ft97.getPlista()));
+			ft97.setImpobn(UtilMoneda.reduceDosDecimales(ft97.getImpobn()));
+			ft97.setTipcam(UtilMoneda.reduceDosDecimales(ft97.getTipcam()));
+			ft97.setPlisv(UtilMoneda.reduceDosDecimales(ft97.getPlisv()));
+			ft97.setPiva(UtilMoneda.reduceDosDecimales(ft97.getPiva()));
+			ft97.setImpiva(UtilMoneda.reduceDosDecimales(ft97.getImpiva()));
+			ft97.setPlis4(UtilMoneda.reduceCuatroDecimales(ft97.getPlis4()));
+			ft97.setPnet4(UtilMoneda.reduceCuatroDecimales(ft97.getPnet4()));
+			
 
 			ft97.setId(ftId97);
 			listFt97.add(ft97);
