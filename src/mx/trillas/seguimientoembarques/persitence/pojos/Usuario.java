@@ -71,6 +71,12 @@ public class Usuario  implements java.io.Serializable {
     }
 
 
+	@Override
+	public String toString() {
+		return "Usuario [username=" + username + ", tipousuario=" + tipousuario + ", name=" + name + "]";
+	}
+
+
 
 
 }
