@@ -19,13 +19,13 @@ function drawTraspasos(data){
 	for (var i in data) {
 		switch (data[i].Status) {
 		case "Surtido":
-			tdStatus='<td style="color:blue">'+data[i].Status+'</td>'
+			tdStatus='<td style="color:green">'+data[i].Status+'</td>'
 			break;
 		case "Empaque":
 			tdStatus='<td style="color:brown">'+data[i].Status+'</td>'
 			break;
 		case "Enviado":
-			tdStatus='<td style="color:green">'+'<a href="#" onclick="details('+data[i].f+',\''+data[i].s+'\','+data[i].foltra+',\''+data[i].sertra+'\')">'+data[i].Status+'</a></td>'
+			tdStatus='<td>'+'<a href="#" onclick="details('+data[i].f+',\''+data[i].s+'\','+data[i].foltra+',\''+data[i].sertra+'\')">'+data[i].Status+'</a></td>'
 			break;
 		case "Activo":
 			tdStatus='<td style="color:#0099FF">'+data[i].Status+'</td>'//azul claro
@@ -45,9 +45,9 @@ function drawTraspasos(data){
 		tbodyTras += '<tr class="'+classtype+' gradeA" ' + '>'+
 		'<td>'+data[i].AlmacenOrigen+'</td>'+
 		'<td>'+data[i].AlmacenDestino+'</td>'+
-		'<td>'+data[i].Traspaso+'</td>'+
+		'<td>'+'<a href="#" data-toggle="modal" data-target="#myModal" class="open-modalContenido" data-toggle="modal" data-foltra="'+data[i].foltra+'" data-sertra="'+data[i].sertra+'">'+data[i].Traspaso+'</a>'+'</td>'+
   			'<td>'+data[i].FechaTraspaso+'</td>'+
-			'<td>'+'<a href="#" data-toggle="modal" data-target="#myModal" class="open-modalContenido" data-toggle="modal" data-foltra="'+data[i].foltra+'" data-sertra="'+data[i].sertra+'">'+data[i].Requisicion+'</a>'+'</td>'+
+			'<td>'+data[i].Requisicion+'</td>'+
 			'<td>'+data[i].FechaRequisicion+'</td>'+//aquí va la fecha de de la requisicion no traspaso 
   			'<td>'+data[i].Embarque+'</td>'+
   			'<td>'+data[i].FechaEmbarque+'</td>'+

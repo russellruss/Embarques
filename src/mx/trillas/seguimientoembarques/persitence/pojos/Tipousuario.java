@@ -49,6 +49,12 @@ public class Tipousuario  implements java.io.Serializable {
 	}
 
 
+	@Override
+	public String toString() {
+		return tipo;
+	}
+
+
 
 
 }
