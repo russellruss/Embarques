@@ -79,6 +79,43 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalContenido" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Detalle en el embarque</h4>
+                                        </div>
+										<div class="modal-body">
+											<div class="table-responsive">
+												<table class="table">
+													<thead>
+														<tr>
+															<th>LINEA</th>
+															<th>ISBN</th>
+															<th>EDICION</th>
+															<th>AUTOR - TÍTULO</th>
+															<th>CANTIDAD</th>
+															<th>P NETO</th>
+														</tr>
+													</thead>
+													<tbody id="tablaContenido">
+													</tbody>
+												</table>
+											</div>
+											<!-- /.table-responsive -->
+											<!--  -->
+										</div>
+										<div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -129,8 +166,7 @@
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#detalle" data-toggle="tab">Detalle</a></li>
-                                <li><a href="#embarque" data-toggle="tab">Embarque</a></li>
+                                <li class="active"><a href="#embarque" data-toggle="tab">Embarque</a></li>
                                 <li><a href="#cliente" data-toggle="tab">Cliente</a>
                                 </li>
 <!--                                 <li><a href="#messages" data-toggle="tab">Documentos</a> -->
@@ -142,25 +178,6 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane fade in active" id="detalle">
-									<div class="table-responsive">
-										<table class="table">
-                                    		<thead>
-                                        		<tr>
-                                            		<th>LINEA</th>
-                                            		<th>ISBN</th>
-                                            		<th>EDICION</th>
-                                            		<th>AUTOR - TÍTULO</th>
-                                            		<th>CANTIDAD</th>
-                                            		<th>P NETO</th>
-                                        		</tr>
-                                    		</thead>
-                                    	<tbody id="tablaContenido">
-                                    	</tbody>
-                                	</table>
-                            	</div>
-                            	<!-- /.table-responsive -->
-                                </div>
                                 <div class="tab-pane fade" id="embarque">
 									<table class="table table-bordered table-striped">
 										<tbody>
@@ -271,5 +288,28 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../../Components/dist/js/sb-admin-2.js"></script>
+    
+    <!-- MODAL DIALOG CONTENIDO DETALLE -->
+    <script type="text/javascript">
+    $(document).on("click", ".open-modalContenido", function () {
+        var foltra = $(this).data('foltra');
+        var sertra = $(this).data('sertra');
+    	$.ajax({
+    		type: "GET",
+    		url: "../traspasos/TraspasosServlet",
+    		data:"&folio="+foltra+"&serie="+sertra+"&action=drawContenido",
+    		success: function(data){
+    			console.log(data);
+    			drawContenido(data);
+    		},error:function(data){
+    			alert('Se encontro un Error al cargar los Datos');
+        }});
+        
+//         $(".modal-body #bookId").val( myBookId );
+        // As pointed out in comments, 
+        // it is superfluous to have to manually call the modal.
+        // $('#addBookDialog').modal('show');
+   });
+    </script>
 </body>
 </html>

@@ -18,6 +18,7 @@ function drawTraspasos(data){
 	var flagType = 0;
 	for (var i in data) {
 //		console.log(data);
+//		console.log(data[i]);
 		switch (data[i].Status) {
 		case "Surtido":
 			tdStatus='<td style="color:blue">'+data[i].Status+'</td>'
@@ -26,11 +27,10 @@ function drawTraspasos(data){
 			tdStatus='<td style="color:brown">'+data[i].Status+'</td>'
 			break;
 		case "Enviado":
-			tdStatus='<td style="color:green">'+data[i].Status+'</td>'
+			tdStatus='<td style="color:green">'+'<a href="#" onclick="details('+data[i].f+',\''+data[i].s+'\','+data[i].foltra+',\''+data[i].sertra+'\')">'+data[i].Status+'</a></td>'
 			break;
 		case "Activo":
-			tdStatus='<td style="color:#0099FF">'+data[i].Status+'</td>'// azul
-																		// claro
+			tdStatus='<td style="color:#0099FF">'+data[i].Status+'</td>'
 			break;
 		case "Cancelado":
 			tdStatus='<td style="color:red">'+data[i].Status+'</td>'
@@ -42,18 +42,12 @@ function drawTraspasos(data){
 			tdStatus='<td>'+data[i].Status+'</td>'
 			break;
 		}
-		var oc = "";
-		if(data[i].Status == "Enviado"){
-			oc = 'onclick="details('+data[i].f+',\''+data[i].s+'\','+data[i].foltra+',\''+data[i].sertra+'\')"';
-		}else{
-			oc = "";
-		}
 		var classtype = types[flagType];
 		flagType = flagType == 1 ? 0 : 1;
-		tbodyTras += '<tr class="'+classtype+' gradeA" ' + oc + ' style="cursor:pointer">'+
+		tbodyTras += '<tr class="'+classtype+' gradeA" ' + '>'+
 		'<td>'+data[i].AlmacenOrigen+'</td>'+
 		'<td>'+data[i].AlmacenDestino+'</td>'+
-			'<td>'+data[i].Requisicion+'</td>'+
+			'<td>'+'<a href="#" data-toggle="modal" data-target="#myModal" class="open-modalContenido" data-toggle="modal" data-foltra="'+data[i].foltra+'" data-sertra="'+data[i].sertra+'">'+data[i].Requisicion+'</a>'+'</td>'+
 			'<td>'+data[i].FechaRequisicion+'</td>'+// aquí va la fecha de de la
 											// requisicion no traspaso
 			'<td>'+data[i].Traspaso+'</td>'+
@@ -117,15 +111,6 @@ function details(folio, serie, foltra, sertra){
     }});
 	$(".tablePage").css("display", "none");
 	$(".detail").css("display", "block");
-	$.ajax({
-		type: "GET",
-		url: "../traspasos/TraspasosServlet",
-		data:"&folio="+foltra+"&serie="+sertra+"&action=drawContenido",
-		success: function(data){
-			drawContenido(data);
-		},error:function(data){
-			alert('Se encontro un Error al cargar los Datos');
-    }});
 	$(".tablePage").css("display", "none");
 	$(".detail").css("display", "block");
 }
