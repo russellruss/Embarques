@@ -1,5 +1,5 @@
 package mx.trillas.seguimientoembarques.persitence.pojos;
-// Generated 23/06/2016 11:16:11 AM by Hibernate Tools 4.3.1
+// Generated 28/07/2016 11:31:12 AM by Hibernate Tools 4.3.1
 
 
 
@@ -77,7 +77,7 @@ public class Ft97Id  implements java.io.Serializable {
    }
    
    public int hashCode() {
-         int result = 17;
+         Integer result = 17;
          
          result = 37 * result + ( getSerie() == null ? 0 : this.getSerie().hashCode() );
          result = 37 * result + this.getNudoc();

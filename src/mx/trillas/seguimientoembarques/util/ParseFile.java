@@ -9,27 +9,28 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 
 public class ParseFile {
-	
-	private static Logger logger = Logger.getLogger(ParseFile.class.getName()); 
-	
-	public static List<Map<?, ?>> parse(Path path, String encode,
-			String[] arregloClaves, int[] arregloPosiciones) {
+
+	private static Logger logger = Logger.getLogger(ParseFile.class);
+
+	public static List<Map<?, ?>> parse(Path path, String encode, String[] arregloClaves, int[] arregloPosiciones) {
 		List<String> stringsList = pathToStringsList(path, encode);
 		List<Map<?, ?>> contenido = new ArrayList<Map<?, ?>>();
 		for (String string : stringsList) {
-			Map<String, String> arrayContent = parseLineToArrayContent(string,
-					arregloClaves, arregloPosiciones);
-			contenido.add(arrayContent);
+			Map<String, String> arrayContent = parseLineToArrayContent(string, arregloClaves, arregloPosiciones);
+			if (arrayContent.get("SERIE") != null && !arrayContent.get("SERIE").equals(""))
+				contenido.add(arrayContent);
+			else
+				logger.warn("sin serie: "+ arrayContent.toString());
 		}
 		return contenido;
 	}
 
-	private static Map<String, String> parseLineToArrayContent(String line,
-			String[] arregloClaves, int[] arregloPosiciones) {
+	private static Map<String, String> parseLineToArrayContent(String line, String[] arregloClaves,
+			int[] arregloPosiciones) {
 		if (arregloClaves.length != arregloPosiciones.length) {
 			System.out.println("La longitud de los arreglos no coincide");
 			return null;
@@ -43,15 +44,15 @@ public class ParseFile {
 			} else {
 				finPosicion = arregloPosiciones[i + 1] - 1;
 			}
-				
-			String cont ="";
+
+			String cont = "";
 			try {
-				cont =line.substring(inicioPosicion, finPosicion);
+				cont = line.substring(inicioPosicion, finPosicion);
 			} catch (StringIndexOutOfBoundsException e) {
-				logger.warning(e.getMessage());
+				logger.warn(e.getMessage());
 				break;
 			}
-			
+
 			cont = cont.trim();
 			contenido.put(arregloClaves[i], cont);
 		}
