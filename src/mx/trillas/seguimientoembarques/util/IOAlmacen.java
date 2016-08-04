@@ -24,8 +24,7 @@ public class IOAlmacen {
 	private static UserDAO userDAO = ImplFactory.getUserDAODBImplImpl();
 
 	public static boolean verifyFile(File file, String path)
-			throws UnsupportedEncodingException, FileNotFoundException,
-			IOException {
+			throws UnsupportedEncodingException, FileNotFoundException, IOException {
 
 		if (!isTextFile(file)) {
 			log.error("El archivo ingresado no es de tipo texto (.txt). Intentelo nuevamente.");
@@ -48,8 +47,7 @@ public class IOAlmacen {
 		return false;
 	}
 
-	public static boolean isEmptyLine(File file, String path)
-			throws IOException {
+	public static boolean isEmptyLine(File file, String path) throws IOException {
 
 		String line = null;
 		FileInputStream fis = null;
@@ -82,8 +80,7 @@ public class IOAlmacen {
 		return true;
 	}
 
-	public static String getEmptyLine(File file, String path)
-			throws IOException {
+	public static String getEmptyLine(File file, String path) throws IOException {
 
 		String line = null;
 		FileInputStream fis = null;
@@ -120,8 +117,7 @@ public class IOAlmacen {
 		return msg;
 	}
 
-	public static String verifyRegexFromFile(File file, String path)
-			throws Exception, IOException {
+	public static String verifyRegexFromFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -135,8 +131,7 @@ public class IOAlmacen {
 			br = new BufferedReader(isr);
 
 			while ((line = br.readLine()) != null) {
-				if (!Util.containLineExpression(line)
-						|| Util.containSpaceExpression(line)) {
+				if (!Util.containLineExpression(line) || Util.containSpaceExpression(line)) {
 					return counter + ": [" + line;
 				}
 				counter++;
@@ -156,8 +151,7 @@ public class IOAlmacen {
 		return null;
 	}
 
-	public static String verifyDataFromFile(File file, String path)
-			throws Exception, IOException {
+	public static String verifyDataFromFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -175,24 +169,19 @@ public class IOAlmacen {
 				asesor = new AsesorAux();
 				String[] asesorSplit = line.split("\\,");
 
-				if (asesorSplit.length >= 1 && asesorSplit[0] != null
-						&& !asesorSplit[0].isEmpty()) {
+				if (asesorSplit.length >= 1 && asesorSplit[0] != null && !asesorSplit[0].isEmpty()) {
 					asesor.setName(asesorSplit[0].trim());
 				}
-				if (asesorSplit.length >= 1 && asesorSplit[1] != null
-						&& !asesorSplit[1].isEmpty()) {
+				if (asesorSplit.length >= 1 && asesorSplit[1] != null && !asesorSplit[1].isEmpty()) {
 					asesor.setUsername(asesorSplit[1].trim());
 				}
-				if (asesorSplit.length >= 1 && asesorSplit[2] != null
-						&& !asesorSplit[2].isEmpty()) {
+				if (asesorSplit.length >= 1 && asesorSplit[2] != null && !asesorSplit[2].isEmpty()) {
 					asesor.setPasswd(asesorSplit[2].trim());
 				}
 
-				if (asesor.getUsername() == null
-						|| "".equals(asesor.getUsername())) {
+				if (asesor.getUsername() == null || "".equals(asesor.getUsername())) {
 					return counter + ": [" + line;
-				} else if (asesor.getPasswd() == null
-						|| "".equals(asesor.getPasswd())) {
+				} else if (asesor.getPasswd() == null || "".equals(asesor.getPasswd())) {
 					return counter + ": [" + line;
 				}
 				counter++;
@@ -212,8 +201,7 @@ public class IOAlmacen {
 		return null;
 	}
 
-	public static List<AsesorAux> getUsersFile(File file, String path)
-			throws Exception, IOException {
+	public static List<AsesorAux> getUsersFile(File file, String path) throws Exception, IOException {
 
 		FileInputStream fis = null;
 		BufferedReader br = null;
@@ -235,15 +223,9 @@ public class IOAlmacen {
 
 				Usuario usuario = userDAO.getUser(lineName);
 
-				if (usuario != null
-						&& usuario
-								.getTipousuario()
-								.getTipo()
-								.equals(tipousuarioDAO
-										.getTipousuarioAdministrador()
-										.getTipo())) {
-					log.info("Se ignoro al usuario " + usuario
-							+ " porque ya existe en bd como administrador");
+				if (usuario != null && usuario.getTipousuario().getTipo()
+						.equals(tipousuarioDAO.getTipousuarioAdministrador().getTipo())) {
+					log.info("Se ignoro al usuario " + usuario + " porque ya existe en bd como administrador");
 				} else {
 					asesor.setName(asesorSplit[0]);
 					asesor.setUsername(asesorSplit[1]);
@@ -284,8 +266,7 @@ public class IOAlmacen {
 		return false;
 	}
 
-	private static boolean isEmptyFile(String path)
-			throws FileNotFoundException, IOException {
+	private static boolean isEmptyFile(String path) throws FileNotFoundException, IOException {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(path));

@@ -32,6 +32,9 @@ CREATE TABLE IF NOT EXISTS `Embarques`.`almacen` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+#CAMBIAR LA CODIFICACION DEL CARACTER PARA QUE CARGUE CORRECTAMENTE CARACTERES RAROS
+ALTER TABLE `almacen` CHANGE `caracter` `caracter` CHAR( 1 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL ;
+
 
 -- -----------------------------------------------------
 -- Table `Embarques`.`ft91`

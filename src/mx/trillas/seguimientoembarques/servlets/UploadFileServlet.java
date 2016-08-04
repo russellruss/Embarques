@@ -47,19 +47,18 @@ public class UploadFileServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		DiskFileItemFactory fileFactory = new DiskFileItemFactory();
-		File filesDir = (File) getServletContext().getAttribute(
-				"FILES_DIR_FILE");
+		File filesDir = (File) getServletContext().getAttribute("FILES_DIR_FILE");
 		fileFactory.setRepository(filesDir);
 		this.uploader = new ServletFileUpload(fileFactory);
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		//
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String msg = "";
 		boolean flag = false;
@@ -81,8 +80,7 @@ public class UploadFileServlet extends HttpServlet {
 		Iterator<FileItem> fileItemsIterator = fileItemsList.iterator();
 		while (fileItemsIterator.hasNext()) {
 			FileItem fileItem = fileItemsIterator.next();
-			String path = request.getServletContext().getAttribute("FILES_DIR")
-					+ File.separator + fileItem.getName();
+			String path = request.getServletContext().getAttribute("FILES_DIR") + File.separator + fileItem.getName();
 			File file = new File(path);
 
 			log.info("Ruta en el servidor: " + file.getAbsolutePath());
@@ -102,43 +100,33 @@ public class UploadFileServlet extends HttpServlet {
 					log.error("El archivo ingresado no es valido");
 					flag = false;
 				} else {
-					asesorUsernameVacio = IOAlmacen.verifyRegexFromFile(file,
-							path);
-					lineUsernameVacio = IOAlmacen
-							.verifyDataFromFile(file, path);
+					asesorUsernameVacio = IOAlmacen.verifyRegexFromFile(file, path);
+					lineUsernameVacio = IOAlmacen.verifyDataFromFile(file, path);
 					if (!IOAlmacen.isAcceptedSize(file)) {
 						msg = "El tamaño del archivo sobrepasa el máximo requerido (2Mb)";
 						log.error("El tamaño del archivo sobrepasa el máximo requerido (2Mb)");
 						flag = false;
 					} else if (lineUsernameVacio != null) {
-						msg = "La linea "
-								+ lineUsernameVacio
+						msg = "La linea " + lineUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
-						log.error("La linea "
-								+ lineUsernameVacio
+						log.error("La linea " + lineUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
 						flag = false;
 					} else if (asesorUsernameVacio != null) {
-						msg = "La linea "
-								+ asesorUsernameVacio
+						msg = "La linea " + asesorUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido. No se harán cambios en los registros de usuario.";
-						log.error("La linea "
-								+ asesorUsernameVacio
+						log.error("La linea " + asesorUsernameVacio
 								+ "] del archivo ingresado, contiene un formato no válido (username o password vacío). No se harán cambios en los registros de usuario.");
 						flag = false;
 					} else if (!IOAlmacen.isEmptyLine(file, path)) {
-						msg = "La linea "
-								+ IOAlmacen.getEmptyLine(file, path)
+						msg = "La linea " + IOAlmacen.getEmptyLine(file, path)
 								+ " del archivo ingresado, no contiene datos o esta vacía. Favor de corregir";
-						log.error("La linea "
-								+ IOAlmacen.getEmptyLine(file, path)
+						log.error("La linea " + IOAlmacen.getEmptyLine(file, path)
 								+ " del archivo ingresado, no contiene datos o esta vacía. Favor de corregir");
 						flag = false;
 					} else {
-						log.info("Character Encoding:  "
-								+ IOAlmacen.getEncoding(path).toUpperCase());
-						asesoresFromFile.addAll(IOAlmacen.getUsersFile(file,
-								path));
+						log.info("Character Encoding:  " + IOAlmacen.getEncoding(path).toUpperCase());
+						asesoresFromFile.addAll(IOAlmacen.getUsersFile(file, path));
 						flag = true;
 					}
 				}
@@ -176,17 +164,12 @@ public class UploadFileServlet extends HttpServlet {
 			for (AsesorAux asesor : asesoresFromFile) {
 				Usuario usuario = new Usuario();
 
-				if (asesor.getUsername().equals("")
-						|| asesor.getUsername() == null) {
-					log.info("Salto al asesor " + asesor
-							+ " por valor username vacio:  username["
-							+ asesor.getUsername() + "]   password["
-							+ asesor.getPasswd() + "]");
+				if (asesor.getUsername().equals("") || asesor.getUsername() == null) {
+					log.info("Salto al asesor " + asesor + " por valor username vacio:  username["
+							+ asesor.getUsername() + "]   password[" + asesor.getPasswd() + "]");
 				} else if (usernameExist.contains(asesor.getUsername())) {
-					log.info("Salto a asesor porque ya existe:  username["
-							+ asesor.getUsername() + "]   password["
-							+ asesor.getPasswd() + "]" + "   permisos"
-							+ asesor.getCaracteres());
+					log.info("Salto a asesor porque ya existe:  username[" + asesor.getUsername() + "]   password["
+							+ asesor.getPasswd() + "]" + "   permisos" + asesor.getCaracteres());
 				} else if (asesor.getUsername() != null) {
 					usuario.setUsername(asesor.getUsername());
 					usuario.setName(asesor.getName());
@@ -212,9 +195,8 @@ public class UploadFileServlet extends HttpServlet {
 			// Crea las relaciones usuario-almacen
 			try {
 				for (AsesorAux asesor : asesoresList) {
-					LinkedHashSet<Almacen> listaDeAlmacenes = useralmacenDAO
-							.getRelacionUserAlmacen(asesor,
-									almacenDAO.getAlmacenes());
+					LinkedHashSet<Almacen> listaDeAlmacenes = useralmacenDAO.getRelacionUserAlmacen(asesor,
+							almacenDAO.getAlmacenes());
 					if (listaDeAlmacenes.isEmpty()) {
 						log.info("El Asesor   username[" + asesor.getUsername()
 								+ "]   no tiene almacenes relacionados ");
@@ -223,12 +205,11 @@ public class UploadFileServlet extends HttpServlet {
 							Usuario usuarioAsesor = new Usuario();
 							usuarioAsesor.setUsername(asesor.getUsername());
 							usuarioAsesor.setTipousuario(asesor.getTipousuario());
-//							Usuario usuarioAsesor = new Usuario(
-//									asesor.getUsername(),
-//									asesor.getTipousuario());
+							// Usuario usuarioAsesor = new Usuario(
+							// asesor.getUsername(),
+							// asesor.getTipousuario());
 							usuarioAsesor.setPassword(asesor.getPasswd());
-							log.info("Asesor  username[" + asesor.getUsername()
-									+ "]    ::   Almacen"
+							log.info("Asesor  username[" + asesor.getUsername() + "]    ::   Almacen"
 									+ listaDeAlmacenes.toString());
 							useralmacenDAO.insert(almacen, usuarioAsesor);
 						}
