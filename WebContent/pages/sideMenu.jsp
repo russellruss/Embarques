@@ -1,24 +1,29 @@
+    <%
+    	TipousuarioDAODBImpl tipoUsuarioDAO = new TipousuarioDAODBImpl();
+        Object userObj = request.getSession().getAttribute("user");
+        String tipo = "";
+        
+        Tipousuario tipoUsuarioSession = null;
+
+    	Usuario usuario = null;
+        if(userObj!=null && userObj instanceof Usuario){
+        	usuario = (Usuario)userObj;;
+        	tipoUsuarioSession = usuario.getTipousuario();
+        }/* else {
+        	StringBuffer url = request.getRequestURL();
+        	String uri = request.getRequestURI();
+        	String ctx = request.getContextPath();
+        	String base = url.substring(0, url.length() - uri.length() + ctx.length()) + "/pages/login/login.jsp";
+        	System.out.println(base);
+            response.sendRedirect(base);
+    	}*/
+    %>
  <%@page import="mx.trillas.seguimientoembarques.persitence.impl.TipousuarioDAODBImpl"%>
 <%@page import="mx.trillas.seguimientoembarques.persitence.dao.TipousuarioDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="mx.trillas.seguimientoembarques.persitence.pojos.Usuario" %>
 <%@ page import="mx.trillas.seguimientoembarques.persitence.pojos.Tipousuario" %>
-    <%
-    
-    TipousuarioDAODBImpl tipoUsuarioDAO = new TipousuarioDAODBImpl();
-    Object userObj = request.getSession().getAttribute("user");
-    String tipo = "";
-    
-    Tipousuario tipoUsuarioSession = null;
-
-	Usuario usuario = null;
-    if(userObj!=null && userObj instanceof Usuario){
-    	usuario = (Usuario)userObj;;
-    	tipoUsuarioSession = usuario.getTipousuario();
-    }
-    
-    %>
   
   			<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

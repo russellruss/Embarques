@@ -109,8 +109,6 @@ function details(folio, serie, foltra, sertra){
     }});
 	$(".tablePage").css("display", "none");
 	$(".detail").css("display", "block");
-	$(".tablePage").css("display", "none");
-	$(".detail").css("display", "block");
 }
 
 function drawContenido(data){

@@ -152,7 +152,6 @@
 		<div id="page-wrapper" class="detail" style="display:none">
             <div class="row">
                 <div class="col-lg-12">
-                	
                     <h1 class="page-header" id="idorden2"><i class="fa fa-arrow-circle-left" style="color: #337ab7;margin-right: 2%;cursor:pointer" onclick="backPedidos()"></i>Orden 000985 </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -304,11 +303,6 @@
     		},error:function(data){
     			alert('Se encontro un Error al cargar los Datos');
         }});
-        
-//         $(".modal-body #bookId").val( myBookId );
-        // As pointed out in comments, 
-        // it is superfluous to have to manually call the modal.
-        // $('#addBookDialog').modal('show');
    });
     </script>
 </body>

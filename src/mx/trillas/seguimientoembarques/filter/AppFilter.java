@@ -68,6 +68,7 @@ public class AppFilter implements Filter {
 				url = url.replace(request.getPathInfo(), "");
 			url += "/pages/login/login.jsp";
 			response.sendRedirect(url);
+			return;
 		}
 
 		filterChain.doFilter(servletRequest, servletResponse);

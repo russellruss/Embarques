@@ -23,8 +23,10 @@ public class ParseFile {
 			Map<String, String> arrayContent = parseLineToArrayContent(string, arregloClaves, arregloPosiciones);
 			if (arrayContent.get("SERIE") != null && !arrayContent.get("SERIE").equals(""))
 				contenido.add(arrayContent);
+			else if (arrayContent.get("SER") != null && !arrayContent.get("SER").equals(""))
+				contenido.add(arrayContent);
 			else
-				logger.warn("sin serie: "+ arrayContent.toString());
+				logger.warn("sin serie: " + arrayContent.toString());
 		}
 		return contenido;
 	}
